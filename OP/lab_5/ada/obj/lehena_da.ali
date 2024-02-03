@@ -1,0 +1,20 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U lehena_da%b		lehena_da.adb		038eba69 NE OO SU IL
+
+D lehena_da.adb		20231019194042 038eba69 lehena_da%b
+D system.ads		20180524051738 32a08138 system%s
+X 1 lehena_da.adb
+1V10*lehena_da{boolean} 1b10 1>21 21l5 21t14
+1i21 n{integer} 12r55 13r10 13r42
+8i4 zatitzaile_posible{integer} 12r36 13r16 16m7 16r29
+9b4 lehena{boolean} 12r20 14m10 19r11
+

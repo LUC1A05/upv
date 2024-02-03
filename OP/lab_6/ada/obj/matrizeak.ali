@@ -1,0 +1,21 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U matrizeak%s		matrizeak.ads		666db370 NE OO PK IL
+
+D matrizeak.ads		20231031070128 666db370 matrizeak%s
+D system.ads		20180524051738 32a08138 system%s
+X 1 matrizeak.ads
+1K9*matrizeak 8l5 8e14
+3A14*Osokoen_Matrizea(integer)<integer><integer>
+4A14*Errealen_Matrizea(float)<integer><integer>
+5A14*Boolearren_Matriz(boolean)<integer><integer>
+6A14*Karaktereen_Matriz(character)<integer><integer>
+

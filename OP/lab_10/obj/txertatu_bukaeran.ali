@@ -1,0 +1,31 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_LOCAL_ALLOCATORS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U txertatu_bukaeran%b	txertatu_bukaeran.adb	bb61bb6e NE OO SU IL
+W datuak%s		datuak.ads		datuak.ali
+
+D datuak.ads		20231207085448 3c685009 datuak%s
+D system.ads		20180524051738 32a08138 system%s
+D txertatu_bukaeran.adb	20231207114738 8709eb67 txertatu_bukaeran%b
+X 1 datuak.ads
+1K9*datuak 10e11 3|1w6 2r5
+3R9*Nodo 8e14 3|12r15 20r30
+4P9*Lista(3R9) 3|5r20 9r11
+6i10*Info{integer} 3|13m9 21m24
+7p10*Hurrengoa{4P9} 3|14m9 17r20 18r25 20m14 21r14 22r14 22m24
+X 3 txertatu_bukaeran.adb
+4U11*txertatu_bukaeran 4b11 5=7 6>7 26l5 26t22
+5p7 L{1|4P9} 11r7 12m7 13r7 14r7 16r15
+6i7 Num{integer} 13r15 21r31
+9p4 Berria{1|4P9} 16m7 17r13 18m10 18r18 20r7 21r7 22r7
+

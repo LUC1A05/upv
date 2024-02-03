@@ -1,0 +1,44 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U autobus_mota%b	autobus_mota.adb	059d877c NE OO SU IL
+W bilbobus_da%b		bilbobus_da.adb		bilbobus_da.ali
+W bizkaibus_da%b	bizkaibus_da.adb	bizkaibus_da.ali
+W digitu_kopurua%b	digitu_kopurua.adb	digitu_kopurua.ali
+W nazioartekoa_da%b	nazioartekoa_da.adb	nazioartekoa_da.ali
+W nazionala_da%b	nazionala_da.adb	nazionala_da.ali
+W regionala_da%b	regionala_da.adb	regionala_da.ali
+
+D autobus_mota.adb	20231020073858 f0faafdf autobus_mota%b
+D bilbobus_da.adb	20231019214746 cbcb2d50 bilbobus_da%b
+D bizkaibus_da.adb	20231019214746 58ab22c1 bizkaibus_da%b
+D digitu_kopurua.adb	20231019214746 390398d9 digitu_kopurua%b
+D nazioartekoa_da.adb	20231019214746 416bf8b0 nazioartekoa_da%b
+D nazionala_da.adb	20231020081854 745febaf nazionala_da%b
+D regionala_da.adb	20231019214746 6a30acf4 regionala_da%b
+D system.ads		20180524051738 32a08138 system%s
+D s-expint.ads		20180524051738 192336fc system.exp_int%s
+X 1 autobus_mota.adb
+4V10*autobus_mota{integer} 4b10 4>23 44l5 44t17
+4i23 n{integer} 18r22 19r22 22r23 25r23 30r22 30r47 31r23 36r22 37r26
+15i1 zenb{integer} 17m4 20m10 23m10 26m10 32m10 38m10 42r12
+X 2 bilbobus_da.adb
+1V10*bilbobus_da{boolean} 1|1w22 19s10
+X 3 bizkaibus_da.adb
+1V10*bizkaibus_da{boolean} 1|1w35 22s10
+X 4 digitu_kopurua.adb
+1V10*digitu_kopurua{integer} 1|1w6 18s7 30s7 30s32 36s7
+X 5 nazioartekoa_da.adb
+1V10*nazioartekoa_da{boolean} 1|2w34 37s10
+X 6 nazionala_da.adb
+2V10*nazionala_da{boolean} 1|2w20 31s10
+X 7 regionala_da.adb
+1V10*regionala_da{boolean} 1|2w6 25s10
+

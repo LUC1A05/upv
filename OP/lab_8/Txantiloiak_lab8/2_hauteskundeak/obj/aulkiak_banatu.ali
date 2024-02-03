@@ -1,0 +1,70 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U aulkiak_banatu%b	aulkiak_banatu.adb	baeca029 NE OO SU IL
+W botoak_banatu%b	botoak_banatu.adb	botoak_banatu.ali
+W ehuneko_3_baino_gehiagoko_alderdiak_lortu%b  ehuneko_3_baino_gehiagoko_alderdiak_lortu.adb  ehuneko_3_baino_gehiagoko_alderdiak_lortu.ali
+Z interfaces%s		interfac.ads		interfac.ali
+W koziente_guztiak_kalkulatu%b  koziente_guztiak_kalkulatu.adb  koziente_guztiak_kalkulatu.ali
+W maximoak_esleitu%b	maximoak_esleitu.adb	maximoak_esleitu.ali
+W motak%s		motak.ads		motak.ali
+
+D alderdien_kozienteak_kalkulatu.adb  20231121080346 12622556 alderdien_kozienteak_kalkulatu%b
+D aulkiak_banatu.adb	20231121080346 991181eb aulkiak_banatu%b
+D botoak_banatu.adb	20231121080346 e75e1344 botoak_banatu%b
+D ehuneko_3_baino_gehiagoko_alderdiak_lortu.adb  20231121080346 c8b3ba69 ehuneko_3_baino_gehiagoko_alderdiak_lortu%b
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D koziente_guztiak_kalkulatu.adb  20231121080346 2a7643c8 koziente_guztiak_kalkulatu%b
+D maximoak_esleitu.adb	20231121080346 346ef051 maximoak_esleitu%b
+D motak.ads		20231121080346 12083b76 motak%s
+D system.ads		20180524051738 32a08138 system%s
+X 2 aulkiak_banatu.adb
+6U11*aulkiak_banatu 6b11 7>7 8<7 52l5 52t19
+7r7 L_P{8|21R14} 36r46
+8r7 aulkiak{8|35R14} 40m4 46m10 46r33 47m10 47r32 48m10 48r32
+13V13 zenbat_aulki{integer} 13b13 14>10 28l8 28t20 43s24
+14a10 kozienteak{8|47A14} 21r13
+16i7 Total{integer} 19m7 23m13 23r22 27r14
+20i11 J{integer} 21r24
+31r4 L_P_3_baino_gehio{8|21R14} 36m51 37r18 47r63
+32r4 D_Hont{8|51R14} 37m37 38m31 38r31 39m21 39r21 42r18 43r37
+33i4 aulki_kopurua{integer} 43m7 44r10 48r66
+42i8 I{integer} 43r56 47r97
+X 3 botoak_banatu.adb
+5U11*botoak_banatu 2|4w49 37s4
+X 4 ehuneko_3_baino_gehiagoko_alderdiak_lortu.adb
+4U11*ehuneko_3_baino_gehiagoko_alderdiak_lortu 2|4w6 36s4
+X 6 koziente_guztiak_kalkulatu.adb
+6U11*koziente_guztiak_kalkulatu 2|4w64 38s4
+X 7 maximoak_esleitu.adb
+5U11*maximoak_esleitu 2|4w92 39s4
+X 8 motak.ads
+1K9*Motak 2|1w6 2r5 8|56e10
+5i9*Kop_aulki{integer} 2|20r21
+9I17*T_tarte_alderdi{integer}
+10A17*T_izena{string}<integer>
+15a17*Izena{10A17} 2|47r100
+19A14*T_alderdien_taula(14R14)<integer>
+21R14*T_Lista_alderdien_botoak 2|7r24 31r25 8|24e19
+23a17*Alderdien_taula{19A14} 2|47r81
+29a15*Izena{10A17} 2|47m53
+30i15*Aulki_kop{natural} 2|48m53
+33A14*T_taula_aulkiak(28R14)<integer>
+35R14*T_lista_aulkiak 2|8r24 8|38e19
+36i21*Kop_alderdi{9I17} 2|40m12 46m18 46r41 47r40 48r40
+37a17*Taula_aulkiak{33A14} 2|47m18 48m18
+44b16*Max_da{boolean} 2|21r27
+47A14*T_koziente_alderdi_politikoa(42R14)<integer> 2|14r30
+49A14*T_Lista_Dhont(47A14)<integer>
+51R14*T_Taula_Dhont 2|32r20 8|54e19
+52i13*Zenbat_alderdi_politiko{9I17} 2|42r25
+53a17*Taula_Dhont{49A14} 2|43r44
+

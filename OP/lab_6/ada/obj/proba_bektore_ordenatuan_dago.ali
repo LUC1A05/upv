@@ -1,0 +1,71 @@
+V "GNAT Lib v2018"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U proba_bektore_ordenatuan_dago%b  proba_bektore_ordenatuan_dago.adb  a81b5054 NE OO SU
+W ada%s			ada.ads			ada.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W bektore_ordenatuan_dago%b  bektore_ordenatuan_dago.adb  bektore_ordenatuan_dago.ali
+W bektoreak%s		bektoreak.ads		bektoreak.ali
+
+D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-tags.ads		20180524051738 491b781d ada.tags%s
+D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
+D bektore_ordenatuan_dago.adb  20231112110226 12288e4a bektore_ordenatuan_dago%b
+D bektoreak.ads		20231031070128 bd75d518 bektoreak%s
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
+D proba_bektore_ordenatuan_dago.adb  20231112110436 8f5bb85c proba_bektore_ordenatuan_dago%b
+D system.ads		20180524051738 32a08138 system%s
+D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180524051738 54135002 system.exception_table%s
+D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 12|1r6 1r23
+X 6 a-textio.ads
+49K13*Text_IO 471e16 12|1w10 1r27
+166U14*New_Line 12|29s4 32s4 40s4 43s4 51s4 54s4 62s4 65s4 73s4 76s4 84s4
+. 87s4 95s4 98s4
+169U14*Skip_Line 12|31s4 42s4 53s4 64s4 75s4 86s4 97s4
+242U14*Put 12|12s10 14s10
+263U14*Put_Line 12|23s4 24s4 25s4 26s4 30s4 35s4 36s4 37s4 41s4 46s4 47s4
+. 48s4 52s4 57s4 58s4 59s4 63s4 68s4 69s4 70s4 74s4 79s4 80s4 81s4 85s4 90s4
+. 91s4 92s4 96s4
+X 8 bektore_ordenatuan_dago.adb
+6V10*Bektore_Ordenatuan_dago{boolean} 12|3w6 27s9 38s9 49s9 60s9 71s9 82s9
+. 93s9
+X 9 bektoreak.ads
+1K9*bektoreak 17e14 12|2w6 2r21
+5A9*Osokoen_Bektorea(integer)<integer> 12|18r11
+X 12 proba_bektore_ordenatuan_dago.adb
+5U11*Proba_Bektore_Ordenatuan_dago 5b11 104l5 104t34
+9U14 Boolearra_idatzi 9b14 9>31 16l8 16t24 28s4 39s4 50s4 61s4 72s4 83s4
+. 94s4
+9b31 balioa{boolean} 11r10
+18a1 bektore1{9|5A9} 22m4 27r37 34m4 38r37 45m4 49r37 56m4 60r36 67m4 71r36
+. 78m4 82r37 89m4 93r36
+19b1 ema{boolean} 27m4 28r21 38m4 39r21 49m4 50r21 60m4 61r21 71m4 72r21
+. 82m4 83r21 93m4 94r21
+

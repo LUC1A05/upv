@@ -1,0 +1,68 @@
+package org.pmobo.packlaborategia1;
+
+public class Pertsona 
+{
+	//atributuak lowerCamelCase
+	private int idPertsona;
+	private String izenOsoa;
+	private String nazionalitatea;
+	private String odolMota;
+	private int adina;
+	
+	//parametroak p-z hasi behar dira
+	public Pertsona(int pIdPertsona, String pIzenOsoa, String pNazionalitatea, String pOdolMota, int pAdina) {
+		this.idPertsona = pIdPertsona;
+		this.izenOsoa = pIzenOsoa;
+		this.nazionalitatea = pNazionalitatea;
+		this.odolMota = pOdolMota;
+		this.adina = pAdina;
+	}
+
+
+	public int getIdPertsona() {
+		return this.idPertsona;
+	}
+	public String getOdolMota() {
+		return this.odolMota;
+	}
+	
+	public boolean idBerdinaDu(int pIdPertsona) {
+		boolean berdin;
+		
+		if (this.idPertsona == pIdPertsona) {
+			berdin = true;
+		}
+		else {
+			berdin = false;
+		}
+		return berdin;
+	}
+	
+	public boolean gidatuDezake() {
+		boolean dago;
+		
+		dago = false;
+		if (this.nazionalitatea == "etiopia" && this.adina >= 14) {
+			dago = true;
+		}
+		else if ((this.nazionalitatea == "australia" || this.nazionalitatea == "estatu batuak") && this.adina >= 17) {
+			dago = true;
+		}
+		else if (this.adina >= 18) {
+			dago = true;
+		}
+		return dago;
+	}
+	
+	public boolean donatuDiezaioke(String pOdolMota) {
+		boolean eman;
+		
+		eman = false;
+		if (this.odolMota == "O-") {
+			eman = true;
+		}
+		else if (this.odolMota == "O+" && (pOdolMota == "AB+" || pOdolMota == "A+" || pOdolMota == "B+" || pOdolMota == "O+")) {
+			eman = true;
+		}
+	}
+}

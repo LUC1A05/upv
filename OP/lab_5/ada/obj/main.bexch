@@ -1,0 +1,43 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\lab5.gpr
+20231017061532
+[BOUND OBJECT FILES]
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\bilbobus_da.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\bitarren_batuketa.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\bitarren_batuketa_proba.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\bizkaibus_da.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\dezimaletik_hexadezimalera.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\dezimaletik_hexadezimalera_proba.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\digitu_kopurua.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\hamartarretik_bitarrera.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\hamartarretik_bitarrera_proba.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\kapikua_da.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\lehena_da.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\n_baino_handiagoa_den_lehena_eta_kapikua.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\n_baino_handiagoa_den_lehena_eta_kapikua_proba.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\nazioartekoa_da.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\nazionala_da.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\regionala_da.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\autobus_mota.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\irteera_maiztasuna.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\hurrengo_autobusa.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\hurrengo_autobusa_proba.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\trukatu.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\ordenatu_bi_zenbaki.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\ordenatu_hiru_zenbaki.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\ordenatu_hiru_zenbaki_proba.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\
+-LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_5\ada\obj\
+-LC:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
+-static
+-static-libgcc
+C:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnat.a
+-Wl,--stack=0x2000000

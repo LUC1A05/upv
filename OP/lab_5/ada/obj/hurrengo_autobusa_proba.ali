@@ -1,0 +1,149 @@
+V "GNAT Lib v2018"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_ATTRIBUTES
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U hurrengo_autobusa_proba%b  hurrengo_autobusa_proba.adb  914296d8 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W autobus_mota%b	autobus_mota.adb	autobus_mota.ali
+W hurrengo_autobusa%b	hurrengo_autobusa.adb	hurrengo_autobusa.ali
+W irteera_maiztasuna%b	irteera_maiztasuna.adb	irteera_maiztasuna.ali
+Z system.concat_3%s	s-conca3.adb		s-conca3.ali
+Z system.concat_4%s	s-conca4.adb		s-conca4.ali
+Z system.concat_7%s	s-conca7.adb		s-conca7.ali
+Z system.img_char%s	s-imgcha.adb		s-imgcha.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+
+D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-flteio.ads		20180524051736 e18a47a0 ada.float_text_io%s
+D a-inteio.ads		20180524051738 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-tags.ads		20180524051738 491b781d ada.tags%s
+D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-tiflio.ads		20180524051736 56fbda09 ada.text_io.float_io%s
+D a-tiinio.ads		20180524051736 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
+D autobus_mota.adb	20231020073858 f0faafdf autobus_mota%b
+D bilbobus_da.adb	20231019214746 cbcb2d50 bilbobus_da%b
+D bizkaibus_da.adb	20231019214746 58ab22c1 bizkaibus_da%b
+D digitu_kopurua.adb	20231019214746 390398d9 digitu_kopurua%b
+D hurrengo_autobusa.adb	20231020173510 27cf8253 hurrengo_autobusa%b
+D hurrengo_autobusa_proba.adb  20231029160628 dafb856f hurrengo_autobusa_proba%b
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
+D irteera_maiztasuna.adb  20231020082624 03504365 irteera_maiztasuna%b
+D nazioartekoa_da.adb	20231019214746 416bf8b0 nazioartekoa_da%b
+D nazionala_da.adb	20231020081854 745febaf nazionala_da%b
+D regionala_da.adb	20231019214746 6a30acf4 regionala_da%b
+D system.ads		20180524051738 32a08138 system%s
+D s-conca3.ads		20180524051738 0b705ca5 system.concat_3%s
+D s-conca4.ads		20180524051738 7e642b20 system.concat_4%s
+D s-conca7.ads		20180524051736 fcc75b1f system.concat_7%s
+D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180524051738 54135002 system.exception_table%s
+D s-expint.ads		20180524051738 192336fc system.exp_int%s
+D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-imgcha.ads		20180524051736 9c3458e7 system.img_char%s
+D s-imgint.ads		20180524051736 02dbe0c2 system.img_int%s
+D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 17|1r6 1r18 1r38 2r5 2r17 2r37
+X 3 a-flteio.ads
+20K13*Float_Text_IO[9|46] 17|1w42 2r41
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[10|46] 17|1w22 2r21
+X 8 a-textio.ads
+49K13*Text_IO 471e16 17|1w10 2r9
+166U14*New_Line 17|25s4 29s4 42s4 46s4 59s4 63s4 65s4 68s4 70s4 83s4 85s4
+. 96s4 98s4 109s4 111s4 114s4 116s4 129s4 131s4 142s4 144s4 155s4 157s4 168s4
+. 170s4 181s4 183s4 194s4 196s4 200s4 202s4 215s4 217s4 228s4 230s4 241s4
+. 243s4 246s4 248s4 261s4 263s4 274s4 276s4 287s4 289s4 300s4 302s4 313s4
+. 315s4 326s4 328s4 332s4 334s4 347s4 349s4 360s4 362s4 373s4 375s4 378s4
+. 380s4 393s4 395s4 406s4 408s4 419s4 421s4
+169U14*Skip_Line 17|28s4 45s4 62s4 72s4 118s4 204s4 250s4 336s4 382s4 423s4
+263U14*Put_Line 17|22s4 23s4 24s4 26s4 27s4 39s4 40s4 41s4 43s4 44s4 56s4
+. 57s4 58s4 60s4 61s4 64s4 69s4 71s4 80s4 81s4 82s4 84s4 93s4 94s4 95s4 97s4
+. 106s4 107s4 108s4 110s4 115s4 117s4 126s4 127s4 128s4 130s4 139s4 140s4
+. 141s4 143s4 152s4 153s4 154s4 156s4 165s4 166s4 167s4 169s4 178s4 179s4
+. 180s4 182s4 191s4 192s4 193s4 195s4 201s4 203s4 212s4 213s4 214s4 216s4
+. 225s4 226s4 227s4 229s4 238s4 239s4 240s4 242s4 247s4 249s4 258s4 259s4
+. 260s4 262s4 271s4 272s4 273s4 275s4 284s4 285s4 286s4 288s4 297s4 298s4
+. 299s4 301s4 310s4 311s4 312s4 314s4 323s4 324s4 325s4 327s4 333s4 335s4
+. 344s4 345s4 346s4 348s4 357s4 358s4 359s4 361s4 370s4 371s4 372s4 374s4
+. 379s4 381s4 390s4 391s4 392s4 394s4 403s4 404s4 405s4 407s4 416s4 417s4
+. 418s4 420s4 422s4
+X 12 autobus_mota.adb
+4V10*autobus_mota{integer} 17|4w6
+X 16 hurrengo_autobusa.adb
+4V10*hurrengo_autobusa{integer} 17|3w6 21s13 38s13 55s13 79s14 92s13 105s13
+. 125s13 138s13 151s13 164s13 177s13 190s13 211s13 224s13 237s13 257s13 270s13
+. 283s13 296s13 309s13 322s13 343s13 356s13 369s13 389s13 402s13 415s13
+X 17 hurrengo_autobusa_proba.adb
+7U11*hurrengo_autobusa_proba 7b11 427l5 427t28
+11i4 bus_kodea{integer} 16m4 21r31 23r13 33m4 38r31 40r13 50m4 55r31 57r13
+. 74m4 79r32 81r13 87m4 92r31 94r13 100m4 105r31 107r13 120m4 125r31 127r13
+. 133m4 138r31 140r13 146m4 151r31 153r13 159m4 164r31 166r13 172m4 177r31
+. 179r13 185m4 190r31 192r13 206m4 211r31 213r13 219m4 224r31 226r13 232m4
+. 237r31 239r13 252m4 257r31 259r13 265m4 270r31 272r13 278m4 283r31 285r13
+. 291m4 296r31 298r13 304m4 309r31 311r13 317m4 322r31 324r13 338m4 343r31
+. 345r13 351m4 356r31 358r13 364m4 369r31 371r13 384m4 389r31 391r13 397m4
+. 402r31 404r13 410m4 415r31 417r13
+11i15 ordu{integer} 17m4 21r42 22r69 34m4 38r42 39r69 51m4 55r42 56r69 75m4
+. 79r43 80r69 88m4 92r42 93r69 101m4 105r42 106r69 121m4 125r42 126r69 134m4
+. 138r42 139r69 147m4 151r42 152r69 160m4 164r42 165r69 173m4 177r42 178r69
+. 186m4 190r42 191r69 207m4 211r42 212r69 220m4 224r42 225r69 233m4 237r42
+. 238r69 253m4 257r42 258r69 266m4 270r42 271r69 279m4 283r42 284r69 292m4
+. 296r42 297r69 305m4 309r42 310r69 318m4 322r42 323r69 339m4 343r42 344r69
+. 352m4 356r42 357r69 365m4 369r42 370r69 385m4 389r42 390r69 398m4 402r42
+. 403r69 411m4 415r42 416r69
+11i21 minutu{integer} 18m4 21r48 22r94 35m4 38r48 39r94 52m4 55r48 56r94
+. 76m4 79r49 80r94 89m4 92r48 93r94 102m4 105r48 106r94 122m4 125r48 126r94
+. 135m4 138r48 139r94 148m4 151r48 152r94 161m4 164r48 165r94 174m4 177r48
+. 178r94 187m4 190r48 191r94 208m4 211r48 212r94 221m4 224r48 225r94 234m4
+. 237r48 238r94 254m4 257r48 258r94 267m4 270r48 271r94 280m4 283r48 284r94
+. 293m4 296r48 297r94 306m4 309r48 310r94 319m4 322r48 323r94 340m4 343r48
+. 344r94 353m4 356r48 357r94 366m4 369r48 370r94 386m4 389r48 390r94 399m4
+. 402r48 403r94 412m4 415r48 416r94
+11i29 emaitza{integer} 21m4 24r51 38m4 41r51 55m4 58r51 79m4 82r51 92m4 95r51
+. 105m4 108r51 125m4 128r51 138m4 141r51 151m4 154r51 164m4 167r51 177m4
+. 180r51 190m4 193r51 211m4 214r51 224m4 227r51 237m4 240r51 257m4 260r51
+. 270m4 273r51 283m4 286r51 296m4 299r51 309m4 312r51 322m4 325r51 343m4
+. 346r51 356m4 359r51 369m4 372r51 389m4 392r51 402m4 405r51 415m4 418r51
+11i38 zuzena{integer} 20m4 23r60 37m4 40r60 54m4 57r60 78m4 81r60 91m4 94r60
+. 104m4 107r60 124m4 127r60 137m4 140r60 150m4 153r60 163m4 166r60 176m4
+. 179r60 189m4 192r60 210m4 213r60 223m4 226r60 236m4 239r60 256m4 259r60
+. 269m4 272r60 282m4 285r60 295m4 298r60 308m4 311r60 321m4 324r60 342m4
+. 345r60 355m4 358r60 368m4 371r60 388m4 391r60 401m4 404r60 414m4 417r60
+12e4 egun_mota{character} 19m4 21r56 22r28 36m4 38r56 39r28 53m4 55r56 56r28
+. 77m4 79r57 80r28 90m4 92r56 93r28 103m4 105r56 106r28 123m4 125r56 126r28
+. 136m4 138r56 139r28 149m4 151r56 152r28 162m4 164r56 165r28 175m4 177r56
+. 178r28 188m4 190r56 191r28 209m4 211r56 212r28 222m4 224r56 225r28 235m4
+. 237r56 238r28 255m4 257r56 258r28 268m4 270r56 271r28 281m4 283r56 284r28
+. 294m4 296r56 297r28 307m4 309r56 310r28 320m4 322r56 323r28 341m4 343r56
+. 344r28 354m4 356r56 357r28 367m4 369r56 370r28 387m4 389r56 390r28 400m4
+. 402r56 403r28 413m4 415r56 416r28
+X 20 irteera_maiztasuna.adb
+2V10*irteera_maiztasuna{integer} 17|5w6
+

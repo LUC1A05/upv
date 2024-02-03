@@ -1,0 +1,70 @@
+V "GNAT Lib v2018"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U ordenatu_hiru_zenbaki_proba%b  ordenatu_hiru_zenbaki_proba.adb  c5dbf02b NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ordenatu_hiru_zenbaki%b  ordenatu_hiru_zenbaki.adb  ordenatu_hiru_zenbaki.ali
+
+D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-inteio.ads		20180524051738 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-tags.ads		20180524051738 491b781d ada.tags%s
+D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-tiinio.ads		20180524051736 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
+D ordenatu_bi_zenbaki.adb  20231019154600 dfe6134e ordenatu_bi_zenbaki%b
+D ordenatu_hiru_zenbaki.adb  20231019155422 aeabade4 ordenatu_hiru_zenbaki%b
+D ordenatu_hiru_zenbaki_proba.adb  20231029155322 15266731 ordenatu_hiru_zenbaki_proba%b
+D system.ads		20180524051738 32a08138 system%s
+D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180524051738 54135002 system.exception_table%s
+D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+D trukatu.adb		20231019154124 70ff8d14 trukatu%b
+X 1 ada.ads
+16K9*Ada 20e8 14|2r6 2r18 3r5 3r17
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 14|2w22 3r21
+X 7 a-textio.ads
+49K13*Text_IO 471e16 14|2w10 3r9
+166U14*New_Line 14|21s5 33s5 45s5 58s5 70s5 82s5
+263U14*Put_Line 14|11s5 15s5 16s5 23s5 27s5 28s5 35s5 39s5 40s5 48s4 52s5
+. 53s5 60s5 64s5 65s5 72s5 76s5 77s5
+X 8 a-tiinio.ads
+66U14*Put 14|18s5[3|18] 19s5[3|18] 20s5[3|18] 30s5[3|18] 31s5[3|18] 32s5[3|18]
+. 42s5[3|18] 43s5[3|18] 44s5[3|18] 55s5[3|18] 56s5[3|18] 57s5[3|18] 67s5[3|18]
+. 68s5[3|18] 69s5[3|18] 79s5[3|18] 80s5[3|18] 81s5[3|18]
+X 13 ordenatu_hiru_zenbaki.adb
+4U11*ordenatu_hiru_zenbaki 14|5w6 17s5 29s5 41s5 54s5 66s5 78s5
+X 14 ordenatu_hiru_zenbaki_proba.adb
+7U11*ordenatu_hiru_zenbaki_proba 7b11 84l5 84t32
+8i1 n1{integer} 12m5 17m27 17r27 18r9 24m5 29m27 29r27 30r9 36m5 41m27 41r27
+. 42r9 49m5 54m27 54r27 55r9 61m5 66m27 66r27 67r9 73m5 78m27 78r27 79r9
+8i4 n2{integer} 13m5 17m30 17r30 19r9 25m5 29m30 29r30 31r9 37m5 41m30 41r30
+. 43r9 50m5 54m30 54r30 56r9 62m5 66m30 66r30 68r9 74m5 78m30 78r30 80r9
+8i7 n3{integer} 14m5 17m33 17r33 20r9 26m5 29m33 29r33 32r9 38m5 41m33 41r33
+. 44r9 51m5 54m33 54r33 57r9 63m5 66m33 66r33 69r9 75m5 78m33 78r33 81r9
+

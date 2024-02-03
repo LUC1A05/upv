@@ -1,0 +1,14 @@
+package org.pmobo.packlaborategia1;
+
+public class Pertsona 
+{
+	//atributuak lower camellcase
+	private int idPertsona;
+	private String izenOsoa;
+
+	public Pertsona(int idPertsona, String izenOsoa) {
+
+		this.idPertsona = idPertsona;
+		this.izenOsoa = izenOsoa;
+	}
+}

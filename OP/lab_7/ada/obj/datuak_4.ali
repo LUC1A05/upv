@@ -1,0 +1,20 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U datuak_4%s		datuak_4.ads		17257118 NE OO PK IL
+
+D datuak_4.ads		20231114070424 17257118 datuak_4%s
+D system.ads		20180524051738 32a08138 system%s
+X 1 datuak_4.ads
+1K9*datuak_4 8l5 8e13
+3R6*katea 6e11
+4i3*luzera{integer}
+5a3*karaktereak{string}
+

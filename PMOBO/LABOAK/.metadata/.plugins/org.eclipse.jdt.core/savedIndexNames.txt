@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\lucia\OneDrive\Escritorio\Uni\1.maila\2.lauhilekoa\PMOBO\lab1\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3288964479.index
+2399469874.index
