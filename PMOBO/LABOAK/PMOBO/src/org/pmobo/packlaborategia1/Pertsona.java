@@ -26,10 +26,10 @@ public class Pertsona
 		return this.odolMota;
 	}
 	
-	public boolean idBerdinaDu(int pIdPertsona) {
+	public boolean idBerdinaDu(Pertsona pPertsona) {
 		boolean berdin;
 		
-		if (this.idPertsona == pIdPertsona) {
+		if (this.idPertsona == pPertsona.getIdPertsona()) {
 			berdin = true;
 		}
 		else {
@@ -45,7 +45,10 @@ public class Pertsona
 		if (this.nazionalitatea == "etiopia" && this.adina >= 14) {
 			dago = true;
 		}
-		else if ((this.nazionalitatea == "australia" || this.nazionalitatea == "estatu batuak") && this.adina >= 17) {
+		else if ((this.nazionalitatea == "australia" || this.nazionalitatea == "estatu batuak") && this.adina >= 16) {
+			dago = true;
+		}
+		if (this.nazionalitatea == "erresuma batuak" && this.adina >= 17) {
 			dago = true;
 		}
 		else if (this.adina >= 18) {
@@ -54,9 +57,10 @@ public class Pertsona
 		return dago;
 	}
 	
-	public boolean donatuDiezaioke(String pOdolMota) {
+	public boolean donatuDiezaioke(Pertsona pPertsona) {
 		boolean eman;
 		
+		String pOdolMota = pPertsona.getOdolMota();
 		eman = false;
 		if (this.odolMota == "O-") {
 			eman = true;
@@ -108,31 +112,17 @@ public class Pertsona
 			while (i <= (len-1) && (this.izenOsoa.charAt(i) != ' ')) {
 				i ++;
 			}
-			ini += this.izenOsoa.charAt(i);
+			ini += ".";
+			ini += String.valueOf(this.izenOsoa.charAt(i+1));
 		}
 		return ini;
 	}
 	public char getAbizenarenIniziala() {
 		int len;
-		int i;
-		int words;
 		
-		len = this.izenOsoa.length();
-		i = 0;
-		words = 1;
-		while (i <= (len - 1)) {
-			if (this.izenOsoa.charAt(i) == ' ') {
-				words ++; 
-			}
-			i ++;
-		}
-		i = 0;
-		while (i <= (len-1) && words != 1) {
-			if (this.izenOsoa.charAt(i) == ' ') {
-				words --;
-			}
-			i ++;
-		}
-		return this.izenOsoa.charAt(i);
+		len = this.izenOsoa.length()-1;
+		while(this.izenOsoa.charAt(len) != ' ')
+			len -= 1;
+		return this.izenOsoa.charAt(len+1);
 	}
 }
