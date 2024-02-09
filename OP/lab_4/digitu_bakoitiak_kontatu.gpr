@@ -1,5 +1,0 @@
-project Digitu_Bakoitiak_Kontatu is
-    for Source_Dirs use ("src");
-    for Object_Dir use "obj";
-    for Main use ("digitu_bakoitiak_kontatu.adb");
-end Digitu_Bakoitiak_Kontatu;
