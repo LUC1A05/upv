@@ -1,0 +1,69 @@
+package org.pmobo.packlaborategia1;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class PertsonaTest {
+	
+	Pertsona p1,p2,p3;
+	@Before
+	public void setUp() throws Exception 
+	{
+		p1 = new Pertsona(13, "IZEN ABIZENA", "australia", "A+", 18);
+		p2 = new Pertsona(13, "IZEN ABIZENA", "etiopia", "A+", 14);
+		p3 = new Pertsona(5, "IZEN ABIZENA", "espaina", "AB+", 14);
+	}
+
+	@After
+	public void tearDown() throws Exception 
+	{
+		p1 = null;
+		p2 = null;
+		p3 = null;
+	}
+
+	@Test
+	public void testPertsonaEtaGetIdPertsona() 
+	{
+		assertNotNull(p1);
+		assertEquals(p1.getIdPertsona(), 13);
+	}
+
+	@Test
+	public void testGetOdolMota() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testIdBerdinaDu() 
+	{
+		assertTrue(p1.idBerdinaDu(p2));
+		assertTrue(p2.idBerdinaDu(p1));
+		
+		assertFalse(p1.idBerdinaDu(p3));
+	}
+
+	@Test
+	public void testGidatuDezake() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDonatuDiezaioke() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetIzenarenIniziala() {
+		assertEquals(p1.getIzenarenIniziala(), 'I');
+	}
+
+	@Test
+	public void testGetAbizenarenIniziala() {
+		assertEquals(p1.getAbizenarenIniziala(), 'A');
+	}
+
+}
