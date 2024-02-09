@@ -1,0 +1,19 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U bilbobus_da%b		bilbobus_da.adb		cbcb2d50 NE OO SU IL
+
+D bilbobus_da.adb	20231019214746 cbcb2d50 bilbobus_da%b
+D system.ads		20180524051738 32a08138 system%s
+X 1 bilbobus_da.adb
+1V10*bilbobus_da{boolean} 1b10 1>22 17l5 17t16
+1i22 n{integer} 11r11
+7b4 bilbobus{boolean} 10m4 13m7 15r11
+8i4 zenb{integer} 11m4 12r7
+

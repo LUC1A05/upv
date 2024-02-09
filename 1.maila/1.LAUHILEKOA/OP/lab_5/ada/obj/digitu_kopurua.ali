@@ -1,0 +1,19 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U digitu_kopurua%b	digitu_kopurua.adb	390398d9 NE OO SU IL
+
+D digitu_kopurua.adb	20231019214746 390398d9 digitu_kopurua%b
+D system.ads		20180524051738 32a08138 system%s
+X 1 digitu_kopurua.adb
+1V10*digitu_kopurua{integer} 1b10 1>25 20l5 20t19
+1i25 n{integer} 10r12
+7i4 zenb{integer} 10m4 13r19 15m7 15r15
+7i10 kont{integer} 11m4 14m7 14r15 18r11
+

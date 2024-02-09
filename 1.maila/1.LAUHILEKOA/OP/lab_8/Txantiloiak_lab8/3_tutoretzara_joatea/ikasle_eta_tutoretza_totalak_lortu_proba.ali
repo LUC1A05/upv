@@ -1,0 +1,107 @@
+V "GNAT Lib v2018"
+M P W=b
+A -O2
+A -gnatA
+A -g
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_ATTRIBUTES
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U ikasle_eta_tutoretza_totalak_lortu_proba%b  ikasle_eta_tutoretza_totalak_lortu_proba.adb  9f9dd1ae NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W datuak%s		datuak.ads		datuak.ali
+W ikasle_eta_tutoretza_totalak_lortu%b  ikasle_eta_tutoretza_totalak_lortu.adb  ikasle_eta_tutoretza_totalak_lortu.ali
+Z interfaces%s		interfac.ads		interfac.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+
+D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-tags.ads		20180524051738 491b781d ada.tags%s
+D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
+D datuak.ads		20231121080346 16aae292 datuak%s
+D ezabatu_errepikatuak.adb  20231203190904 affa6baf ezabatu_errepikatuak%b
+D ikasle_eta_tutoretza_totalak_lortu.adb  20231203190946 3e01cfbf ikasle_eta_tutoretza_totalak_lortu%b
+D ikasle_eta_tutoretza_totalak_lortu_proba.adb  20231203192958 3f2b4fd9 ikasle_eta_tutoretza_totalak_lortu_proba%b
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
+D nan_posizioa.adb	20231203184532 9c853ca2 nan_posizioa%b
+D ordenatu.adb		20231203190946 bac4cb80 ordenatu%b
+D system.ads		20180524051738 32a08138 system%s
+D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180524051738 54135002 system.exception_table%s
+D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-imgint.ads		20180524051736 02dbe0c2 system.img_int%s
+D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 11|1r6 2r5
+X 6 a-textio.ads
+49K13*Text_IO 471e16 11|1w10 2r9
+166U14*New_Line 11|11s7 14s10 60s4 67s4 118s4 121s4 141s4 144s4 170s4 175s4
+. 192s4 194s4
+169U14*Skip_Line 11|72s4 80s4 126s4 149s4 180s4 199s4
+242U14*Put 11|13s10
+263U14*Put_Line 11|58s4 59s4 61s4 62s4 63s4 64s4 65s4 68s4 71s4 74s4 75s4
+. 76s4 77s4 78s4 79s4 82s4 83s4 84s4 85s4 86s4 116s4 117s4 119s4 122s4 125s4
+. 128s4 129s4 130s4 131s4 132s4 139s4 140s4 142s4 145s4 148s4 151s4 152s4
+. 153s4 154s4 155s4 168s4 169s4 171s4 172s4 173s4 176s4 179s4 182s4 183s4
+. 184s4 185s4 186s4 190s4 191s4 195s4 198s4
+X 8 datuak.ads
+1K9*datuak 32e11 11|3w6 4r5
+5A9*T_NANak(positive)<integer>
+7a7*Data{string} 11|25m16 36m16 42m16 45m16 50m16 89m16 94m16 100m16 103m16
+. 108m16 135m16 158m16 164m16
+8i7*Ikasle_kop{natural} 11|26m16 37m16 43m16 46m16 51m16 90m16 95m16 101m16
+. 104m16 109m16 136m16 159m16 165m16
+9a7*NANak{5A9} 11|27m16 28m16 29m16 30m16 31m16 32m16 33m16 34m16 38m16 39m16
+. 40m16 47m16 48m16 52m16 53m16 54m16 55m16 56m16 91m16 96m16 97m16 98m16
+. 105m16 106m16 110m16 111m16 112m16 113m16 114m16 137m16 160m16 161m16 166m16
+14A9*T_egunak(6R9)<integer>
+15R9*Info_egutegia 18e14 11|19r7
+16i7*Zenbat_egun{natural} 11|24m6 88m6 134m6 157m6 188m6
+17a7*Egunak{14A9} 11|25m6 26m6 27m6 28m6 29m6 30m6 31m6 32m6 33m6 34m6 36m6
+. 37m6 38m6 39m6 40m6 42m6 43m6 45m6 46m6 47m6 48m6 50m6 51m6 52m6 53m6 54m6
+. 55m6 56m6 89m6 90m6 91m6 94m6 95m6 96m6 97m6 98m6 100m6 101m6 103m6 104m6
+. 105m6 106m6 108m6 109m6 110m6 111m6 112m6 113m6 114m6 135m6 136m6 137m6
+. 158m6 159m6 160m6 161m6 164m6 165m6 166m6
+21i7*NAN{positive} 11|13r54
+22i7*Tutoretzak_Guztira{natural} 11|13r105
+25A9*T_tutoretzak(20R9)<integer>
+27R9*Ikasleen_tutoretza_zerrenda 30e14 11|9r60 20r7
+28i7*Zenbat{natural} 11|12r33
+29a7*Tutoretzak{25A9} 11|13r35 13r86
+X 10 ikasle_eta_tutoretza_totalak_lortu.adb
+4U11*ikasle_eta_tutoretza_totalak_lortu 11|3w14 69s4 123s4 146s4 177s4 196s4
+X 11 ikasle_eta_tutoretza_totalak_lortu_proba.adb
+6U11*ikasle_eta_tutoretza_totalak_lortu_proba 6b11 202l5 202t45
+9U14 inprimatu_tutoretzen_informazioa 9b14 9>47 16l8 16t40 70s4 124s4 147s4
+. 178s4 197s4
+9r47 zerrenda{8|27R9} 12r24 13r26 13r77
+12i11 ikasZe{integer} 13r46 13r97
+19r4 E{8|15R9} 24m4 25m4 26m4 27m4 28m4 29m4 30m4 31m4 32m4 33m4 34m4 36m4
+. 37m4 38m4 39m4 40m4 42m4 43m4 45m4 46m4 47m4 48m4 50m4 51m4 52m4 53m4 54m4
+. 55m4 56m4 69r39 88m4 89m4 90m4 91m4 94m4 95m4 96m4 97m4 98m4 100m4 101m4
+. 103m4 104m4 105m4 106m4 108m4 109m4 110m4 111m4 112m4 113m4 114m4 123r39
+. 134m4 135m4 136m4 137m4 146r39 157m4 158m4 159m4 160m4 161m4 164m4 165m4
+. 166m4 177r39 188m4 196r39
+20r4 Z{8|27R9} 69m41 70r37 123m41 124r37 146m41 147r37 177m41 178r37 196m41
+. 197r37
+

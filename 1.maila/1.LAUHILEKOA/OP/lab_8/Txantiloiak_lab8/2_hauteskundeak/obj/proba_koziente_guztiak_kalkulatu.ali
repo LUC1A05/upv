@@ -1,0 +1,84 @@
+V "GNAT Lib v2018"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U proba_koziente_guztiak_kalkulatu%b  proba_koziente_guztiak_kalkulatu.adb  9f48f1c3 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W alderdien_botoen_lista_idatzi%b  alderdien_botoen_lista_idatzi.adb  alderdien_botoen_lista_idatzi.ali
+W botoak_banatu%b	botoak_banatu.adb	botoak_banatu.ali
+W dhont_taula_idatzi%b	dhont_taula_idatzi.adb	dhont_taula_idatzi.ali
+W koziente_guztiak_kalkulatu%b  koziente_guztiak_kalkulatu.adb  koziente_guztiak_kalkulatu.ali
+W motak%s		motak.ads		motak.ali
+
+D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-inteio.ads		20180524051738 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-tags.ads		20180524051738 491b781d ada.tags%s
+D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-tienio.ads		20180524051736 fc618ae6 ada.text_io.enumeration_io%s
+D a-tiinio.ads		20180524051736 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
+D alderdien_botoen_lista_idatzi.adb  20231121080346 3127ca8c alderdien_botoen_lista_idatzi%b
+D alderdien_kozienteak_kalkulatu.adb  20231121080346 12622556 alderdien_kozienteak_kalkulatu%b
+D botoak_banatu.adb	20231121080346 e75e1344 botoak_banatu%b
+D dhont_taula_idatzi.adb  20231121080346 e8f55172 dhont_taula_idatzi%b
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
+D koziente_guztiak_kalkulatu.adb  20231121080346 2a7643c8 koziente_guztiak_kalkulatu%b
+D motak.ads		20231121080346 12083b76 motak%s
+D proba_koziente_guztiak_kalkulatu.adb  20231121080346 11a7b29d proba_koziente_guztiak_kalkulatu%b
+D system.ads		20180524051738 32a08138 system%s
+D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180524051738 54135002 system.exception_table%s
+D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 19|4r6 5r5
+X 7 a-textio.ads
+49K13*Text_IO 471e16 19|4w10 5r9
+166U14*New_Line 19|25s4 40s4 45s4
+169U14*Skip_Line 19|27s4
+263U14*Put_Line 19|26s4 39s4 41s4 44s4
+X 11 alderdien_botoen_lista_idatzi.adb
+8U11*alderdien_botoen_lista_idatzi 19|8w6 42s4
+X 13 botoak_banatu.adb
+5U11*botoak_banatu 19|8w57 21s4 46s4
+X 14 dhont_taula_idatzi.adb
+8U11*dhont_taula_idatzi 19|8w37 23s4 48s4
+X 17 koziente_guztiak_kalkulatu.adb
+6U11*koziente_guztiak_kalkulatu 19|9w6 22s4 47s4
+X 18 motak.ads
+1K9*Motak 56e10 19|1w6 2r5
+9I17*T_tarte_alderdi{integer}
+19A14*T_alderdien_taula(14R14)<integer>
+21R14*T_Lista_alderdien_botoak 24e19 19|15r22
+22i17*Alderdi_kop{9I17} 19|19m20 30m21
+23a17*Alderdien_taula{19A14} 19|20m20 31m21 32m21 33m21 34m21 35m21
+51R14*T_Taula_Dhont 54e19 19|16r12
+X 19 proba_koziente_guztiak_kalkulatu.adb
+12U11*proba_koziente_guztiak_kalkulatu 12b11 51l5 51t37
+15r4 L_P_V_Originala{18|21R14} 19m4 20m4 21r19 23r23 30m5 31m5 32m5 33m5
+. 34m5 35m5 42r34 46r19 48r23
+16r4 T_Dhont{18|51R14} 21m35 22m31 22r31 23r39 46m35 47m31 47r31 48r39
+

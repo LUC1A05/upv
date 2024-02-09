@@ -1,0 +1,27 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U alderdien_kozienteak_kalkulatu%b  alderdien_kozienteak_kalkulatu.adb  006a1e20 NE OO SU IL
+W motak%s		motak.ads		motak.ali
+
+D alderdien_kozienteak_kalkulatu.adb  20231121080346 12622556 alderdien_kozienteak_kalkulatu%b
+D motak.ads		20231121080346 12083b76 motak%s
+D system.ads		20180524051738 32a08138 system%s
+X 1 alderdien_kozienteak_kalkulatu.adb
+5U11*alderdien_kozienteak_kalkulatu 5b11 5=44 18l5 18t35
+5a44 Alderdia{2|47A14} 11m4 13m7 13r31 14m7
+12i8 I{integer} 13r16 13r54 14r16
+X 2 motak.ads
+1K9*Motak 1|1w6 2r5 2|56e10
+5i9*Kop_aulki{integer} 1|12r18
+43i16*Koziente{natural} 1|13m19 13r43
+44b16*Max_da{boolean} 1|11m16 14m19
+47A14*T_koziente_alderdi_politikoa(42R14)<integer> 1|5r62
+

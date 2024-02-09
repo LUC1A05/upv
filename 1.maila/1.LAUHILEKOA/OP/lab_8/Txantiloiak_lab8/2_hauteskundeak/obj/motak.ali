@@ -1,0 +1,44 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLICIT_LOOPS
+RV SPARK_05
+
+U motak%s		motak.ads		12083b76 NE OO PK
+
+D motak.ads		20231121080346 12083b76 motak%s
+D system.ads		20180524051738 32a08138 system%s
+X 1 motak.ads
+1K9*Motak 56l5 56e10
+4i9*Max_kop_alderdi_politiko{integer} 9r53 19r45 33r43 49r43
+5i9*Kop_aulki{integer} 47r58
+9I17*T_tarte_alderdi{integer} 22r32 36r36 52r39
+10A17*T_izena{string}<integer> 15r26 29r23
+14R14*T_info_alderdien_botoak 17e19 19r74
+15a17*Izena{10A17}
+16i17*Botoak{natural}
+19A14*T_alderdien_taula(14R14)<integer> 23r34
+21R14*T_Lista_alderdien_botoak 24e19
+22i17*Alderdi_kop{9I17}
+23a17*Alderdien_taula{19A14}
+28R14*T_info_alderdi_aulkiak 31e19 33r72
+29a15*Izena{10A17}
+30i15*Aulki_kop{natural}
+33A14*T_taula_aulkiak(28R14)<integer> 37r33
+35R14*T_lista_aulkiak 38e19
+36i21*Kop_alderdi{9I17}
+37a17*Taula_aulkiak{33A14}
+42R14*T_info_kozienteak 45e19 47r72
+43i16*Koziente{natural}
+44b16*Max_da{boolean}
+47A14*T_koziente_alderdi_politikoa(42R14)<integer> 49r72
+49A14*T_Lista_Dhont(47A14)<integer> 53r32
+51R14*T_Taula_Dhont 54e19
+52i13*Zenbat_alderdi_politiko{9I17}
+53a17*Taula_Dhont{49A14}
+

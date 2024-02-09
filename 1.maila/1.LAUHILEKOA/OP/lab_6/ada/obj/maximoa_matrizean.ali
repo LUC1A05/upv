@@ -1,0 +1,29 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U maximoa_matrizean%b	maximoa_matrizean.adb	3dba5a2c NE OO SU
+W matrizeak%s		matrizeak.ads		matrizeak.ali
+
+D matrizeak.ads		20231031070128 666db370 matrizeak%s
+D maximoa_matrizean.adb	20231112155358 5bd7e95c maximoa_matrizean%b
+D system.ads		20180524051738 32a08138 system%s
+X 1 matrizeak.ads
+1K9*matrizeak 8e14 2|1w6 1r21
+3A14*Osokoen_Matrizea(integer)<integer><integer> 2|3r35
+X 2 maximoa_matrizean.adb
+3U11*Maximoa_matrizean 3b11 3>30 3<53 3<62 3<73 25l5 25t22
+3a30 M{1|3A14} 12r17 13r21 14r13 15r22
+3i53 maximoa{integer} 11m4 14r30 15m13
+3i62 posLerroa{integer} 16m13
+3i73 posZutabea{integer} 17m13
+9i4 lerro{integer} 12r10 14r15 15r24 16r24 22m7 22r14
+9i11 zutabe{integer} 13r13 14r22 15r31 17r25 19m10 19r18 21m7
+

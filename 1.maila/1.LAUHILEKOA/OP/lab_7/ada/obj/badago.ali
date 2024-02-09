@@ -1,0 +1,29 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U badago%b		badago.adb		fcb11ee7 NE OO SU IL
+W def_datuak%s		def_datuak.ads		def_datuak.ali
+
+D badago.adb		20231121172524 f1d6f311 badago%b
+D def_datuak.ads	20231114070424 0d67edf6 def_datuak%s
+D system.ads		20180524051738 32a08138 system%s
+X 1 badago.adb
+3V10*badago{boolean} 3b10 4>7 5>7 20l5 20t11
+4i7 N{integer} 13r25
+5r7 L{2|8R9} 12r16 13r10
+9b4 aur{boolean} 14m10 15r17 18r11
+12i8 i{integer} 13r22
+X 2 def_datuak.ads
+2K9*def_datuak 1|1w6 1r22 2|14e15
+6A9*osokoen_bektorea(integer)<integer>
+8R9*osokoen_zerrenda 1|5r25 2|12e17
+10a10*zenbakiak{6A9} 1|13r12
+11i10*zenbat{integer} 1|12r18
+

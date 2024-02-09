@@ -1,0 +1,45 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U maximoak_esleitu%b	maximoak_esleitu.adb	2666cb27 NE OO SU IL
+Z interfaces%s		interfac.ads		interfac.ali
+W motak%s		motak.ads		motak.ali
+
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D maximoak_esleitu.adb	20231121080346 346ef051 maximoak_esleitu%b
+D motak.ads		20231121080346 12083b76 motak%s
+D system.ads		20180524051738 32a08138 system%s
+X 2 maximoak_esleitu.adb
+5U11*maximoak_esleitu 5b11 6=7 54l5 54t21
+6r7 Dhont{3|51R14} 52m51
+12U14 koziente_maximoa_kalkulatu 12b14 13>10 14<10 15<10 35l9 35t35 45s7
+13r10 Taula{3|51R14} 22r18 24r20 26r19 27r33
+14i10 P_alderdia{positive} 28m19
+15i10 J_kozientea{positive} 29m19
+18i7 Max{integer} 21m6 26r54 27m19
+22i10 I{integer} 24r38 26r37 27r51 28r34
+23i13 J{integer} 24r41 26r40 27r54 29r34
+38U14 botoa_esleitu_eta_koziente_maximoa_borratu 38b14 39=10 47l8 47t50 52s7
+39r10 Taula{3|51R14} 45r35 46m7
+43i7 P{integer} 45m42 46r25
+43i9 J{integer} 45m45 46r28
+51i8 I{integer}
+X 3 motak.ads
+1K9*Motak 2|1w6 2r5 3|56e10
+5i9*Kop_aulki{integer} 2|23r23 51r17
+9I17*T_tarte_alderdi{integer}
+43i16*Koziente{natural} 2|26r43 27r57
+44b16*Max_da{boolean} 2|24r44 46m31
+47A14*T_koziente_alderdi_politikoa(42R14)<integer>
+49A14*T_Lista_Dhont(47A14)<integer>
+51R14*T_Taula_Dhont 2|6r22 13r30 39r25 3|54e19
+52i13*Zenbat_alderdi_politiko{9I17} 2|22r24
+53a17*Taula_Dhont{49A14} 2|24r26 26r25 27r39 46m13
+

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\hauteskundeak.gpr</vfs_file>
+    <file_marker column=" 26" line=" 1" >
+      <vfs_project>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\hauteskundeak.gpr</vfs_project>
+      <vfs_file>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\hauteskundeak.gpr</vfs_project>
+      <vfs_file>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\src\aulkiak_banatu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 71" line=" 94" >
+      <vfs_project>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\hauteskundeak.gpr</vfs_project>
+      <vfs_file>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\src\proba_aulkiak_banatu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 41" line=" 55" >
+      <vfs_project>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\hauteskundeak.gpr</vfs_project>
+      <vfs_file>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\src\aulkiak_kalkulatu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\hauteskundeak.gpr</vfs_project>
+      <vfs_file>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\src\proba_botoak_banatu.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\hauteskundeak.gpr</vfs_project>
+      <vfs_file>C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\2_hauteskundeak\src\aulkiak_kalkulatu.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

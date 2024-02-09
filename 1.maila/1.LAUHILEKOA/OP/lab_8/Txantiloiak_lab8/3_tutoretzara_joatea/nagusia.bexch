@@ -1,0 +1,25 @@
+[GENERATED OBJECT FILE]
+b__nagusia.o
+[PROJECT FILES]
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\default.gpr
+20231203183152
+[BOUND OBJECT FILES]
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\datuak.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\ezabatu_errepikatuak.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\nan_posizioa.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\ordenatu.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\ikasle_eta_tutoretza_totalak_lortu.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\ikasle_eta_tutoretza_totalak_lortu_proba.o
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\nagusia.o
+[GENERATED SOURCE FILES]
+b__nagusia.ads
+b__nagusia.adb
+b__nagusia.ali
+[RESULTING OPTIONS]
+-LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\
+-LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_8\Txantiloiak_lab8\3_tutoretzara_joatea\
+-LC:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
+-static
+-static-libgcc
+C:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnat.a
+-Wl,--stack=0x2000000

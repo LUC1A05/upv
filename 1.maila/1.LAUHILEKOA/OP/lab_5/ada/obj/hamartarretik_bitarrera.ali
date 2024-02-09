@@ -1,0 +1,22 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U hamartarretik_bitarrera%b  hamartarretik_bitarrera.adb  155d3a88 NE OO SU IL
+Z system.exp_int%s	s-expint.adb		s-expint.ali
+
+D hamartarretik_bitarrera.adb  20231017065336 155d3a88 hamartarretik_bitarrera%b
+D system.ads		20180524051738 32a08138 system%s
+D s-expint.ads		20180524051738 192336fc system.exp_int%s
+X 1 hamartarretik_bitarrera.adb
+1V10*hamartarretik_bitarrera{integer} 1b10 1>35 21l5 21t28
+1i35 n{integer} 11r18
+8i1 hamartar_lag{integer} 11m4 14r19 15r17 16m7 16r23
+8i15 bitar{integer} 13m4 15m7 15r52 19r9
+8i22 kont{integer} 12m4 15r44 17m7 17r15
+

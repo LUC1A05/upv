@@ -1,0 +1,26 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U bitarren_batuketa%b	bitarren_batuketa.adb	6eccdf83 NE OO SU IL
+Z system.exp_int%s	s-expint.adb		s-expint.ali
+
+D bitarren_batuketa.adb	20231019205036 6eccdf83 bitarren_batuketa%b
+D system.ads		20180524051738 32a08138 system%s
+D s-expint.ads		20180524051738 192336fc system.exp_int%s
+X 1 bitarren_batuketa.adb
+1V10*bitarren_batuketa{integer} 1b10 1>28 1>37 22l5 22t22
+1i28 bitarra1{integer} 4r12
+1i37 bitarra2{integer} 5r12
+2i3 batuketabitar{integer} 7m4 11m7 11r24 18m7 18r23 21r8
+2i17 hondarra1{integer} 6m4 11r73 12m7 12r52 17r7 18r72
+2i27 pisua{integer} 8m4 11r94 15m7 15r15 18r93
+2i33 bitar1{integer} 4m4 10r19 11r41 12r20 13m7 13r15 18r40
+2i40 bitar2{integer} 5m4 10r34 11r57 12r36 14m7 14r15 18r56
+

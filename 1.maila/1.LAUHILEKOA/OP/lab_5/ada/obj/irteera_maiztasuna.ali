@@ -1,0 +1,35 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U irteera_maiztasuna%b	irteera_maiztasuna.adb	f3aaecba NE OO SU IL
+W autobus_mota%b	autobus_mota.adb	autobus_mota.ali
+
+D autobus_mota.adb	20231020073858 f0faafdf autobus_mota%b
+D bilbobus_da.adb	20231019214746 cbcb2d50 bilbobus_da%b
+D bizkaibus_da.adb	20231019214746 58ab22c1 bizkaibus_da%b
+D digitu_kopurua.adb	20231019214746 390398d9 digitu_kopurua%b
+D irteera_maiztasuna.adb  20231020082624 03504365 irteera_maiztasuna%b
+D nazioartekoa_da.adb	20231019214746 416bf8b0 nazioartekoa_da%b
+D nazionala_da.adb	20231020081854 745febaf nazionala_da%b
+D regionala_da.adb	20231019214746 6a30acf4 regionala_da%b
+D system.ads		20180524051738 32a08138 system%s
+D s-expint.ads		20180524051738 192336fc system.exp_int%s
+X 1 autobus_mota.adb
+4V10*autobus_mota{integer} 5|1w6 16s11
+X 5 irteera_maiztasuna.adb
+2V10*irteera_maiztasuna{integer} 2b10 2>29 2>43 67l5 67t23
+2i29 a{integer} 16r24
+2e43 e{character} 11r20
+11e4 egun{character} 19r10 22r10 22r24 28r10 28r24 31r10 41r10 44r10 47r10
+. 53r10 53r24 56r10
+12i4 auto{integer} 16m4 18r7 27r7 36r7 40r7 52r7 61r7
+12i10 maiztasuna{integer} 15m4 20m10 23m10 29m10 32m10 37m10 42m10 45m10
+. 48m10 54m10 57m10 62m10 64r11
+

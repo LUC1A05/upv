@@ -1,0 +1,109 @@
+V "GNAT Lib v2018"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ENUMERATION_MAPS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U proba_bilatu_ez_ordenatuan%b  proba_bilatu_ez_ordenatuan.adb  ccb7fd13 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.enumeration_aux%s  a-tienau.adb	a-tienau.ali
+Z ada.text_io.enumeration_io%s
+W datuak%s		datuak.ads		datuak.ali
+W idatzi%b		idatzi.adb		idatzi.ali
+Z interfaces%s		interfac.ads		interfac.ali
+W posizioa_ez_ordenatuan%b  posizioa_ez_ordenatuan.adb  posizioa_ez_ordenatuan.ali
+W sortu_zerrenda_hutsa%b  sortu_zerrenda_hutsa.adb  sortu_zerrenda_hutsa.ali
+Z system.img_bool%s	s-imgboo.adb		s-imgboo.ali
+Z system.val_bool%s	s-valboo.adb		s-valboo.ali
+W txertatu_hasieran%b	txertatu_hasieran.adb	txertatu_hasieran.ali
+
+D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-inteio.ads		20180524051738 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-tags.ads		20180524051738 491b781d ada.tags%s
+D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-tienau.ads		20180524051736 6a9c157b ada.text_io.enumeration_aux%s
+D a-tienio.ads		20180524051736 fc618ae6 ada.text_io.enumeration_io%s
+D a-tienio.adb		20180524051736 c9e6b5af ada.text_io.enumeration_io%b
+D a-tiinio.ads		20180524051736 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
+D datuak.ads		20231207085448 3c685009 datuak%s
+D idatzi.adb		20231207101504 8e66aec1 idatzi%b
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
+D posizioa_ez_ordenatuan.adb  20231207115552 026079a1 posizioa_ez_ordenatuan%b
+D proba_bilatu_ez_ordenatuan.adb  20231207085450 a9e78584 proba_bilatu_ez_ordenatuan%b
+D sortu_zerrenda_hutsa.adb  20231207085448 1ff6f92d sortu_zerrenda_hutsa%b
+D system.ads		20180524051738 32a08138 system%s
+D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180524051738 54135002 system.exception_table%s
+D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-imgboo.ads		20180524051736 f5d971eb system.img_bool%s
+D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-valboo.ads		20180524051736 fa926c1e system.val_bool%s
+D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+D txertatu_hasieran.adb	20231207100726 b49e3c2d txertatu_hasieran%b
+X 1 ada.ads
+16K9*Ada 20e8 18|1r6 2r6 4r5 6r5
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[11|46] 18|2w10 4r9
+X 7 a-textio.ads
+49K13*Text_IO 471e16 18|1w10 6r9
+166U14*New_Line 18|39s4 40s4 49s4 50s4 60s4 61s4 74s4 75s4 89s4 90s4 102s4
+. 103s4 116s4 117s4
+169U14*Skip_Line 18|18s7
+263U14*Put_Line 18|17s7 35s4 37s4 45s4 47s4 56s4 58s4 71s4 72s4 86s4 87s4
+. 99s4 100s4 113s4 114s4 120s4
+X 9 a-tienio.ads
+26k21*Enumeration_IO 55e31 18|12r29
+X 11 a-tiinio.ads
+66U14*Put 18|38s4[3|18] 48s4[3|18] 59s4[3|18] 73s4[3|18] 88s4[3|18] 101s4[3|18]
+. 115s4[3|18]
+X 13 datuak.ads
+1K9*datuak 10e11 18|1w19 5r5
+4P9*Lista(3R9) 18|13r10
+X 14 idatzi.adb
+4U11*Idatzi 18|3w71 36s4 46s4 57s4 70s4 85s4 98s4 112s4
+X 17 posizioa_ez_ordenatuan.adb
+7V10*posizioa_ez_ordenatuan{natural} 18|3w47 38s8 48s8 59s8 73s8 88s8 101s8
+. 115s8
+X 18 proba_bilatu_ez_ordenatuan.adb
+10U11*proba_bilatu_ez_ordenatuan 10b11 121l5 121t31
+12K9 ES_Booleanos[9|26] 12r58
+13p4 Lis{13|4P9} 34m25 34r25 36r11 38r31 43m25 43r25 44m22 44r22 46r11 48r31
+. 54m25 54r25 55m22 55r22 57r11 59r31 65m25 65r25 66m22 66r22 67m22 67r22
+. 68m22 68r22 69m22 69r22 70r11 73r31 80m25 80r25 81m22 81r22 82m22 82r22
+. 83m22 83r22 84m22 84r22 85r11 88r31 93m25 93r25 94m22 94r22 95m22 95r22
+. 96m22 96r22 97m22 97r22 98r11 101r31 107m25 107r25 108m22 108r22 109m22
+. 109r22 110m22 110r22 111m22 111r22 112r11 115r31
+15U14 Eskatu_Return 15b14 19l9 19t22 41s4 51s4 62s4 76s4 91s4 104s4 118s4
+X 19 sortu_zerrenda_hutsa.adb
+4U11*sortu_zerrenda_hutsa 18|3w6 34s4 43s4 54s4 65s4 80s4 93s4 107s4
+X 35 txertatu_hasieran.adb
+4U11*txertatu_hasieran 18|3w28 44s4 55s4 66s4 67s4 68s4 69s4 81s4 82s4 83s4
+. 84s4 94s4 95s4 96s4 97s4 108s4 109s4 110s4 111s4
+

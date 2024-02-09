@@ -1,0 +1,87 @@
+V "GNAT Lib v2018"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U proba_aulkiak_banatu%b  proba_aulkiak_banatu.adb  3745c26c NE OO SU IL
+W ada%s			ada.ads			ada.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W alderdien_botoen_lista_idatzi%b  alderdien_botoen_lista_idatzi.adb  alderdien_botoen_lista_idatzi.ali
+W aulkiak_banatu%b	aulkiak_banatu.adb	aulkiak_banatu.ali
+W aulkiak_idatzi%b	aulkiak_idatzi.adb	aulkiak_idatzi.ali
+W motak%s		motak.ads		motak.ali
+
+D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-inteio.ads		20180524051738 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-tags.ads		20180524051738 491b781d ada.tags%s
+D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-tiinio.ads		20180524051736 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
+D alderdien_botoen_lista_idatzi.adb  20231121080346 3127ca8c alderdien_botoen_lista_idatzi%b
+D alderdien_kozienteak_kalkulatu.adb  20231121080346 12622556 alderdien_kozienteak_kalkulatu%b
+D aulkiak_banatu.adb	20231121080346 991181eb aulkiak_banatu%b
+D aulkiak_idatzi.adb	20231121080346 af1cedbd aulkiak_idatzi%b
+D botoak_banatu.adb	20231121080346 e75e1344 botoak_banatu%b
+D ehuneko_3_baino_gehiagoko_alderdiak_lortu.adb  20231121080346 c8b3ba69 ehuneko_3_baino_gehiagoko_alderdiak_lortu%b
+D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
+D koziente_guztiak_kalkulatu.adb  20231121080346 2a7643c8 koziente_guztiak_kalkulatu%b
+D maximoak_esleitu.adb	20231121080346 346ef051 maximoak_esleitu%b
+D motak.ads		20231121080346 12083b76 motak%s
+D proba_aulkiak_banatu.adb  20231203104036 aa7aec9a proba_aulkiak_banatu%b
+D system.ads		20180524051738 32a08138 system%s
+D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180524051738 54135002 system.exception_table%s
+D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 21|4r6 5r5
+X 7 a-textio.ads
+49K13*Text_IO 471e16 21|4w10 5r9
+166U14*New_Line 21|26s4 30s4 45s4 55s4 71s4 81s4 96s4 107s4
+169U14*Skip_Line 21|32s4 60s4 86s4 112s4
+242U14*Put 21|18s4
+263U14*Put_Line 21|22s4 24s4 25s4 27s4 31s4 44s4 46s4 49s4 50s4 51s4 52s4
+. 53s4 54s4 56s4 70s4 72s4 75s4 76s4 77s4 78s4 79s4 80s4 82s4 95s4 97s4 100s4
+. 101s4 102s4 103s4 104s4 105s4 106s4 108s4
+X 10 alderdien_botoen_lista_idatzi.adb
+8U11*alderdien_botoen_lista_idatzi 21|8w6 23s4 47s4 73s4 98s4
+X 12 aulkiak_banatu.adb
+6U11*aulkiak_banatu 21|8w53 28s4 57s4 83s4 109s4
+X 13 aulkiak_idatzi.adb
+9U11*aulkiak_idatzi 21|8w37 29s4 58s4 84s4 110s4
+X 20 motak.ads
+1K9*Motak 56e10 21|1w6 2r5
+9I17*T_tarte_alderdi{integer}
+19A14*T_alderdien_taula(14R14)<integer>
+21R14*T_Lista_alderdien_botoak 24e19 21|14r22
+22i17*Alderdi_kop{9I17} 21|19m20 35m21 62m21 88m21
+23a17*Alderdien_taula{19A14} 21|20m20 36m21 37m21 38m21 39m21 40m21 63m21
+. 64m21 65m21 66m21 67m21 68m21 89m21 90m21 91m21 92m21 93m21 94m21
+35R14*T_lista_aulkiak 38e19 21|15r13
+X 21 proba_aulkiak_banatu.adb
+11U11*proba_aulkiak_banatu 11b11 113l5 113t25
+14r4 L_P_V_Originala{20|21R14} 19m4 20m4 23r34 28r19 35m5 36m5 37m5 38m5
+. 39m5 40m5 47r34 57r19 62m5 63m5 64m5 65m5 66m5 67m5 68m5 73r34 83r19 88m5
+. 89m5 90m5 91m5 92m5 93m5 94m5 98r34 109r19
+15r4 aulkiak{20|35R14} 28m36 29r19 57m36 58r19 83m36 84r19 109m36 110r19
+

@@ -1,0 +1,19 @@
+[GENERATED OBJECT FILE]
+b__digitu_bakoitiak_kontatu.o
+[PROJECT FILES]
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\digitu_bakoitiak_kontatu.gpr
+20231010180640
+[BOUND OBJECT FILES]
+C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\digitu_bakoitiak_kontatu.o
+[GENERATED SOURCE FILES]
+b__digitu_bakoitiak_kontatu.ads
+b__digitu_bakoitiak_kontatu.adb
+b__digitu_bakoitiak_kontatu.ali
+[RESULTING OPTIONS]
+-LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\
+-LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\
+-LC:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
+-static
+-static-libgcc
+C:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/libgnat.a
+-Wl,--stack=0x2000000

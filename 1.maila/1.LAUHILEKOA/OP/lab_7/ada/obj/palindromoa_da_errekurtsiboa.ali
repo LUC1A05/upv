@@ -1,0 +1,31 @@
+V "GNAT Lib v2018"
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_RECURSION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U palindromoa_da_errekurtsiboa%b  palindromoa_da_errekurtsiboa.adb  ee741969 NE OO SU IL
+W datuak%s		datuak.ads		datuak.ali
+
+D datuak.ads		20231114070424 950eed7a datuak%s
+D palindromoa_da_errekurtsiboa.adb  20231121175206 7b7af413 palindromoa_da_errekurtsiboa%b
+D system.ads		20180524051738 32a08138 system%s
+X 1 datuak.ads
+1K9*datuak 8e11 2|1w6 1r18
+X 2 palindromoa_da_errekurtsiboa.adb
+2V10*palindromoa_da_errekurtsiboa{boolean} 2b10 2>39 2=55 2=63 9s14 12s14
+. 19s17 24s14 26l5 26t33
+2a39 Kat{string} 7r10 9r43 10r10 12r43 13r11 13r34 13r59 13r80 14r10 14r26
+. 19r46 24r43
+2i55 hasiera{integer} 5r7 7r14 8m7 8r16 9m48 9r48 12m47 12r47 13r15 13r38
+. 14r30 17m10 17r19 19m51 19r51 22m7 22r16 24m47 24r47
+2i63 amaiera{integer} 5r18 9m57 9r57 10r14 11m7 11r16 12m55 12r55 13r63 13r84
+. 14r14 18m10 18r19 19m60 19r60 23m7 23r16 24m55 24r55
+
