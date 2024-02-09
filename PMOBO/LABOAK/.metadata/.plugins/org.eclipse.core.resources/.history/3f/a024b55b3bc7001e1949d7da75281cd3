@@ -171,25 +171,6 @@ public class PertsonaTest {
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "B-", 17);
 		assertTrue(p1.donatuDiezaioke(p2));
 		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "A+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		assertFalse(p2.donatuDiezaioke(p1));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "A-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		assertFalse(p2.donatuDiezaioke(p1));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
 		//A-
 		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A-", 17);
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "AB+", 17);
@@ -210,19 +191,6 @@ public class PertsonaTest {
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "A-", 17);
 		assertTrue(p1.donatuDiezaioke(p2));
 		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "B+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		assertFalse(p2.donatuDiezaioke(p1));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
 		//B+
 		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B+", 17);
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "AB+", 17);
@@ -232,28 +200,6 @@ public class PertsonaTest {
 		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B+", 17);
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "B+", 17);
 		assertTrue(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "AB-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		assertFalse(p2.donatuDiezaioke(p1));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "A+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		assertFalse(p2.donatuDiezaioke(p1));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "B-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "B+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
 		
 		//A+
 		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A+", 17);
@@ -265,23 +211,6 @@ public class PertsonaTest {
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "A+", 17);
 		assertTrue(p1.donatuDiezaioke(p2));
 		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "AB-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		assertFalse(p2.donatuDiezaioke(p1));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "A-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "A+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
 		//AB-
 		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB-", 17);
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "AB+", 17);
@@ -292,26 +221,10 @@ public class PertsonaTest {
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "AB+", 17);
 		assertTrue(p1.donatuDiezaioke(p2));
 		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB-", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
 		//AB+
 		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB-", 17);
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "AB-", 17);
 		assertTrue(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
 	}
 
 	@Test

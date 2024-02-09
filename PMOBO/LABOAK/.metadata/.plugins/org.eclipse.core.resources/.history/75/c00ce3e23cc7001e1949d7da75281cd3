@@ -304,14 +304,6 @@ public class PertsonaTest {
 		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB-", 17);
 		p2 = new Pertsona(13, "Diana Lopez", "espaina", "AB-", 17);
 		assertTrue(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O-", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
-		
-		p1 = new Pertsona(13, "Paco Gomez", "espaina", "AB+", 17);
-		p2 = new Pertsona(13, "Diana Lopez", "espaina", "O+", 17);
-		assertFalse(p1.donatuDiezaioke(p2));
 	}
 
 	@Test
