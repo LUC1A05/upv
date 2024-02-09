@@ -23,3 +23,4 @@ begin
    end loop;
    L := berria;
 end n_aurrera;
+//nodo berriak sortzen dira, hori aldatu behar da.
