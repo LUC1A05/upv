@@ -34,15 +34,25 @@ LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
 //////////*******************CAMBIADO - ALDATUTA - inicio 1
 
 //SIMULADORERAKO
+/*const int inputPin1 = A0;  // buttons array analog input 
+const int inputPin2 = A1;  // buttons array analog input 
+const int inputPin3 = A2;  // buttons array analog input 
+const int inputPin4 = A3;  // buttons array analog input 
+const int inputPin5 = A4;  // buttons array analog input 
+uint16_t inputValue1 = 0;   // value read from buttons array
+uint16_t inputValue2 = 0;   // value read from buttons array
+uint16_t inputValue3 = 0;   // value read from buttons array
+uint16_t inputValue4 = 0;   // value read from buttons array
+uint16_t inputValue5 = 0;   // value read from buttons array
+*/
 const int inputPin = A0;    // buttons array analog input 
 const int ledPin =  9;      // backlight control
 const int sensorPin = A1;   // buttons array analog input 
 uint16_t inputValue = 0;    // value read from buttons array
-int kasua;                  //zein kasuan gauden adierazten digu
+int kasua, botoia;                  //zein kasuan gauden adierazten digu
 float temp;                 //tenperatura gordetzen du;
-int ordu;                   //ordua gordetzen du
-int minu;                   //minutuak gordetzen ditu
-int segu;                   //segunduak gordetzen ditu
+int ordu, minu, segu = 0;       //ordua, minutuak eta segunduak gordetzeko
+
 unsigned long denbora;
 unsigned long denbora2 = 0;      
 
@@ -60,9 +70,6 @@ void setup()
   lcd.setCursor(0, 1);            // set the cursor to column 0, line 1
   lcd.print("1.ER 2.TEN 3.DOI");
   kasua = 1;
-  ordu = 00;
-  minu = 00;
-  segu = 00;
   Serial.begin(9600);
   denbora = millis();
 }
@@ -81,85 +88,131 @@ void loop()
   else if(inputValue < 870 && inputValue > 770) inputValue = 5;
   else if(inputValue <= 1023 && inputValue > 950) inputValue = 0;
 
+   /*//SIMULADOR - Para placa comentar - inicio 
+  inputValue1 = analogRead(inputPin1);
+  inputValue2 = analogRead(inputPin2);
+  inputValue3 = analogRead(inputPin3);
+  inputValue4 = analogRead(inputPin4);
+  inputValue5 = analogRead(inputPin5);
+  if(inputValue1 <= 1023 && inputValue1 > 950) inputValue = 1;
+  else if(inputValue2 <= 1023 && inputValue2 > 950) inputValue = 2;
+  else if(inputValue3 <= 1023 && inputValue3 > 950) inputValue = 3;
+  else if(inputValue4 <= 1023 && inputValue4 > 950) inputValue = 4;
+  else if(inputValue5 <= 1023 && inputValue5 > 950) inputValue = 5;
+  else inputValue = 0;
+  //SIMULADOR - Para placa comentar - fin*/
+
   delay(200);  // Para empezar / Hasteko.
   /*Después mejorar sin delay para evitar leer más de una vez una pulsación.
   Gero hobetu delay gabe, pultsaketa bat behin baino ez irakurtzeko.*/
 
   //////////*******************CAMBIADO - ALDATUTA - fin 2
 
-  // update display text
-  if(denbora - denbora2 >=1000)
+  denbora = millis();
+  switch (inputValue)
   {
-    denbora2 = denbora;
-    segu = denbora;
-  }
-  if(segu >= 60)
-  {
-    segu = 00;
-    minu += 1;
-  }
-  if(minu >= 60)
-  {
-    minu = 00;
-    ordu += 1;
-  }
-  switch (kasua)
-  {
+    case 0:
+      denboraEguneratu();
+      break;
     case 1:
-       if(inputValue == 1)
-      {
-        kasua = 2;
-      }
-      else if(inputValue == 2)
-      {
-        kasua = ;
-      }
-      else(inputValue == 3)
-      {
-        doiketa = True;
-      }
+      lcd.clear();
+      lcd.print("menua");
       break;
     case 2:
-      if(inputValue == 1)
-      {
-        menu = True;
-      }
-      else if(inputValue == 2)
-      {
-        tenperatura = True;
-      }
-      else(inputValue == 3)
-      {
-        doiketa = True;
-      }
+      lcd.clear();
+      lcd.print("erlojua");
+      lcd.setCursor(1,0);
+      denboraEguneratu();
       break;
     case 3:
-      if(inputValue == 1)
-      {
-        erlojua = True;
-      }
-      else if(inputValue == 2)
-      {
-        menu = True;
-      }
-      else(inputValue == 3)
-      {
-        doiketa = True;
-      }
+      lcd.clear();
+      lcd.print("tenperatura");
       break;
     case 4:
-      if(inputValue == 1)
-      {
-        erlojua = True;
-      }
-      else if(inputValue == 2)
-      {
-        tenperatura = True;
-      }
-      else(inputValue == 3)
-      {
-        menu = True;
-      }
+      lcd.clear();
+      lcd.print("ordua aldatu");
+      break;
+    case 5:
+      lcd.clear();
+      lcd.print("formatua");
       break;
   }
+  // update display text
+  
+}
+void inprimatuDenbora()
+{
+  lcd.setCursor(4,1);
+  if (ordu < 10)
+  {
+    lcd.print("0");
+    lcd.print(ordu);
+  }
+  else
+  {
+    lcd.print(ordu);
+  }
+  lcd.print(":");
+  if (minu < 10)
+  {
+    lcd.print("0");
+    lcd.print(minu);
+  }
+  else
+  {
+    lcd.print(minu);
+  }
+  if (segu < 10)
+  {
+    lcd.print("0");
+    lcd.print(segu);
+  }
+  else
+  {
+    lcd.print(segu);
+  }
+}
+
+void denboraEguneratu()
+{
+  if (denbora - denbora2 >= 1000)
+  {
+    denbora2 = denbora;
+    if (segu < 60)
+    {
+      segu ++;
+    }
+    else
+    {
+      segu = 0;
+      if (minu < 60)
+      {
+        minu ++;
+      }
+      else
+      {
+        minu = 0;
+        if (ordu < formatua)
+        {
+          ordu ++;
+        }
+        else
+        {
+          if (formatua == 12)
+          {
+            ordu = 1;
+          }
+          else
+          {
+            ordu = 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+void tenperatura()
+{
+  
 }
