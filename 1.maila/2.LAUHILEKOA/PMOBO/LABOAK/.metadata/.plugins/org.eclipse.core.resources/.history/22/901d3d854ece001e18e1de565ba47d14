@@ -1,0 +1,162 @@
+package org.pmobo.packlaborategia3;
+
+
+public class Zatikia implements IZatikia
+{       //atributuak
+	int zenbakitzailea;
+	int izendatzailea;
+	
+	public Zatikia(int pZenb, int pIzen)
+	{
+		if (pIzen != 0)
+			{
+				this.izendatzailea = pIzen;
+				this.zenbakitzailea = pZenb;
+			}
+		else
+		{
+			System.out.println("Ezin daiteke izendatzailearen balioa 0 izan dezakeen zatikirik sortu ...");
+			this.izendatzailea = 1;
+			this.zenbakitzailea = pZenb;
+		}
+	}
+
+
+	public int getZenbakitzailea()
+	{
+		return this.zenbakitzailea;
+	}
+
+	public int getIzendatzailea()
+	{
+		return this.izendatzailea;
+	}
+		
+	// metodo hau ezkutatzea komeni da, pribatua egitea!
+	private int zkh()
+	{/**
+         /* zatitzaile komunetako handiena topatu
+         **/
+		int lag,a,b;
+		a = this.izendatzailea;
+		b = this.zenbakitzailea;
+		if (a < b)
+		{
+			lag = a;
+			a = b;
+			b = lag;
+		}
+		while (b != 0)
+		{
+			lag = b;
+			b = a % b;
+			a = lag;
+		}
+		return a;
+	}
+	
+	public void sinplifikatu()
+	{
+		int zkh = this.zkh();
+		if (this.izendatzailea < 0)
+		{
+			this.izendatzailea *= -1;
+			this.zenbakitzailea *= -1;
+		}
+		this.izendatzailea = this.izendatzailea/zkh;
+		this.zenbakitzailea = this.zenbakitzailea/zkh;
+	}
+		
+	public Zatikia gehitu(Zatikia pZatikia)
+	{
+		this.sinplifikatu();
+		pZatikia.sinplifikatu();
+		if(this.izendatzaileBerdinaDu(pZatikia))
+		{
+			this.zenbakitzailea += pZatikia.zenbakitzailea;
+		}
+		else
+		{
+			this.zenbakitzailea = (this.zenbakitzailea * pZatikia.izendatzailea) + (pZatikia.zenbakitzailea * this.izendatzailea);
+			this.izendatzailea *= pZatikia.izendatzailea;
+		}
+		this.sinplifikatu();
+	}
+	
+	
+	public Zatikia kendu(Zatikia pZatikia)
+	{
+		this.sinplifikatu();
+		pZatikia.sinplifikatu();
+		if(this.izendatzaileBerdinaDu(pZatikia))
+		{
+			this.zenbakitzailea -= pZatikia.zenbakitzailea;
+		}
+		else
+		{
+			this.zenbakitzailea = (this.zenbakitzailea * pZatikia.izendatzailea) - (pZatikia.zenbakitzailea * this.izendatzailea);
+			this.izendatzailea *= pZatikia.izendatzailea;
+		}
+		this.sinplifikatu();
+	}
+	
+	public Zatikia biderkatu(Zatikia pZatikia)
+	{
+		this.sinplifikatu();
+		pZatikia.sinplifikatu();
+		this.zenbakitzailea *= pZatikia.zenbakitzailea;
+		this.izendatzailea *= pZatikia.izendatzailea;
+		this.sinplifikatu();
+	}
+	
+	public Zatikia zatitu(Zatikia pZatikia)
+	{
+		this.sinplifikatu();
+		pZatikia.sinplifikatu();
+		this.zenbakitzailea *= pZatikia.izendatzailea;
+		this.izendatzailea *= pZatikia.zenbakitzailea;
+		this.sinplifikatu();
+	}
+	
+	public boolean berdinaDa(Zatikia pZatikia)
+	{
+		boolean berdina = false;
+		this.sinplifikatu();
+		pZatikia.sinplifikatu();
+		if (this.izendatzaileBerdinaDu(pZatikia)&& this.zenbakitzaileBerdinaDu(pZatikia))
+			berdina = true;
+		return berdina;
+	}
+			
+	public boolean handiagoaDa(Zatikia pZatikia)
+	{
+		boolean handi = false;
+		if ((this.zenbakitzailea / this.izendatzailea) < (pZatikia.zenbakitzailea/pZatikia.izendatzailea))
+			handi = true;
+		return handi;
+	}
+	
+	public boolean txikiagoaDa(Zatikia pZatikia)
+	{
+		//TODO
+	}
+    public boolean izendatzaileBerdinaDu(Zatikia pZatikia){
+		boolean berdina = false;
+		
+    	if (this.izendatzailea == pZatikia.izendatzailea)
+		{
+			berdina = true;
+		}
+    	return berdina;
+	}	
+    public boolean zenbakitzaileBerdinaDu(Zatikia pZatikia)
+    {
+    	boolean berdina = false;
+		
+    	if (this.zenbakitzailea == pZatikia.zenbakitzailea)
+		{
+			berdina = true;
+		}
+    	return berdina;
+	}	
+}

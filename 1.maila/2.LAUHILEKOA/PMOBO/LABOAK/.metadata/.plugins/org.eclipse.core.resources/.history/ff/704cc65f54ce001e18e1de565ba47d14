@@ -1,0 +1,78 @@
+package org.pmobo.packlaborategia3;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class ZatikiaTest {
+
+	Zatikia z1,z2,z4;
+	@Before
+	public void setUp() throws Exception {
+		z1 = new Zatikia(2,-4);
+		z2 = new Zatikia(-1,2);
+		z4 = new Zatikia(4,2);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		z1 = null;
+		z2 = null;
+	}
+
+	@Test
+	public void testZatikia() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetZenbakitzailea() {
+		assertEquals(2,z1.getZenbakitzailea());
+		assertEquals(-1,z2.getZenbakitzailea());
+	}
+
+	@Test
+	public void testGetIzendatzailea() {
+		assertEquals(-4,z1.getIzendatzailea());
+		assertEquals(2,z2.getIzendatzailea());
+	}
+
+	@Test
+	public void testSinplifikatu() 
+	{
+		z1.sinplifikatu();
+		assertEquals(-1,z1.getZenbakitzailea());
+		assertEquals(2,z1.getIzendatzailea());
+	}
+
+	@Test
+	public void testGehitu() {
+		Zatikia z3;
+		z3 = z1.gehitu(z4);
+		assertEquals(3,z3.getZenbakitzailea());
+		assertEquals(2,z3.getIzendatzailea());
+	}
+
+	@Test
+	public void testKendu() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testBiderkatu() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testZatitu() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testBerdinaDa() {
+		fail("Not yet implemented");
+	}
+
+}

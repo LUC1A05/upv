@@ -1,0 +1,64 @@
+package org.pmobo.packlaborategia3;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class ZatikiaTest {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testZatikia() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetZenbakitzailea() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetIzendatzailea() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSinplifikatu() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGehitu() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testKendu() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testBiderkatu() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testZatitu() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testBerdinaDa() {
+		fail("Not yet implemented");
+	}
+
+}
