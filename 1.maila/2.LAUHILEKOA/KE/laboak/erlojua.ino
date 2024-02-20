@@ -78,7 +78,7 @@ void setup()
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, HIGH);
   lcd.begin(16, 2);               // set up the LCD's number of columns and rows
-  lcd.print("Ongi etorri! gure erloju-termometrora");  // Print a message on the LCD
+  lcd.print("Ongi etorri!");  // Print a message on the LCD
   
   //Charactere bereziak
   lcd.createChar(0, smiley);
@@ -98,15 +98,6 @@ void setup()
 
   lcd.setCursor(0, 1);            // set the cursor to column 0, line 1
   lcd.print("sakatu b1");
-  delay(300);
-  for (int positionCounter = 0; positionCounter < 25; positionCounter++)
-  {
-    lcd.scrollDisplayLeft();
-  }
-  for (int positionCounter = 0; positionCounter < 15; positionCounter++)
-  {
-    lcd.scrollDisplayLeft();
-  }
   Serial.begin(9600);
   kasua = 0;
 }
@@ -139,143 +130,141 @@ void loop() {
   
  //delay(200);  // Para empezar / Hasteko.
   lagDen = millis();
-  if (lagDen - lagDen1 > 200)
+  while (lagDen - lagDen1 < 200)
   {
-    lagDen1 += 200;
-    inputValue = 0;
+    lagDen = millis();
   }
+  lagDen1 += 200;
  
   /*Después mejorar sin delay para evitar leer más de una vez una pulsación.
   Gero hobetu delay gabe, pultsaketa bat behin baino ez irakurtzeko.*/
 
   //////////*******************CAMBIADO - ALDATUTA - fin 2
-  else{
-    switch (inputValue)
-    {
-      case 0:
-        if (kasua == 2)
+  switch (inputValue)
+   {
+    case 0:
+      if (kasua == 2)
+      {
+        inprimatuDenbora();
+      }
+      if (kasua == 3)
+      {
+        inprimatuTenp();
+      }
+      if (kasua == 4)
+      {
+        inprimatuDenbora();
+      }
+      break;
+    case 1:
+      if (kasua == 0)
+      {
+        kasu1();
+      }
+      else if (kasua == 1)
+      {
+        kasu4();
+      }
+      else if (kasua == 2)
+      {
+        kasu1();
+      }
+      else if (kasua == 3)
+      {
+        kasu2();
+      }
+      else if (kasua == 4)
+      {
+        kasu3();
+      }
+      break;
+    case 2:
+      if (kasua == 1)
+      {
+        kasu2();
+      }
+      else if (kasua == 2)
+      {
+        kasu1();
+      }
+      else if (kasua == 4)
+      {
+        if (ormin == 1)
         {
-          inprimatuDenbora();
-        }
-        if (kasua == 3)
-        {
-          inprimatuTenp();
-        }
-        if (kasua == 4)
-        {
-          inprimatuDenbora();
-        }
-        break;
-      case 1:
-        if (kasua == 0)
-        {
-          kasu1();
-        }
-        else if (kasua == 1)
-        {
-          kasu4();
-        }
-        else if (kasua == 2)
-        {
-          kasu1();
-        }
-        else if (kasua == 3)
-        {
-          kasu2();
-        }
-        else if (kasua == 4)
-        {
-          kasu3();
-        }
-        break;
-      case 2:
-        if (kasua == 1)
-        {
-          kasu2();
-        }
-        else if (kasua == 2)
-        {
-          kasu1();
-        }
-        else if (kasua == 4)
-        {
-          if (ormin == 1)
+          if (ordu == 23)
           {
-            if (ordu == 23)
-            {
-              ordu = 0;
-            }
-            else
-              ordu ++;
-          }
-          else 
-          {
-            if (minu == 59)
-              minu = 0;
-            else
-              minu ++;
-          }
-        }
-        break;
-      case 3:
-        if (kasua == 1)
-        {
-          kasu3();
-        }
-        else if(kasua == 4)
-        {
-          if (ormin == 1)
-          {
-            if (ordu >0)
-              ordu --;
-            else
-              ordu = 23;
-          }
-          else 
-          {
-            if (minu >0)
-              minu --;
-            else
-              minu = 59;
-          }
-        }
-        break;
-      case 4:
-        if (kasua == 1)
-        {
-          kasu4();
-        }
-        else if (kasua == 4)
-        {
-          if (ormin == 1)
-          {
-            ormin = 2;
+            ordu = 0;
           }
           else
-          {
-            ormin = 1;
-          }
+            ordu ++;
         }
-        break;
-      case 5:
-        if (kasua == 1)
+        else 
         {
-          kasu2();
+          if (minu == 59)
+            minu = 0;
+          else
+            minu ++;
         }
-        else if (kasua == 2)
+      }
+      break;
+    case 3:
+      if (kasua == 1)
+      {
+        kasu3();
+      }
+      else if(kasua == 4)
+      {
+        if (ormin == 1)
         {
-          kasu3();
+          if (ordu >0)
+            ordu --;
+          else
+            ordu = 23;
         }
-        else if (kasua == 3)
+        else 
         {
-          kasu4();
+          if (minu >0)
+            minu --;
+          else
+            minu = 59;
         }
-        else if (kasua == 4)
+      }
+      break;
+    case 4:
+      if (kasua == 1)
+      {
+        kasu4();
+      }
+      else if (kasua == 4)
+      {
+        if (ormin == 1)
         {
-          kasu1();
+          ormin = 2;
         }
-        break;
-    }
+        else
+        {
+          ormin = 1;
+        }
+      }
+      break;
+    case 5:
+      if (kasua == 1)
+      {
+        kasu2();
+      }
+      else if (kasua == 2)
+      {
+        kasu3();
+      }
+      else if (kasua == 3)
+      {
+        kasu4();
+      }
+      else if (kasua == 4)
+      {
+        kasu1();
+      }
+      break;
   }
 }
   
