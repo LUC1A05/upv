@@ -10,7 +10,7 @@ float ptenperatura;                 //tenperatura gordetzen du;
 int ordu, minu, segu = 0;       //ordua, minutuak eta segunduak gordetzeko
 
 unsigned long denbora, denbora2, lagDen, lagDen1 = 0;
-boolean inprimatu = false;
+boolean segPasa = false;
 int sensorValue = 0;
 const int term = A4;
 
@@ -130,64 +130,115 @@ void loop() {
   
  //delay(200);  // Para empezar / Hasteko.
   lagDen = millis();
-  while (lagDen - lagDen1 < 200)
+  if (lagDen > lagDen1 + 200)
   {
-    lagDen = millis();
+    lagDen1 = millis();
+    inputValue = 0;
   }
-  lagDen1 += 200;
  
   /*Después mejorar sin delay para evitar leer más de una vez una pulsación.
   Gero hobetu delay gabe, pultsaketa bat behin baino ez irakurtzeko.*/
 
   //////////*******************CAMBIADO - ALDATUTA - fin 2
-  switch (inputValue)
-   {
+  switch (kasua)
+  {
     case 0:
-      if (kasua == 2)
-      {
-        inprimatuDenbora();
-      }
-      if (kasua == 3)
-      {
-        inprimatuTenp();
-      }
-      if (kasua == 4)
-      {
-        inprimatuDenbora();
-      }
-      break;
-    case 1:
-      if (kasua == 0)
+      if (inputValue == 1)
       {
         kasu1();
       }
-      else if (kasua == 1)
+    case 1:
+      if (inputValue == 1)
       {
         kasu4();
       }
-      else if (kasua == 2)
-      {
-        kasu1();
-      }
-      else if (kasua == 3)
+      else if (inputValue == 2)
       {
         kasu2();
       }
-      else if (kasua == 4)
+      else if (inputValue == 3)
+      {
+        kasu3();
+      }
+      else if (inputValue == 4)
+      {
+        kasu4();
+      }
+      else if (inputValue == 5)
+      {
+        kasu2();
+      }
+      break;
+    case 2:
+      if (inputValue == 0)
+      {
+        if (segPasa)
+        {
+          inprimatuDenbora();
+          segPasa = false;
+        }
+      }
+      if (inputValue == 1)
+      {
+        kasu1();
+      }
+      else if (inputValue == 2)
+      {
+        kasu1(); //hemen jar dezakegu 24/12 egiteko
+      }
+      else if (inputValue == 3)
+      {
+        //TODO
+      }
+      else if (inputValue == 4)
+      {
+        //TODO
+      }
+      else if (inputValue == 5)
       {
         kasu3();
       }
       break;
-    case 2:
-      if (kasua == 1)
+    case 3:
+      if (inputValue == 0)
+      {
+        inprimatuTenp();
+      }
+      else if (inputValue == 1)
       {
         kasu2();
       }
-      else if (kasua == 2)
+      else if (inputValue == 2)
+      {
+        //TODO
+      }
+      else if (inputValue == 3)
       {
         kasu1();
       }
-      else if (kasua == 4)
+      else if (inputValue == 4)
+      {
+        //TODO
+      }
+      else if (inputValue == 5)
+      {
+        kasu4();
+      }
+      break;
+    case 4:
+      if (inputValue == 0)
+      {
+        if (segPasa)
+        {
+          inprimatuDenbora();
+          segPasa = false;
+        }
+      }
+      else if (inputValue == 1)
+      {
+        kasu3();
+      }
+      else if (inputValue == 2)
       {
         if (ormin == 1)
         {
@@ -206,13 +257,7 @@ void loop() {
             minu ++;
         }
       }
-      break;
-    case 3:
-      if (kasua == 1)
-      {
-        kasu3();
-      }
-      else if(kasua == 4)
+      else if (inputValue == 3)
       {
         if (ormin == 1)
         {
@@ -229,13 +274,7 @@ void loop() {
             minu = 59;
         }
       }
-      break;
-    case 4:
-      if (kasua == 1)
-      {
-        kasu4();
-      }
-      else if (kasua == 4)
+      else if (inputValue == 4)
       {
         if (ormin == 1)
         {
@@ -246,30 +285,14 @@ void loop() {
           ormin = 1;
         }
       }
-      break;
-    case 5:
-      if (kasua == 1)
-      {
-        kasu2();
-      }
-      else if (kasua == 2)
-      {
-        kasu3();
-      }
-      else if (kasua == 3)
-      {
-        kasu4();
-      }
-      else if (kasua == 4)
+      if (inputValue == 5)
       {
         kasu1();
       }
-      break;
   }
 }
   
   // update display text
-
 void kasu1()
 {
   kasua = 1;
@@ -357,6 +380,7 @@ void denboraEguneratu()
   denbora = millis();
   if (denbora - denbora2 >= 1000)
   {
+    segPasa = true;
     denbora2 += 1000;
     if (segu < 59)
     {
