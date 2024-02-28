@@ -4,13 +4,13 @@ public class Borroka {
 	private int id;
 	private Borrokalaria b1,b2;
 	
-	public Borroka(int pId) {
+	public Borroka(int pId,Borrokalaria pB1,Borrokalaria pB2) {
 		this.id = pId;
-		this.b1 = BorrokalarienZerrenda.getBorrokalarienZerrenda().getAusazBorrokalaria();
-		this.b2 = BorrokalarienZerrenda.getBorrokalarienZerrenda().getAusazBorrokalaria();
-		while (this.b2 == this.b1) {
-			this.b2 = BorrokalarienZerrenda.getBorrokalarienZerrenda().getAusazBorrokalaria();
-		}
+		this.b1 = pB1;//BorrokalarienZerrenda.getBorrokalarienZerrenda().getAusazBorrokalaria();
+		this.b2 = pB2;//BorrokalarienZerrenda.getBorrokalarienZerrenda().getAusazBorrokalaria();
+		//while (this.b2 == this.b1) {
+		//	this.b2 = BorrokalarienZerrenda.getBorrokalarienZerrenda().getAusazBorrokalaria();
+		//}
 	}
 	public Borrokalaria getBorrokalari1() {
 		return this.b1;
