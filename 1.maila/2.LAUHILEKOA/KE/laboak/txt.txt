@@ -1,0 +1,132 @@
+
+  
+  // update display text
+
+void kasu1()
+{
+  kasua = 1;
+  lcd.clear();
+  int n = 3;
+  lcd.write(n);
+  lcd.print("     menu     ");
+  n = 2;
+  lcd.write(n);
+  lcd.setCursor(0,1);
+  lcd.print("2.ER 3.TEN 4.DOI");
+}
+
+void kasu2()
+{
+  kasua = 2;
+  lcd.clear();
+  int n = 3;
+  lcd.write(n);
+  lcd.print("   erlojua    ");
+  n = 2;
+  lcd.write(n);
+  lcd.setCursor(1,0);
+}
+
+void kasu3()
+{
+  kasua = 3;
+  lcd.clear();
+  int n = 3;
+  lcd.write(n);
+  lcd.print("  tenperatura ");
+  n = 2;
+  lcd.write(n);
+}
+
+void kasu4()
+{
+  kasua = 4;
+  ormin = 1;
+  lcd.clear();
+  int n = 3;
+  lcd.write(n);
+  lcd.print(" ordua aldatu ");
+  n = 2;
+  lcd.write(n);
+}
+
+void inprimatuDenbora()
+{
+  lcd.setCursor(4,1);
+  if (ordu < 10)
+  {
+    lcd.print("0");
+    lcd.print(ordu);
+  }
+  else
+  {
+    lcd.print(ordu);
+  }
+  lcd.print(":");
+  if (minu < 10)
+  {
+    lcd.print("0");
+    lcd.print(minu);
+  }
+  else
+  {
+    lcd.print(minu);
+  }
+  lcd.print(":");
+  if (segu < 10)
+  {
+    lcd.print("0");
+    lcd.print(segu);
+  }
+  else
+  {
+    lcd.print(segu);
+  }
+}
+
+void denboraEguneratu()
+{
+  denbora = millis();
+  if (denbora - denbora2 >= 1000)
+  {
+    denbora2 += 1000;
+    if (segu < 59)
+    {
+      segu ++;
+    }
+    else
+    {
+      segu = 0;
+      if (minu < 59)
+      {
+        minu ++;
+      }
+      else
+      {
+        minu = 0;
+        if (ordu < 23)
+        {
+          ordu ++;
+        }
+        else
+        {
+          ordu = 0;
+        }
+      }
+    }
+  }
+}
+
+void tenperatura()
+{
+  sensorValue = analogRead(term);
+  ptenperatura = sensorValue * (500.0/1023.0);
+}
+
+void inprimatuTenp()
+{
+  lcd.setCursor(0,1);
+  lcd.print("tenp: ");
+  lcd.print(ptenperatura);
+  lcd.print("C");
+}
