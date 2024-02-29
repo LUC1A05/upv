@@ -1,0 +1,82 @@
+package org.pmobo.packlaborategia5;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ListaErabiltzaileak
+{
+	// atributuak
+	private ArrayList<Erabiltzailea>lista;
+	private static ListaErabiltzaileak nireListaErabiltzaileak;
+	
+	// eraikitzailea
+	
+    private ListaErabiltzaileak()
+    { 
+    	this.lista = new ArrayList<Erabiltzailea>();
+    }
+   	
+    // beste metodoak
+    
+   	public static ListaErabiltzaileak getListaErabiltzaileak()
+   	{
+   		if (nireListaErabiltzaileak == null)
+   		{
+   			nireListaErabiltzaileak = new ListaErabiltzaileak();
+   		}
+   		return nireListaErabiltzaileak;
+   	}
+   	
+	public int erabiltzaileKopurua()
+   	{
+		return this.lista.size();
+   	}
+   	
+   	private Iterator<Erabiltzailea> getIteradorea()
+   	{
+   		return this.lista.iterator();
+   	}
+    
+   	public Erabiltzailea bilatuErabiltzaileaIdz(int pId)
+   	{
+   		Iterator<Erabiltzailea>itr=getIteradorea();
+   		boolean badago = false;
+   		while (itr.hasNext() && !badago)
+   		{
+   			Erabiltzailea er = itr.next();
+   			if (er.idHauDu(pId))
+   				badago = true;
+   		}
+   		return badago;
+   	}
+   	
+   	public boolean badagoIdBerdinekoErabiltzailerik(Erabiltzailea pErabiltzailea)
+   	{
+   		
+   	}
+   	
+   	public void erabiltzaileariAltaEman(Erabiltzailea pErabiltzailea)
+   	{   		
+   		
+   	}
+
+	public void erabiltzaileaBajaEman(int pIdErabiltzailea)
+	{
+		
+   	}
+
+   	public Erabiltzailea norkDaukaMaileguan(Liburua pLiburu)
+   	{
+   		
+   	}
+
+   	public void inprimatu()
+   	{	
+   	
+   	}
+   
+   	public void erreseteatu()
+   	{
+   	
+   	}
+}
