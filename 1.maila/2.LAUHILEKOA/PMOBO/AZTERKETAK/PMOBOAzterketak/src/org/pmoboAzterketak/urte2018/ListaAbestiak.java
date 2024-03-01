@@ -21,7 +21,7 @@ public class ListaAbestiak {
 		while (itr.hasNext())
 		{
 			Abestia ab = itr.next();
-			if (ab.getAbeslaria()==pAbeslaria)
+			if (ab.getAbeslaria().equals(pAbeslaria))
 			{
 				i++;
 			}
