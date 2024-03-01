@@ -6,14 +6,17 @@ public class proba {
     public static void main(String[] args) {
         BorrokalarienZerrenda borrokalarienZerrenda = BorrokalarienZerrenda.getBorrokalarienZerrenda();
         borrokalarienZerrenda.gehituBorrokalaria("    JonZ    ", 177, 87);
-        borrokalarienZerrenda.gehituBorrokalaria("Borrokalari2", 175, 70);
-        borrokalarienZerrenda.gehituBorrokalaria("Borrokalari3", 185, 80);
+        borrokalarienZerrenda.gehituBorrokalaria("    Unai comepijas  ", 175, 30 );
+        borrokalarienZerrenda.gehituBorrokalaria("    Urko no se ducha", 170, 30);
+        borrokalarienZerrenda.gehituBorrokalaria("    Surya comunista", 180, 200);
+        
 
         Txapelketa txapelketa = Txapelketa.getTxapelketa();
         txapelketa.borrokaKudeatu();
 
         txapelketa.lehenengoBorrokaBistaratu("    JonZ    ");
-        txapelketa.lehenengoBorrokaBistaratu("Borrokalari2");
-        txapelketa.lehenengoBorrokaBistaratu("Borrokalari4");
+        txapelketa.lehenengoBorrokaBistaratu("    Unai comepijas  ");
+        txapelketa.lehenengoBorrokaBistaratu("    Urko no se ducha");
+        txapelketa.lehenengoBorrokaBistaratu("    Surya comunista");
     }
 }
