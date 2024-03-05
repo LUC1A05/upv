@@ -148,14 +148,9 @@ void loop() {
   else if(inputValue <= 1023 && inputValue > 950) inputValue = 0;
 
   
- //delay(200);  // Para empezar / Hasteko.
 
-//delay-a kentzeko:
+  //delay-a kentzeko:
   lagDen = millis();
-  //if (lagDen < lagDen1)
-  //{
-    //lagDen1 = lagDen;
-  //}
   if ((lagDen - lagDen1 >= 200 || lagDen - lagDen1 < 0) && inputValue != 0)
   {
     lagDen1 = lagDen;
