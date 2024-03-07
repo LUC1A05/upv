@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 public class ErabiltzaileaTest extends TestCase
 {
 
-	Erabiltzailea erabiltzailea1, erabiltzailea2, erabiltzailea3;
+	Erabiltzailea erabiltzailea1, erabiltzailea2, erabiltzailea3, e4;
 	Liburua l1,l2,l3,l4;
 
 	@Before
@@ -35,31 +35,45 @@ public class ErabiltzaileaTest extends TestCase
 	@Test
 	public void testErabiltzailea()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		e4= new Erabiltzailea("Clara Mente", 5);
+		assertTrue(e4.idHauDu(5));
 	}
 
 	@Test
 	public void testMailegatzekoMaximoaGainditua()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		//fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		
+		erabiltzailea1.gehituLiburua(l1);
+		erabiltzailea1.gehituLiburua(l2);
+		erabiltzailea1.gehituLiburua(l3);
+		erabiltzailea1.gehituLiburua(l3);
+		
+		assertTrue(erabiltzailea1.mailegatzekoMaximoaGainditua());
 	}
 
 	@Test
 	public void testMaileguanDuEtaGehituLiburuaEtaKenduLiburua()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		assertFalse(erabiltzailea1.maileguanDu(l1));
+		erabiltzailea1.gehituLiburua(l1);
+		assertTrue(erabiltzailea1.maileguanDu(l1));
+		erabiltzailea1.kenduLiburua(l1);
+		assertFalse(erabiltzailea1.maileguanDu(l1));
+		
 	}
 
 	@Test
 	public void testIdHauDu()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		assertTrue(erabiltzailea1.idHauDu(1099));
 	}
 
 	@Test
 	public void testIdBerdinaDute()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		assertTrue(erabiltzailea1.idBerdinaDute(erabiltzailea3));
+		assertFalse(erabiltzailea1.idBerdinaDute(erabiltzailea2));
 	}
 
 	@Test
@@ -102,7 +116,6 @@ public class ErabiltzaileaTest extends TestCase
 		erabiltzailea1.inprimatu();
 		System.out.println("\n===============================================================");
 
-		fail("Begiratu sistemako kontsolan agertzen diren mezuak, eta dena ondo joan bada, ezabatu edo komentatu fail hau.");
 
 	}
 

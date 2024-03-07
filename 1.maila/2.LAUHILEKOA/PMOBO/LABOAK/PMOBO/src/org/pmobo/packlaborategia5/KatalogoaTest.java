@@ -20,13 +20,13 @@ public class KatalogoaTest extends TestCase
 	@Before
 	public void setUp()
 	{
-		l1 = new Liburua("Construcción de software orientado a objetos", "Bertrand Meyer",1);
+		l1 = new Liburua("Construcción de software orientado a objetos", "Bertrand Meyer", 1);
 		l2 = new Liburua("Cien años de soledad", "Gabriel García Márquez",2); 
 		l3 = new Liburua("El hobbit", "JRR Tolkien",3);
-		l4=  new Liburua("El perfume", "Patrick Suskind",4);
+		l4 = new Liburua("El perfume", "Patrick Suskind",4);
 
-		e1=new Erabiltzailea("Kepa Sarasola", 2);	
-		e2=new Erabiltzailea("Armando Guerra", 1);
+		e1 = new Erabiltzailea("Kepa Sarasola", 1);	
+		e2 = new Erabiltzailea("Armando Guerra", 2);
 
 
 		Katalogoa.getKatalogoa().katalogatuLiburua(l1);
@@ -44,35 +44,55 @@ public class KatalogoaTest extends TestCase
 		l1 = null;
 		l2 = null;
 		l3 = null;
+		l4 = null;
 
-		e1=null;
-		e2=null;
-
+		e1 = null;
+		e2 = null;
+		
+		ListaErabiltzaileak.getListaErabiltzaileak().erreseteatu();
 		Katalogoa.getKatalogoa().erreseteatu();
 	}
 
 	@Test
 	public void testGetKatalogoa()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		assertNotNull(Katalogoa.getKatalogoa());
 	}
 
 	@Test
 	public void testBilatuLiburuaIdz()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		Liburua bilatu = Katalogoa.getKatalogoa().bilatuLiburuaIdz(0);
+		assertNull(bilatu);
+		bilatu = Katalogoa.getKatalogoa().bilatuLiburuaIdz(1);
+		assertEquals(l1, bilatu);
+		bilatu = Katalogoa.getKatalogoa().bilatuLiburuaIdz(2);
+		assertEquals(l2, bilatu);
+		bilatu = Katalogoa.getKatalogoa().bilatuLiburuaIdz(3);
+		assertEquals(l3, bilatu);
+		bilatu = Katalogoa.getKatalogoa().bilatuLiburuaIdz(4);
+		assertNull(bilatu);
 	}
 
 	@Test
 	public void testKatalogatuEtaDeskatalogatuLiburuaEtaErreseteatu()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		Liburua bilatu = Katalogoa.getKatalogoa().bilatuLiburuaIdz(4);
+		assertNull(bilatu);
+		Katalogoa.getKatalogoa().katalogatuLiburua(l4);
+		bilatu = Katalogoa.getKatalogoa().bilatuLiburuaIdz(4);
+		assertEquals(l4, bilatu);
+		Katalogoa.getKatalogoa().deskatalogatuLiburua(4);
+		bilatu = Katalogoa.getKatalogoa().bilatuLiburuaIdz(4);
+		assertNull(bilatu);
 	}
 
 	@Test
 	public void testMailegatuEtaItzuliLiburua()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		assertFalse(e1.maileguanDu(l1));
+		Katalogoa.getKatalogoa().mailegatuLiburua(1, 1);
+		assertTrue(e1.maileguanDu(l1));
 	}
 	
 	@Test
@@ -96,9 +116,6 @@ public class KatalogoaTest extends TestCase
 		Katalogoa.getKatalogoa().deskatalogatuLiburua(2);
 		Katalogoa.getKatalogoa().deskatalogatuLiburua(3);
 		assertEquals(0,Katalogoa.getKatalogoa().liburuKopuru());	
-
-		fail("Begiratu sistemako kontsolan agertzen diren mezuak, eta dena ondo joan bada, ezabatu edo komentatu fail hau.");
-
 	}
 
 }

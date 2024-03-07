@@ -39,7 +39,7 @@ public class Erabiltzailea
 	public boolean mailegatzekoMaximoaGainditua()
 	{
 		boolean max = false;
-		if (this.liburuMailegatuak.listarenTamaina() == this.maxLiburuak)
+		if (this.liburuMailegatuak.listarenTamaina() >= this.maxLiburuak)
 			max = true;
 		return max;
 		
@@ -72,7 +72,7 @@ public class Erabiltzailea
 			this.liburuMailegatuak.inprimatu();
 		}
 		else
-			System.out.println("Ez dauka libururik maileguan.");
+			System.out.println("---> Ez dauka libururik maileguan.");
 		
 	}
 

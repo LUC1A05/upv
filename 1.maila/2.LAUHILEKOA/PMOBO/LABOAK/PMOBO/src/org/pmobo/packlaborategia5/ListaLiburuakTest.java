@@ -40,20 +40,28 @@ public class ListaLiburuakTest extends TestCase
 	@Test
 	public void testGehituEtaKenduLiburua()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		lista1.gehituLiburua(l1);
+		assertTrue(lista1.badago(l1));
+		lista1.kenduLiburua(l1);
+		assertFalse(lista1.badago(l2));
 	}
 
 	@Test
 	public void testIdBerdinekoLibururikBaAlDa()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		l3=new Liburua("El hobbit", "JRR Tolkien",1);
+		assertFalse(lista1.idBerdinekoLibururikBaAlDa(l3));
+		lista1.gehituLiburua(l1);
+		assertTrue(lista1.idBerdinekoLibururikBaAlDa(l3));
 	}
 
 
 	@Test
 	public void testBadago()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		assertFalse(lista1.badago(l1));
+		lista1.gehituLiburua(l1);
+		assertTrue(lista1.badago(l1));
 	}
 
 	@Test
@@ -75,8 +83,6 @@ public class ListaLiburuakTest extends TestCase
 		System.out.println("\nEta zure programak honela pantailaratzen du:\n");
 		lista1.inprimatu();
 		System.out.println("\n===============================================================");
-
-		fail("Begiratu sistemako kontsolan agertzen diren mezuak, eta dena ondo joan bada, ezabatu edo komentatu fail hau.");
 
 	}
 	

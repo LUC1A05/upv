@@ -19,4 +19,8 @@ public class Abestia {
 	{
 		return this.iraupena;
 	}
+	public String getTitulua()
+	{
+		return this.titulua;
+	}
 }

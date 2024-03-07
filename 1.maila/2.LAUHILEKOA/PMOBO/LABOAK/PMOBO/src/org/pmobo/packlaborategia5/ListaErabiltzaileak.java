@@ -7,7 +7,7 @@ public class ListaErabiltzaileak
 {
 	// atributuak
 	private ArrayList<Erabiltzailea>lista;
-	private static ListaErabiltzaileak nireListaErabiltzaileak;
+	private static ListaErabiltzaileak nireListaErabiltzaileak = null;
 	
 	// eraikitzailea
 	
@@ -56,7 +56,17 @@ public class ListaErabiltzaileak
    	
    	public boolean badagoIdBerdinekoErabiltzailerik(Erabiltzailea pErabiltzailea)
    	{
-   		return this.lista.contains(pErabiltzailea);
+   		Iterator<Erabiltzailea>itr=getIteradorea();
+   		boolean badago = false;
+   		while(itr.hasNext()&&badago == false)
+   		{
+   			Erabiltzailea er = itr.next();
+   			if(er.idBerdinaDute(pErabiltzailea))
+   			{
+   				badago = true;
+   			}
+   		}
+   		return badago;
    	}
    	
    	public void erabiltzaileariAltaEman(Erabiltzailea pErabiltzailea)

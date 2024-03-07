@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 
 public class LiburuaTest extends TestCase
 {
-	Liburua l1;
+	Liburua l1,l2;
 
 	@Before
 	public void setUp()
@@ -25,13 +25,18 @@ public class LiburuaTest extends TestCase
 	@Test
 	public void testIdHauDu()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		assertTrue(l1.idHauDu(4));
+		assertFalse(l1.idHauDu(2));
+
 	}
 
 	@Test
 	public void testIdBerdinaDute()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		l2=new Liburua("Tierra", "Eloy Moreno",4);
+		assertTrue(l1.idBerdinaDute(l2));
+		l2=new Liburua("Tierra", "Eloy Moreno",2);
+		assertFalse(l1.idBerdinaDute(l2));
 	}
 
 	@Test
@@ -46,8 +51,6 @@ public class LiburuaTest extends TestCase
 		System.out.println("\nEta zure programak honela pantailaratzen du:\n");
 		l1.inprimatu();
 		System.out.println("\n===============================================================");
-
-		fail("Begiratu sistemako kontsolan agertzen diren mezuak, eta dena ondo joan bada, ezabatu edo komentatu fail hau.");
 	}
 
 }

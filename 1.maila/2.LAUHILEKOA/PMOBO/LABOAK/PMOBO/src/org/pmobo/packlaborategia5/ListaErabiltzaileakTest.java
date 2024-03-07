@@ -41,37 +41,63 @@ public class ListaErabiltzaileakTest extends TestCase
 	@Test
 	public void testGetListaErabiltzaileak()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		ListaErabiltzaileak le = ListaErabiltzaileak.getListaErabiltzaileak();
 	}
 
 	@Test
 	public void testBilatuErabiltzaileaIdz()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		ListaErabiltzaileak le = ListaErabiltzaileak.getListaErabiltzaileak();
+		assertEquals(le.bilatuErabiltzaileaIdz(1), null);
+		le.erabiltzaileariAltaEman(e1);
+		assertEquals(le.bilatuErabiltzaileaIdz(1), e1);
 	}
 
 	@Test
 	public void testBadagoIdBerdinekoErabiltzailerik()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		ListaErabiltzaileak le = ListaErabiltzaileak.getListaErabiltzaileak();
+		assertFalse(le.badagoIdBerdinekoErabiltzailerik(e1));
+		le.erabiltzaileariAltaEman(e1);
+		e2=new Erabiltzailea("Kepa Sarasola", 1);
+		assertTrue(le.badagoIdBerdinekoErabiltzailerik(e2));
+		
+		//fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
 	}
 
 	@Test
 	public void testErabiltzaileariAltaEmanEtaBajaEmanEtaErreseteatu()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		ListaErabiltzaileak le = ListaErabiltzaileak.getListaErabiltzaileak();
+		le.erabiltzaileariAltaEman(e1);
+		assertTrue(le.badagoIdBerdinekoErabiltzailerik(e1));
+		le.erabiltzaileaBajaEman(1);
+		assertFalse(le.badagoIdBerdinekoErabiltzailerik(e1));
+		le.erreseteatu();
+		//fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
 	}
 
 	@Test
 	public void testErabiltzaileariAltaEmanEtaBajaEmanEtaBadagoIdBerdinekoErabiltzailerik()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		ListaErabiltzaileak le = ListaErabiltzaileak.getListaErabiltzaileak();
+		le.erabiltzaileariAltaEman(e1);
+		assertTrue(le.badagoIdBerdinekoErabiltzailerik(e1));
+		e2=new Erabiltzailea("Kepa Sarasola", 1);
+		assertTrue(le.badagoIdBerdinekoErabiltzailerik(e2));
+		le.erabiltzaileaBajaEman(1);
+		assertFalse(le.badagoIdBerdinekoErabiltzailerik(e1));
+		
+		//fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
 	}
 
 	@Test
 	public void testNorkDaukaMaileguan()
 	{
-		fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		//fail("Proba-kasuak falta dira. Ezabatu edo komentatu fail hau behin eginda");
+		e1.gehituLiburua(l1);
+		ListaErabiltzaileak.getListaErabiltzaileak().erabiltzaileariAltaEman(e1);
+		assertEquals(ListaErabiltzaileak.getListaErabiltzaileak().norkDaukaMaileguan(l1), e1);
 	}
 
 	@Test		
@@ -112,7 +138,6 @@ public class ListaErabiltzaileakTest extends TestCase
 		ListaErabiltzaileak.getListaErabiltzaileak().erabiltzaileaBajaEman(3);
 		assertEquals(0,ListaErabiltzaileak.getListaErabiltzaileak().erabiltzaileKopurua());	
 
-		fail("Begiratu sistemako kontsolan agertzen diren mezuak, eta dena ondo joan bada, ezabatu edo komentatu fail hau.");
 	}
 
 }

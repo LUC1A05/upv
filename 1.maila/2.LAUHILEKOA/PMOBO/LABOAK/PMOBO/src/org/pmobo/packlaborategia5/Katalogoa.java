@@ -32,22 +32,47 @@ public class Katalogoa
  	 	return this.lista.bilatuLiburuaIdz(pIdLiburua);
  	}
  	
+// 	public void mailegatuLiburua(int pIdLiburua, int pIdErabiltzailea)
+//	{
+//		if(this.lista.bilatuLiburuaIdz(pIdLiburua) != null)
+//		{
+//			if (ListaErabiltzaileak.getListaErabiltzaileak().norkDaukaMaileguan(this.lista.bilatuLiburuaIdz(pIdLiburua)) == null)
+//			{
+//				if (!ListaErabiltzaileak.getListaErabiltzaileak().bilatuErabiltzaileaIdz(pIdErabiltzailea).mailegatzekoMaximoaGainditua())
+//				{
+//					ListaErabiltzaileak.getListaErabiltzaileak().bilatuErabiltzaileaIdz(pIdErabiltzailea).gehituLiburua(this.lista.bilatuLiburuaIdz(pIdLiburua));
+//				}
+//				else
+//					System.out.println("Ezin da liburua mailegatu Erabiltzaileak mailegatzeko maximoa gainditzen baitu.");
+//			}
+//			else
+//				System.out.println("Ezin da liburua mailegatu jadanik erabiltzaile batek mailegatuta duelako.");
+//		}
+//		else
+//			System.out.println("Ezin da liburua mailegatu katalogoan ez dagoelako.");
+//	}
+
+ 	
  	public void mailegatuLiburua(int pIdLiburua, int pIdErabiltzailea)
 	{
-		if(this.lista.bilatuLiburuaIdz(pIdLiburua) != null)
-		{
-			if (ListaErabiltzaileak.getListaErabiltzaileak().norkDaukaMaileguan(this.lista.bilatuLiburuaIdz(pIdLiburua)) == null)
-			{
-				if (!ListaErabiltzaileak.getListaErabiltzaileak().bilatuErabiltzaileaIdz(pIdErabiltzailea).mailegatzekoMaximoaGainditua())
-					ListaErabiltzaileak.getListaErabiltzaileak().bilatuErabiltzaileaIdz(pIdErabiltzailea).gehituLiburua(this.lista.bilatuLiburuaIdz(pIdLiburua));
-				else
-					System.out.println("Ezin da liburua mailegatu Erabiltzaileak mailegatzeko maximoa gainditzen baitu.");
-			}
-			else
-				System.out.println("Ezin da liburua mailegatu jadanik erabiltzaile batek mailegatuta duelako.");
-		}
-		else
+ 		//Guard clause
+		Liburua liburua = this.lista.bilatuLiburuaIdz(pIdLiburua);
+		Erabiltzailea erabiltzailea = ListaErabiltzaileak.getListaErabiltzaileak().bilatuErabiltzaileaIdz(pIdErabiltzailea);
+		if(liburua == null) {
 			System.out.println("Ezin da liburua mailegatu katalogoan ez dagoelako.");
+			return;
+		}
+		if (ListaErabiltzaileak.getListaErabiltzaileak().norkDaukaMaileguan(liburua) != null)
+		{
+			System.out.println("Ezin da liburua mailegatu jadanik erabiltzaile batek mailegatuta duelako.");
+			return;
+		}
+		if (erabiltzailea.mailegatzekoMaximoaGainditua())
+		{
+			System.out.println("Ezin da liburua mailegatu Erabiltzaileak mailegatzeko maximoa gainditzen baitu.");
+			return;
+		}
+		erabiltzailea.gehituLiburua(liburua);
 	}
 
  	public void itzuliLiburua(int pIdLiburua)
