@@ -1,0 +1,76 @@
+add b
+sui 07h
+;1.ariketa
+
+mvi a, 00h
+mvi h, 91h
+mvi l, 00h
+mvi b, 2
+add m
+sub b
+;2.ariketa
+
+adi 0Ch
+sub C
+;3.ariketa
+
+mvi a, 09h
+mvi h, 00h
+mvi l, 12h
+sub m
+adi 0Ah
+;4.ariketa
+
+mvi b, 01h
+dcr B
+mvi c, 01h
+inr c
+;5.ariketa
+
+mvi h, 00h
+mvi l, 12h
+inr m
+;6.ariketa
+
+dcr m
+;7.ariketa
+
+mvi a, 00h
+mvi b, 02h
+add b
+add m
+inr b
+;8.ariketa
+
+mvi a, 00h
+add b
+adi 09h
+inr c
+;9.ariketa
+
+mvi a, 10h
+sub c
+sub b
+inr c
+;10.ariketa
+
+mvi a, 0Ah
+sui 02h
+sub c
+dcr c
+;11.ariketa
+
+mvi a, 00h
+add m
+add c
+;12.ariketa
+
+sub m
+sub c
+;13.ariketa
+
+inx hl
+;14.ariketa
+
+dcx hl
+;15.ariketa
