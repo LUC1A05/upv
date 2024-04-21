@@ -5,14 +5,18 @@ public abstract class Kontzeptua
 	private double gordina;
 	private int orduKop;
 	
-	public Kontzeptua(double pGordina, int pOrduKop)
+	protected Kontzeptua(double pGordina, int pOrduKop)
 	{
 		this.gordina = pGordina;
 		this.orduKop = pOrduKop;
 	}
 	
-	public double getSoldata()
+	public double getSoldata(int antzinakotazuna, String erantzunkizuna, int sukuId)
 	{
+		double soldata = 0;
 		
+		soldata = this.gordina * this.orduKop;
+		
+		return soldata;
 	}
 }

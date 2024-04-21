@@ -27,11 +27,16 @@ public class LangileZerrenda
 		return this.lista.iterator();
 	}
 	
+	public void gehituLangilea(Langilea plan)
+	{
+		this.lista.add(plan);
+	}
 	public double diferentziaMaximoaLortu()
 	{
+		Langilea lMax = null, lMin = null;
 		double soldata = 0;
 		double soldataMax = 0;
-		double soldataMin = 0;
+		double soldataMin = 30000000;
 		
 		Iterator<Langilea>itr = this.getIteradorea();
 		
@@ -42,12 +47,16 @@ public class LangileZerrenda
 			if(soldata < soldataMin)
 			{
 				soldataMin = soldata;
+				lMin = lan;
 			}
 			if(soldata > soldataMax)
 			{
 				soldataMax = soldata;
+				lMax = lan;
 			}
 		}
+		
+		System.out.println("soldata maximoa " + lMax.getIzena()+ " lortu du, eta bere soldata hurrengoa da: "+ soldataMax+ "€" + "\nsoldata minimoa "+ lMin.getIzena() + " lortu du, eta bere soldata hurrengoa da: " + soldataMin+ "€"+ "\nDiferentzia maximoa hau da: " + (soldataMax-soldataMin)+ "€");
 		return (soldataMax - soldataMin);
 	}
 

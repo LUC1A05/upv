@@ -1,0 +1,21 @@
+in 1
+mov c, a
+in 2
+mov d, a
+mvi b, 00
+call sumarBCD
+mov a, b
+out 03
+jmp fin
+nop
+nop
+nop
+nop
+nop
+sumarBCD:
+mov a, c
+add d
+mov b, a
+ret
+fin:
+mov e, a

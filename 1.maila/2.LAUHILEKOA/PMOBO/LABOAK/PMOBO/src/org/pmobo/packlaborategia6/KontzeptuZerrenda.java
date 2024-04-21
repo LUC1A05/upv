@@ -13,12 +13,17 @@ public class KontzeptuZerrenda
 		this.lista = new ArrayList<Kontzeptua>();
 	}
 	
+	public void gehituKontzeptua(Kontzeptua kon)
+	{
+		this.lista.add(kon);
+	}
+	
 	private Iterator<Kontzeptua> getIteradorea()
 	{
 		return this.lista.iterator();
 	}
 	
-	public double getSoldata()
+	public double getSoldata(int antzinakotazuna, String erantzunkizuna, int sukuId)
 	{
 		double soldata = 0;
 		Iterator<Kontzeptua>itr = this.getIteradorea();
@@ -26,7 +31,7 @@ public class KontzeptuZerrenda
 		while(itr.hasNext())
 		{
 			Kontzeptua kon = itr.next();
-			soldata += kon.getSoldata();
+			soldata += kon.getSoldata(antzinakotazuna, erantzunkizuna, sukuId);
 		}
 		return soldata;
 	}

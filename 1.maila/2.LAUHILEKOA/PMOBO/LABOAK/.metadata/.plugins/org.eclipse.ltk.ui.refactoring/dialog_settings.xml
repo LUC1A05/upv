@@ -10,4 +10,8 @@
 		<item key="replaceOccurrences" value="true"/>
 		<item key="replaceOccurrencesInThisFile" value="false"/>
 	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item key="moveWizard.updateQualifiedNames" value="false"/>
+		<item key="patterns" value="*"/>
+	</section>
 </section>

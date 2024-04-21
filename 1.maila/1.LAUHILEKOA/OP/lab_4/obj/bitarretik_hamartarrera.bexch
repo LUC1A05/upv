@@ -1,17 +1,17 @@
 [GENERATED OBJECT FILE]
 b__bitarretik_hamartarrera.o
 [PROJECT FILES]
-C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\bitarretik_hamartarrera.gpr
-20231010181326
+C:\Users\lucia\OneDrive\Escritorio\upv\1.maila\1.LAUHILEKOA\OP\lab_4\bitarretik_hamartarrera.gpr
+20240209114938
 [BOUND OBJECT FILES]
-C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\bitarretik_hamartarrera.o
+C:\Users\lucia\OneDrive\Escritorio\upv\1.maila\1.LAUHILEKOA\OP\lab_4\obj\bitarretik_hamartarrera.o
 [GENERATED SOURCE FILES]
 b__bitarretik_hamartarrera.ads
 b__bitarretik_hamartarrera.adb
 b__bitarretik_hamartarrera.ali
 [RESULTING OPTIONS]
--LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\
--LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\
+-LC:\Users\lucia\OneDrive\Escritorio\upv\1.maila\1.LAUHILEKOA\OP\lab_4\obj\
+-LC:\Users\lucia\OneDrive\Escritorio\upv\1.maila\1.LAUHILEKOA\OP\lab_4\obj\
 -LC:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
 -static
 -static-libgcc

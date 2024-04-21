@@ -2,17 +2,17 @@ package org.pmobo.packlaborategia6;
 
 public class Librea extends Kontzeptua 
 {
-	private int orduKop;
-	private String des;
+	private String desk;
 	
-	public Librea(int pOrduKop, String pDes)
+	public Librea(double pGordina, int pOrduKop, String pDesk)
 	{
-		this.orduKop = pOrduKop;
-		this.des = pDes;
+		super(pGordina, pOrduKop);
+		this.desk = pDesk;
 	}
 	
-	public int getOrduak()
+	public double getSoldata(int antzinakotazuna, String erantzunkizuna, int sukuId)
 	{
-		return this.orduKop;
+		return super.getSoldata(antzinakotazuna, erantzunkizuna, sukuId);
+		
 	}
 }

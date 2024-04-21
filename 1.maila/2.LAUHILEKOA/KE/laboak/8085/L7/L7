@@ -1,0 +1,93 @@
+;1.ariketa
+mvi a, 1
+dcr a
+jz zero
+mov b,a
+jmp fin
+zero: 
+mov b, a
+fin:
+
+;konprobatzen du emaitza 0 edo ez zero bada eta jauzi egiten du.
+
+;2.ariketa
+mvi a, 1
+mvi b, 10
+mvi d, 7
+add b
+jc burukoa
+add d
+jmp fin
+burukoa:
+add d
+mov a, d
+fin:
+
+;3.ariketa
+mvi a, 2
+mvi b, 3
+mvi d, 1
+mvi c, 1
+sub b
+jp positiboa
+add d
+jmp fin
+
+positiboa:
+add c
+
+fin:
+
+;4.ariketa
+
+mvi h, 90
+mvi l, 00
+lxi 3
+
+jpo 
+
+;11.ariketa
+
+;12.ariketa
+
+;13.ariketa
+jmp salto1
+mvi a, 1
+salto1:
+mvi b, 1
+;kasu honetan b erregistroa 1 balioa lortuko du
+;baina a ez da aldatuko
+
+call salto1
+mvi a, 1
+jmp fin
+salto1:
+mvi b, 1
+ret
+fin:
+;kasu honetan bai a zein b 1 balioa lortuko dute
+
+;14.ariketa
+lda 9000 
+adi 00
+jp positiboa 
+mvi b,01  
+positiboa: 
+mvi d,01 
+;9000 helbideko datua a erregistroan gorde eta 
+;00 gehitzen dio flag-a pizteko, baina positiboa
+;bada d-ri bat gehitzen dio eta ez bada b-ri
+
+lda 9000
+adi 00
+cp positiboa
+mvi b, 1
+jmp fin
+positiboa:
+mvi d,01 
+ret
+fin:
+;9000 helbideko datua a erregistroan gorde eta 
+;00 gehitzen dio flag-a pizteko, positiboa bada
+;salto egiten du eta gero kodearekin jarraitzen
+;du.

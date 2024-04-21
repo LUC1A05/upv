@@ -1,0 +1,17 @@
+package org.pmobo.packlaborategia6;
+
+public abstract class Zergaduna extends Kontzeptua
+{
+	private double zerga = 0.5;
+	
+	public Zergaduna(double pGordina, int pOrduKop)
+	{
+		super(pGordina, pOrduKop);
+	}
+	
+	public double getSoldata(int antzinakotazuna, String erantzunkizuna, int sukuId)
+	{
+		return super.getSoldata(antzinakotazuna, erantzunkizuna, sukuId);
+		
+	}
+}

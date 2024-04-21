@@ -234,9 +234,9 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
-   --   C:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\bitarretik_hamartarrera.o
-   --   -LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\
-   --   -LC:\Users\lucia\OneDrive\Escritorio\Uni\OP\lab_4\obj\
+   --   C:\Users\lucia\OneDrive\Escritorio\upv\1.maila\1.LAUHILEKOA\OP\lab_4\obj\bitarretik_hamartarrera.o
+   --   -LC:\Users\lucia\OneDrive\Escritorio\upv\1.maila\1.LAUHILEKOA\OP\lab_4\obj\
+   --   -LC:\Users\lucia\OneDrive\Escritorio\upv\1.maila\1.LAUHILEKOA\OP\lab_4\obj\
    --   -LC:/gnat/2018/lib/gcc/x86_64-pc-mingw32/7.3.1/adalib/
    --   -static
    --   -lgnat

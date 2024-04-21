@@ -1,0 +1,114 @@
+;1.ariketa
+lxi h, 9000h
+lda 9000h
+cpi 07h
+jm txikiagoa
+hlt
+txikiagoa:
+lxi h, 9010h
+mov m, a
+
+;2.ariketa
+lxi h, 9000h
+lda 9000h
+cpi 07h
+jp handiagoaBerdina
+hlt
+handiagoaBerdina:
+lxi h, 9010h
+mvi m, 0Fh
+
+;3.ariketa
+lxi h, 9000h
+mvi a, 0h
+mvi c, 0Ah
+loop:
+add m
+inx h
+dcr c
+jnz loop
+lxi h 9100h
+mov m, a
+
+;4.ariketa
+mvi a, 01h
+mvi b, 05h
+dcr b
+jnz faktoriala
+hlt
+faktoriala:
+mov c, a
+call mul
+dcr b
+jnz faktoriala
+hlt
+mul:
+add b
+dcr c
+jnz mul
+ret
+
+;5.ariketa
+loop:
+lxi h, 9001h
+mov a, m
+cpi 03h
+jz zenbakiaDa
+jmp loop
+zenbakiaDa:
+mvi a, 01h
+out 03h
+
+;6.ariketa
+loop:
+lxi h, 9001h
+mov a, m
+cpi 01h
+jnz jarraitu
+call zerbitzua
+jmp loop
+jarraitu:
+jmp loop
+zerbitzua:
+push psw
+mvi a, 00h
+out 00
+ret
+
+;7.ariketa
+mvi c, 09h
+loop1:
+mov b, c
+lxi h, 9000h
+loop2:
+mov a, m
+inx h
+cmp m
+jc skip
+mov d, m
+mov m, a
+dcx h
+mov m, d
+inx h
+skip:
+dcr b
+jnz loop2
+
+dcr c
+jnz loop1
+
+;8.ariketa
+mvi c, 09h
+mvi d, 01h
+lxi h, 9000h
+mov a, m
+loop:
+inx h
+cmp m
+jc skip
+mov a, m
+mov b, d
+skip:
+inr d
+dcr c
+jnz loop

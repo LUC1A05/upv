@@ -1,0 +1,16 @@
+package org.pmobo.packlaborategia6;
+
+public abstract class Kontzeptua 
+{
+	private double gordina;
+	
+	public Kontzeptua(double pGordina)
+	{
+		this.gordina = pGordina;
+	}
+	
+	public double getSoldata()
+	{
+		
+	}
+}

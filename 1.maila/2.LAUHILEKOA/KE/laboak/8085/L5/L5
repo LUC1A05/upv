@@ -1,0 +1,57 @@
+;1.ariketa
+MVI A, 02h
+MVI B, 02h
+ANA B
+MOV B, A
+
+;2.ariketa
+MVI H, 90h
+MVI L, 01H
+ANA M ;HL erregistroetan dagoen helbidearen 
+      ;data and A erregistroaren data.
+
+;3.ariketa
+MVI A, 0FH
+ANI 80H
+
+;4.ariketa
+MVI C, 04H
+MVI A, 02H
+ORA C
+MOV C, A
+
+;5.ariketa
+MVI L, 0AH
+MVI M, A0H
+ORA M
+
+;6.ariketa
+MVI A, 01H
+ORI 22H
+
+;7.ariketa
+MVI D, 02H
+MVI A, 01H
+XRA D
+MOV D, A
+
+;8.ariketa
+MVI L, 00H
+MVI M, 04H
+XRA M
+
+;9.ariketa
+MVI A, FFH
+XRI FFH
+
+;10.ariketa
+MVI A, FFH
+MVI B, FFH
+CMP B
+
+;11.ariketa
+CMP M
+
+;12.ariketa
+MVI A, FFH
+CPI 0AH

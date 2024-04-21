@@ -1,0 +1,50 @@
+;1.ariketa
+mvi a, 88
+rrc
+mov b, a
+
+
+;2.ariketa
+mvi a, 11
+rlc
+
+;3.ariketa
+;a
+mvi a, 81
+ral
+ral
+; metagailuan 81h-ko balioa sartzen du 
+;eta bitan ezkerrera biratzen du carry-ren bidez.
+
+;b
+mvi a, 81
+ral
+rlc
+; Metagailuan 81h-ko balioa sartzen du eta ezkerrera
+;biratzen du carryren bidez eta berriz ezkerrera biratzen du.
+
+;4.ariketa
+;a
+mvi a, 81
+rlc
+rlc
+;Ezkerrera biratzen du bitan carry-rik gabe.
+
+;b
+mvi a, 81
+rlc
+ral
+; Ezkerrera biratzen du carry-rik gabe eta gero
+; carry-arekin.
+
+;5.ariketa
+mov a, b
+cma
+mov b, a
+
+;6.ariketa
+mvi c, 88
+mov a, c
+cma
+adi 1
+mov c, a
