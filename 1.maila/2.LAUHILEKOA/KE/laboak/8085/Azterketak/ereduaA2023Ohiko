@@ -1,0 +1,49 @@
+;2023 05 09
+;A eredua
+call inic
+
+loop:
+	in 01h
+	cpi 01h
+	jnz loop
+	in 02h
+	lxi h, 9000h
+	mvi b, 08h
+
+zenbakiaDaLoop:
+	cmp m
+	jz zuzenaDa
+	dcr B
+	inx h
+	jnz zenbakiaDaLoop
+	
+okerraDa:
+	mvi a, 02h
+	out 03h
+	jmp amaiera
+
+zuzenaDa:
+	mvi a, 01h
+	out 03h
+
+amaiera:
+	hlt
+
+inic:
+	lxi h, 9000h
+	mvi m, AEh
+	inx h
+	mvi m, C0h
+	inx h
+	mvi m, 67h
+	inx h
+	mvi m, BBh
+	inx h
+	mvi m, FCh
+	inx h
+	mvi m, DDh
+	inx h
+	mvi m, 56h
+	inx h
+	mvi m, A0h
+	ret

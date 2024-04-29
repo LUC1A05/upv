@@ -1,0 +1,67 @@
+package org.pmobo.packlaborategia8;
+
+public class ParteHartzaileZerrenda
+{
+	// atributuak
+
+	private ArrayList<Participante> zerrenda;
+
+	// eraikitzailea
+	
+	/**
+	 * ArrayLista Hasieratu
+	 */
+	public ParteHartzaileZerrenda() ...
+
+	
+	
+	/**
+	 * 
+	 * @return iteratzailea
+	 */
+	private Iterator<ParteHartzailea> getIterator() ...
+
+	
+	
+	/**
+	 * 
+	 * @return zerrendako parteHartzaile kopurua
+	 */
+	public int parteHartzaileKopurua() ...
+
+	
+	
+	/**
+	 * 
+	 * @param pId
+	 * @return pId duen ParteHartzailea bueltatauko du
+	 */
+	private boolean idaDuenParteHartzaileaDago(int pId) ...
+
+	
+
+	/**
+	 * 
+	 * @param pIzena
+	 * @param pId
+	 * @param pAdina
+	 * @exception IdaExistitzenDaException jaurtiko du pId iada baldin badago 
+	 *            Ez du AdinTxikikoaException tratatuko
+	 *            Dena ondo badoa pIzena, pId, eta pAdina duen ParteHartzailea gehituko da
+	 *                    
+	 */
+	public void addParteHartzailea(String pIzena, int pId, int pAdina) ...
+	
+	
+
+	/**
+	 * 
+	 * @param pId
+	 * @return id-a duen ParteHartzailea bueltatuko du
+	 * @exception EzAurkituaException jaurtiko du ez badago
+	 */
+	public ParteHartzailea parteHartzaileaIdzBilatu(int pId) ...
+		
+	
+}
+

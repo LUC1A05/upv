@@ -1,0 +1,25 @@
+; 2022 06 30
+;A eredua
+lxi h, 9000h
+lxi d, 9100h
+mvi b, 03h
+
+loopZuzenaDa:
+	in 00h
+	cmp m
+	jz zuzenaDa
+	dcr b
+	jnz loopZuzenaDa
+
+retencion:
+	mvi a, 01h
+	out 02h
+	jmp amaiera
+
+zuzenaDa:
+	xchg
+	mov a, m
+	out 01h
+
+amaiera:
+	hlt

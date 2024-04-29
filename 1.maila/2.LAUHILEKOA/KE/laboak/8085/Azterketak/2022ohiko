@@ -1,0 +1,45 @@
+;2022 05 10
+;A eredua
+lxi h, 9000h
+lxi d, 9100h
+mov b, m
+
+loop:
+	inx h
+	mov a, m
+	ani 1
+	jnz jarraitu
+	mov a, m
+	xchg
+	mov m, a
+	inx h
+	xchg
+
+jarraitu:
+	dcr b
+	jnz loop
+
+amaitu:
+	hlt
+
+;B eredua
+lxi h, 9100h
+lxi d, 9300h
+mov b, m
+
+loop:
+	inx h
+	mov a, m
+	ani 1
+	jz jarraitu
+	mov a, m
+	xchg
+	mov m, a
+	inx h
+	xchg
+
+jarraitu:
+	dcr b
+	jnz loop
+
+hlt

@@ -1,0 +1,34 @@
+;2021 06 25
+lxi h, 9000h
+lxi d, 9100h
+mvi b, 0Dh
+mvi c, 00h
+
+loop:
+	mov a, m
+	ani 01h
+	jnz bakoitiaDa
+	mov a, m
+	xchg
+	mov m, a
+	inx h
+	xchg
+	inx h
+	dcr b
+	jnz loop
+	jmp amaiera
+
+bakoitiaDa:
+	mov a, m
+	dcr a
+	inr c
+	xchg
+	mov m, a
+	inx h
+	xchg
+	inx h
+	dcr b
+	jnz loop
+
+amaiera:
+	hlt
