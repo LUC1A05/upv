@@ -1,0 +1,97 @@
+A51 MACRO ASSEMBLER  LABO1                                                                09/18/2024 22:42:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V6.14
+OBJECT MODULE PLACED IN .\LABO1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE .\LABO1.a SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0x00
+0000 01BD              2             ajmp ari4
+                       3     
+007B                   4     org 0x7B
+007B                   5     ari1:
+                       6                             ;1.a
+007B 7410              7             mov a, #0x10
+                       8                             ;1.b
+007D F560              9             mov 0x60, a
+                      10                             ;1.c
+007F 8560F0           11             mov b, 0x60
+                      12     
+0082                  13     ari2:
+                      14                             ;2.a
+0082 7880             15             mov     r0, #0x80       ;R0-n helbidea kargatu
+0084 7981             16             mov     r1, #0x81       ;R1-en helbidea kargatu
+0086 760F             17             mov     @r0, #0x0f      ;0f balioa r0-n gorde den helbidean gorde
+0088 7711             18             mov     @r1, #0x11
+                      19                             ;2.b
+008A E6               20             mov     a, @r0          ;a-n r0-n dagoen helbidearen balioa gorde
+008B 27               21             add     a, @r1          ;a-ri r1-en dagoen helbidearen balioa gehitu
+008C F57F             22             mov     0x7f, a         ;a-ren balioa 7fh-n gorde
+                      23                             ;2.c
+008E 78FF             24             mov     r0, #0xff
+0090 A67F             25             mov     @r0, 0x7f
+                      26             
+0092                  27     ari3:
+                      28                             ;3.a
+0092 D200             29             setb    0x20.0          ;20h helbideko 0.bita 1ean jarri
+0094 D207             30             setb    0x20.7
+                      31                             ;3.b
+0096 C200             32             clr     0x20.0          ;20h helbideko 0.bita erreseteatu
+0098 C207             33             clr     0x20.7
+                      34                             ;3.c
+009A 759000           35             mov     p1, #0x00
+009D E590             36             mov     a, p1
+009F 7590FF           37             mov     p1, #0xff
+00A2 539000           38             anl     p1, #0x00
+00A5 D297             39             setb    p1.7
+                      40                             ;3.d
+                      41             ;1.erregistro bankua autatzeko rs0 = 1 eta rs1 = 0
+00A7 D2D0             42             setb    psw.0           ;rs0 = 1
+00A9 C2D1             43             clr     psw.1           ;rs1 = 0 01b = 1d
+00AB 780B             44             mov     r0, #0x0b
+                      45     
+                      46             ;2.erregistro bankua rs0 = 0 eta rs1 = 1
+00AD D2D1             47             setb    psw.1           ;rs1 = 1
+00AF C2D0             48             clr     psw.0           ;rs2 = 0 10b = 2d
+00B1 7A04             49             mov     r2, #0x04
+                      50     
+00B3 D2D0             51             setb    psw.0
+00B5 C2D1             52             clr     psw.1
+00B7 E8               53             mov     a, r0
+00B8 D2D1             54             setb    psw.1
+00BA C2D0             55             clr     psw.0
+00BC 2A               56             add     a, r2
+                      57     
+00BD                  58     ari4:
+A51 MACRO ASSEMBLER  LABO1                                                                09/18/2024 22:42:20 PAGE     2
+
+00BD 7530F0           59             mov     0x30, #0xf0
+00C0 E530             60             mov     a, 0x30
+00C2 F4               61             cpl     a
+00C3 F531             62             mov     0x31, a
+                      63             
+                      64     end
+                             
+A51 MACRO ASSEMBLER  LABO1                                                                09/18/2024 22:42:20 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ARI1 . . . . . . .  C ADDR   007BH   A   
+ARI2 . . . . . . .  C ADDR   0082H   A   
+ARI3 . . . . . . .  C ADDR   0092H   A   
+ARI4 . . . . . . .  C ADDR   00BDH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

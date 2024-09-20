@@ -1,0 +1,64 @@
+org 0x00
+	ajmp ari4
+
+org 0x7B
+ari1:
+			;1.a
+	mov a, #0x10
+			;1.b
+	mov 0x60, a
+			;1.c
+	mov b, 0x60
+
+ari2:
+			;2.a
+	mov	r0, #0x80	;R0-n helbidea kargatu
+	mov	r1, #0x81	;R1-en helbidea kargatu
+	mov	@r0, #0x0f	;0f balioa r0-n gorde den helbidean gorde
+	mov	@r1, #0x11
+			;2.b
+	mov	a, @r0		;a-n r0-n dagoen helbidearen balioa gorde
+	add	a, @r1		;a-ri r1-en dagoen helbidearen balioa gehitu
+	mov	0x7f, a		;a-ren balioa 7fh-n gorde
+			;2.c
+	mov	r0, #0xff
+	mov	@r0, 0x7f
+	
+ari3:
+			;3.a
+	setb	0x20.0		;20h helbideko 0.bita 1ean jarri
+	setb	0x20.7
+			;3.b
+	clr	0x20.0		;20h helbideko 0.bita erreseteatu
+	clr	0x20.7
+			;3.c
+	mov	p1, #0x00
+	mov	a, p1
+	mov	p1, #0xff
+	anl	p1, #0x00
+	setb	p1.7
+			;3.d
+	;1.erregistro bankua autatzeko rs0 = 1 eta rs1 = 0
+	setb	psw.0		;rs0 = 1
+	clr	psw.1		;rs1 = 0 01b = 1d
+	mov	r0, #0x0b
+
+	;2.erregistro bankua rs0 = 0 eta rs1 = 1
+	setb	psw.1		;rs1 = 1
+	clr	psw.0		;rs2 = 0 10b = 2d
+	mov	r2, #0x04
+
+	setb	psw.0
+	clr	psw.1
+	mov	a, r0
+	setb	psw.1
+	clr	psw.0
+	add	a, r2
+
+ari4:
+	mov	a, 0x30
+	cpl	a		;a-ren osagarria kalkulatzeko agindua (a.x jarriz gero soilik x-ren osagarria egingo da)
+	mov	0x31, a
+	
+end
+

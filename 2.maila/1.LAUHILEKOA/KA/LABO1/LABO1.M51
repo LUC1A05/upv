@@ -1,0 +1,86 @@
+BL51 BANKED LINKER/LOCATER V4.14                                                        09/18/2024  22:42:20  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V4.14, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE LABO1.obj TO LABO1 RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  LABO1.obj (LABO1)
+
+
+LINK MAP OF MODULE:  LABO1 (LABO1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     00C5H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  LABO1 (LABO1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LABO1
+  C:007BH         SYMBOL        ARI1
+  C:0082H         SYMBOL        ARI2
+  C:0092H         SYMBOL        ARI3
+  C:00BDH         SYMBOL        ARI4
+  D:00F0H         SYMBOL        B
+  D:0090H         SYMBOL        P1
+  D:00D0H         SYMBOL        PSW
+  C:0000H         LINE#         2
+  C:007BH         LINE#         7
+  C:007DH         LINE#         9
+  C:007FH         LINE#         11
+  C:0082H         LINE#         15
+  C:0084H         LINE#         16
+  C:0086H         LINE#         17
+  C:0088H         LINE#         18
+  C:008AH         LINE#         20
+  C:008BH         LINE#         21
+  C:008CH         LINE#         22
+  C:008EH         LINE#         24
+  C:0090H         LINE#         25
+  C:0092H         LINE#         29
+  C:0094H         LINE#         30
+  C:0096H         LINE#         32
+  C:0098H         LINE#         33
+  C:009AH         LINE#         35
+  C:009DH         LINE#         36
+  C:009FH         LINE#         37
+  C:00A2H         LINE#         38
+  C:00A5H         LINE#         39
+  C:00A7H         LINE#         42
+BL51 BANKED LINKER/LOCATER V4.14                                                      09/18/2024  22:42:20  PAGE 2
+
+
+  C:00A9H         LINE#         43
+  C:00ABH         LINE#         44
+  C:00ADH         LINE#         47
+  C:00AFH         LINE#         48
+  C:00B1H         LINE#         49
+  C:00B3H         LINE#         51
+  C:00B5H         LINE#         52
+  C:00B7H         LINE#         53
+  C:00B8H         LINE#         54
+  C:00BAH         LINE#         55
+  C:00BCH         LINE#         56
+  C:00BDH         LINE#         59
+  C:00C0H         LINE#         60
+  C:00C2H         LINE#         61
+  C:00C3H         LINE#         62
+  -------         ENDMOD        LABO1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004EH BYTE ( 3%) *
+******************************************************************************
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
