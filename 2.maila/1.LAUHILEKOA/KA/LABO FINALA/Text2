@@ -1,0 +1,35 @@
+;ATAKA 0
+SEM_VERDE	EQU	P0.0
+SEM_ROJO	EQU	P0.1
+S_PLAT		EQU	P0.2
+FICHA_TIPO	EQU	P0.3	;1 denean fitxa dago, 0 denean ez
+S_FICHA 	EQU	P0.4
+P_START	EQU	P0.5
+AL_START 	EQU	P0.6
+BPOS_START	EQU	P0.7
+
+;ATAKA 1
+BMOV_FRONT	EQU	P1.0 	;garbiketa zubia aurrerantz mugitu
+BMOV_BACK	EQU	P1.1 	;garbiketa zubia atzerantz mugitu
+FC_RH_TOP	EQU	P1.2	;arrabol horizontalaren karrera amaierako sentsorea bere goiko aldean
+RH_UPTO	EQU	P1.3	;arrabola horizontala gorantz mugitu
+RH_DOWNTO	EQU	P1.4	;arrabol horizontala beherantz mugitu
+FC_RV_BORDE	EQU	P1.5	;arrabol bertikalen karrera amaierako sentsorea kanpoko posizioan
+RV_OUTTO	EQU	P1.6	;arrabol bertikalak kanporantz mugitu
+RH_INTO	EQU	P1.7	;arrabol bertikalak barrurantz mugitu
+
+;ATAKA 2
+EV_AGUA	EQU	P2.0	;aktibatu makinako ur ponpa
+EV_JABON	EQU	P2.1	;xaboidun ur ponpa aktibatu
+S_CAR		EQU	P2.2	;ibilgailluaren sentsorea garbiketa zubiaren ardatzean
+FC_RV_CENTRO	EQU	P2.3	;arrabol bertikalen karrera amaierako sentsorea erdiko/barruko posizioan
+LED_LNOR	EQU	P2.4	;goiko mailan piztuta, sartutako fitxa garbiketa "normala" motakoa denean
+LED_LINT	EQU	P2.5	;gaiko mailan piztuta, sartutako fitxa garbiketa "bizia" motakoa denean
+
+;PWM ATAKAK
+ARRA_ABIAD	EQU	PWM0	;arrabolen biraketa-abiadura, garbiketa normalean %50 eta bizian %100
+LEHOR_ABIAD	EQU	PWM1	;lehortzeko haizagailuen biraketa-abiadura, garbiketa normalean %50 eta bizian %100
+
+;A/D ATAKA
+SPOS_RH	EQU	P5.0	;distantzia-sentsorea. Ibilgailuaren kanpoaldeak arrabol horizontalaren biraketa-ardatzarekiko
+SPOS_RV	EQU	P5.1	;distantzia-sentsorea. Ibilgailuaren kanpoaldeak arrabol bertikalen biraketa-ardatzarekiko

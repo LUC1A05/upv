@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V4.14                                                        09/18/2024  22:42:20  PAGE 1
+BL51 BANKED LINKER/LOCATER V4.14                                                        09/30/2024  11:04:57  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V4.14, INVOKED BY:
@@ -19,7 +19,7 @@ LINK MAP OF MODULE:  LABO1 (LABO1)
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
-            CODE    0000H     00C5H     ABSOLUTE     
+            CODE    0000H     00C2H     ABSOLUTE     
 
 
 
@@ -59,7 +59,7 @@ SYMBOL TABLE OF MODULE:  LABO1 (LABO1)
   C:00A2H         LINE#         38
   C:00A5H         LINE#         39
   C:00A7H         LINE#         42
-BL51 BANKED LINKER/LOCATER V4.14                                                      09/18/2024  22:42:20  PAGE 2
+BL51 BANKED LINKER/LOCATER V4.14                                                      09/30/2024  11:04:57  PAGE 2
 
 
   C:00A9H         LINE#         43
@@ -74,13 +74,12 @@ SYMBOL TABLE OF MODULE:  LABO1 (LABO1)
   C:00BAH         LINE#         55
   C:00BCH         LINE#         56
   C:00BDH         LINE#         59
-  C:00C0H         LINE#         60
-  C:00C2H         LINE#         61
-  C:00C3H         LINE#         62
+  C:00BFH         LINE#         60
+  C:00C0H         LINE#         61
   -------         ENDMOD        LABO1
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004EH BYTE ( 3%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004BH BYTE ( 3%) *
 ******************************************************************************
 
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

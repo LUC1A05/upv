@@ -1,0 +1,1549 @@
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V6.14
+OBJECT MODULE PLACED IN .\autoa.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE .\autoa.a SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  REG                  1     EGOERA                  EQU     R7
+  REG                  2     GERTAERA                EQU     R6      
+  REG                  3     ARRAB_ABIADURA          EQU     R5              ;Bi arrabol-jokoen biraketa-abiadura kontro
+                             latzeko kanala (h eta b)
+  REG                  4     HAIZE_ABIADURA          EQU     R4              ;Lehortzeko haizagailuen biraketa-abiadura 
+                             kontrolatzeko kanala
+                       5     ;ATAKA 0
+  0080                 6     SEM_VERDE               EQU     P0.0            ;Semaforoa berdean dago
+  0081                 7     SEM_ROJO                EQU     P0.1            ;Semaforoa gorrian dago
+  0082                 8     S_PLAT                  EQU     P0.2            ;Kotxearen gurpila plataformaren gainean da
+                             go
+  0083                 9     FICHA_TIPO              EQU     P0.3            ;1 denean garbiketa bizia/intensiboa, 0 nor
+                             mala
+  0084                10     S_FICHA                         EQU     P0.4            ;Fitxa makinan sartu da 
+  0085                11     P_START                 EQU     P0.5            ;Hasiera pultsadorea
+  0086                12     AL_START                EQU     P0.6            ;Alarma piztu da 
+  0087                13     BPOS_START              EQU     P0.7            ;Garbiketa-zubiaren amaiera/atseden/hasiera
+                             ko posizioan dago
+                      14     ;ATAKA 1
+  0090                15     BMOV_FRONT              EQU     P1.0            ;Garbiketa-zubia aurrerantz mugitu makinare
+                             n noranzkoan
+  0091                16     BMOV_BACK               EQU     P1.1            ;Garbiketa-zubia atzerantz mugitu makinaren
+                              noranzkoan
+  0092                17     FC_RH_TOP               EQU     P1.2            ;Arrabol horizontala goi mugara heldu da 
+  0093                18     RH_UPTO                 EQU     P1.3            ;Arrabol horizontala gorantz mugitu
+  0094                19     RH_DOWNTO               EQU     P1.4            ;Arrabol horizontala beherantz mugitu
+  0095                20     FC_RV_BORDE             EQU     P1.5            ;Arrabol bertikalak aldeetako mugara heldu 
+                             dira
+  0096                21     RV_OUTTO                EQU     P1.6            ;Arrabol bertikalak kanporantz mugitu
+  0097                22     RV_INTO                 EQU     P1.7            ;Arrabol bertikalak barrurantz mugitu
+                      23     ;ATAKA 2
+  00A0                24     EV_AGUA                 EQU     P2.0            ;Aktibatu makinako ur-ponpa
+  00A1                25     EV_JABON                EQU     P2.1            ;Xaboidun ur ponpa aktibatu
+  00A2                26     S_CAR                   EQU     P2.2            ;Ibilgailluaren sentsorea garbiketa zubiare
+                             n ardatzean
+  00A3                27     FC_RV_CENTRO            EQU     P2.3            ;Arrabol bertikalen karrera amaierako sents
+                             orea erdian/barruan
+  00A4                28     LED_LNOR                EQU     P2.4            ;Sartutako fitxa garbiketa "normala" motako
+                             a denean
+  00A5                29     LED_LINT                EQU     P2.5            ;Sartutako fitxa garbiketa "bizia" motakoa 
+                             denean
+                      30     ;TIMERRERAKO KONTADOREAK
+  0020                31     KONT_50ms               EQU     0x20
+  0021                32     KONT_1s                 EQU     0x21
+  0027                33     KONT_100ms              EQU     0x27
+  0010                34     TICK_1s                 EQU     0x22.0
+  0011                35     TICK_4s                 EQU     0x22.1
+  0012                36     TICK_30s                        EQU     0x22.2
+  0013                37     TICK_100ms              EQU     0x22.3  
+                      38     ;A/D ATAKA
+  0014                39     TICK_ADC0               EQU     0x22.4          ;Distantzia sentsorea arrabol horizontalen 
+                             biraketa-ardatzarekiko
+  0015                40     TICK_ADC1               EQU     0x22.5          ;Distantzia sentsorea arrabol bertikalen bi
+                             raketa-ardatzarekiko
+                      41     ;BESTE ETIKETAK
+  0016                42     EZ_LEHEN_ALDIA          EQU     0x22.6          ;30s lehenengo aldiz pasatu diren esango di
+                             gu. 
+  0017                43     EGINDA                  EQU     0x22.7          ;
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     2
+
+  0018                44     HOR_KOKATUTA            EQU     0x23.0
+  0019                45     BERT_KOKATUTA           EQU     0x23.1
+  001A                46     HANDIAGOAH              EQU     0x23.2
+  001B                47     HANDIAGOAB              EQU     0x23.3
+  001C                48     LEHENAH         EQU     0x23.4
+  001D                49     LEHENAB         EQU     0x23.5
+  0024                50     ORAIN                   EQU     0x24
+  0025                51     LEHEN                   EQU     0x25
+  0026                52     ERTZA                   EQU     0x26
+                      53     ;LIB
+  00C6                54     ADCH                    EQU     0xC6
+  00C5                55     ADCON                   EQU     0xC5
+  00FE                56     PWMP                    EQU     0xFE
+  00FC                57     PWM0                    EQU     0xFC
+  00FD                58     PWM1                    EQU     0xFD
+  00A8                59     IEN0                    EQU     0xA8
+                      60     
+0000                  61     ORG 0x00
+0000 017B             62             AJMP    HASIERA
+                      63     
+                      64     ;*********************************ETENAK*************************
+                      65     ;TIMER
+000B                  66     ORG 0x0B
+000B C0E0             67             PUSH    ACC                     ;ACC erregistroaren edukia gordetzen da 
+000D C0D0             68             PUSH    PSW                     ;PSW erregistroaren edukia gordetzen da
+000F B1AD             69             ACALL   TIMER_AZPI
+0011 D0D0             70             POP     PSW                     ;PSW erregistroaren egoera leheneratzen da
+0013 D0E0             71             POP     ACC                     ;ACC erregistroaren egoera leheneratzen da
+0015 32               72             RETI                            ;reti etenentzako bakarrik (Return from Interruptio
+                             n)
+                      73     ;ADC
+0053                  74     ORG 0x53 
+0053 C0E0             75             PUSH    ACC
+0055 C0D0             76             PUSH    PSW
+0057 B16D             77             ACALL   ADC_AZPI
+0059 D0D0             78             POP     PSW
+005B D0E0             79             POP     ACC
+005D 32               80             RETI
+                      81     
+                      82     ;*********************************PROGRAMA NAGUSIA*************************
+007B                  83     ORG 0x7B
+007B                  84     HASIERA:
+007B 1181             85             ACALL   HASIERAKETAK
+007D                  86     LOOP:
+007D 11E3             87             ACALL   EGOERA_MAKINA
+007F 017D             88             AJMP    LOOP
+                      89     
+                      90     ;**********************************HASIERAKETAK***************************
+0081                  91     HASIERAKETAK:
+0081 7F00             92             MOV     EGOERA, #0x00
+0083 7E00             93             MOV     GERTAERA, #0X00
+0085 752000           94             MOV     KONT_50ms, #0x00
+0088 752100           95             MOV     KONT_1s, #0x00
+008B C216             96             CLR     EZ_LEHEN_ALDIA
+008D C217             97             CLR     EGINDA
+008F C218             98             CLR     HOR_KOKATUTA
+0091 C219             99             CLR     BERT_KOKATUTA
+0093 C21A            100             CLR     HANDIAGOAH
+0095 C21B            101             CLR     HANDIAGOAB
+0097 C21C            102             CLR     LEHENAH
+0099 C21D            103             CLR     LEHENAB
+009B C210            104             CLR     TICK_1s
+009D C211            105             CLR     TICK_4s
+009F C212            106             CLR     TICK_30s
+00A1 C213            107             CLR     TICK_100ms
+00A3 C214            108             CLR     TICK_ADC0
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     3
+
+00A5 C215            109             CLR     TICK_ADC1
+                     110             ;0.ataka
+00A7 D287            111             SETB    BPOS_START
+00A9 C286            112             CLR     AL_START
+00AB D285            113             SETB    P_START
+00AD D284            114             SETB    S_FICHA
+00AF D283            115             SETB    FICHA_TIPO
+00B1 D282            116             SETB    S_PLAT
+00B3 C281            117             CLR     SEM_ROJO
+00B5 D280            118             SETB    SEM_VERDE
+                     119             ;1.ATAKA
+00B7 C290            120             CLR     BMOV_FRONT
+00B9 C291            121             CLR     BMOV_BACK
+00BB D292            122             SETB    FC_RH_TOP
+00BD C293            123             CLR     RH_UPTO
+00BF C294            124             CLR     RH_DOWNTO
+00C1 D295            125             SETB    FC_RV_BORDE
+00C3 C296            126             CLR     RV_OUTTO
+00C5 C297            127             CLR     RV_INTO
+                     128             ;2.ATAKA
+00C7 C2A0            129             CLR     EV_AGUA
+00C9 C2A1            130             CLR     EV_JABON
+00CB D2A2            131             SETB    S_CAR
+00CD D2A3            132             SETB    FC_RV_CENTRO
+00CF C2A4            133             CLR     LED_LNOR
+00D1 C2A5            134             CLR     LED_LINT
+                     135             ;TIMER0 16 BIT MODUA
+00D3 758901          136             MOV     TMOD, #0x01
+                     137             ;ITZALITA
+00D6 75FE18          138             MOV     PWMP, #0x18
+00D9 75FCFF          139             MOV     PWM0, #0xFF
+00DC 75FDFF          140             MOV     PWM1, #0xFF
+                     141             ;etenak emateko bahimena 0-an
+00DF 75A800          142             MOV     IEN0, #0x00
+                     143             ;ITZALI HURRENGO SEINALEAK ESKUZ:
+                     144             ;P0.5(P_START)
+                     145             ;P0.4
+                     146             ;P0.3
+                     147             ;P0.2(S_PLAT)
+                     148             ;P2.2(S_CAR)
+                     149             ;P2.3(FC_RV_CENTRO)
+00E2 22              150             RET
+                     151     
+                     152     ;********************************EGOERA_MAKINA**********************
+00E3                 153     EGOERA_MAKINA:
+00E3 EF              154             MOV     A, EGOERA               ;egoera akumuladorean gorde
+00E4 23              155             RL      A                       ;bider 2 egin, AJMP instrukzio bakoitzak 2 byte oku
+                             patzen dituelako
+00E5 9000E9          156             MOV     DPTR, #EGOERA_TAULA     ;egoera taularen memoria helbidea DPTR erregistroan
+                              gorde
+00E8 73              157             JMP     @ A+DPTR                ;egoera taularen helbideari dagokion egoeraren bali
+                             oa (bider 2) gehitu eta horra salto egin
+                     158     
+00E9                 159     EGOERA_TAULA:
+00E9 2105            160             AJMP EGOERA_0           ;       ITXOITEN
+00EB 2124            161             AJMP EGOERA_1           ;       FITXA ITXOITEN
+00ED 2179            162             AJMP EGOERA_2           ;       HASI ITXOITEN
+00EF 21C9            163             AJMP EGOERA_3           ;       XABOIA ITXOITEN
+00F1 21E6            164             AJMP EGOERA_4           ;       XABOIA 
+00F3 4105            165             AJMP EGOERA_5           ;       IGURKETA BERTIKALA ATZEALDEA
+00F5 4147            166             AJMP EGOERA_6           ;       ITXARON KOKATU
+00F7 4168            167             AJMP EGOERA_7           ;       ARRABOLAK KOKATU
+00F9 41F1            168             AJMP EGOERA_8           ;       IGURKETA AURRERANTZ
+00FB 811C            169             AJMP EGOERA_9           ;       IGURKETA BERTIKALA AURREALDEA
+00FD 8175            170             AJMP EGOERA_10          ;       XABOIA KENDU
+00FF 81BB            171             AJMP EGOERA_11          ;       LEHORTU
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     4
+
+0101 81ED            172             AJMP EGOERA_12          ;       BPOS ITXARON
+0103 A110            173             AJMP EGOERA_13          ;       KADENTZIA
+                     174     
+                     175     ;***********************************EGOERA_0 (ITXOITEN)******************************
+0105                 176     EGOERA_0:
+0105 3111            177             ACALL   GERT_SOR_0
+0107 EE              178             MOV     A,GERTAERA
+0108 23              179             RL      A
+0109 90010D          180             MOV     DPTR, #LISTA_GERT_0
+010C 73              181             JMP     @A+DPTR
+                     182     
+010D                 183     LISTA_GERT_0:
+010D 211A            184             AJMP    EM0_GER0                        ;ez dago kotxerik?  itxaron
+010F 211B            185             AJMP    EM0_GER1                        ;kotxea dago? egoera 1
+                     186     
+0111                 187     GERT_SOR_0:
+0111 208203          188             JB      S_PLAT, KOTXEA_DETEKTATUTA      ;kotxea plataforma gainean dago?
+0114 7E00            189             MOV     GERTAERA, #0x00                 ;Ez dago kotxerik? gertaera0
+0116 22              190             RET
+                     191     
+0117                 192     KOTXEA_DETEKTATUTA:
+0117 7E01            193             MOV     GERTAERA,#0X01                  ;Badago kotxea? geratera 1
+0119 22              194             RET
+                     195     
+011A                 196     EM0_GER0:
+011A 22              197             RET
+                     198     
+011B                 199     EM0_GER1:
+011B D281            200             SETB    SEM_ROJO                        ;semaforoa gorria piztu
+011D C280            201             CLR     SEM_VERDE                       ;semaforoa berdea itzali
+011F B183            202             ACALL   TIMER_PIZTU                     ;tenporizadorea aktibatu
+0121 7F01            203             MOV     EGOERA,#0x01                    ;egoera 1era pasatu
+0123 22              204             RET
+                     205     
+                     206     ;***********************************EGOERA_1 (FITXA ITXOITEN)***********************
+0124                 207     EGOERA_1:
+0124 3134            208             ACALL   GERT_SOR_1                      
+0126 EE              209             MOV     A, GERTAERA
+0127 23              210             RL      A
+0128 90012C          211             MOV     DPTR, #LISTA_GERT_1
+012B 73              212             JMP     @A+DPTR
+                     213     
+012C                 214     LISTA_GERT_1:
+012C 2149            215             AJMP    EM1_GER0                        ;Ez da ezer gertatzen
+012E 214A            216             AJMP    EM1_GER1                        ;Kotxea plataformatik kendu da
+0130 2155            217             AJMP    EM1_GER2                        ;Bezeroak fitxa bat sartu da
+0132 2174            218             AJMP    EM1_GER3                        ;Itxarote denbora pasatu da: 30s
+                     219     
+0134                 220     GERT_SOR_1:
+0134 30820F          221             JNB     S_PLAT ,E1_KENDUTA              ;Kotxea ez badago plataforman
+0137 208409          222             JB      S_FICHA,E1_FICHA                ;Fitxa sartu bada
+013A 301203          223             JNB     TICK_30s, E1_EZER_EZ            ;Ez badira 30s pasatu
+013D 7E03            224             MOV     GERTAERA, #0x03                 ;30s-ak pasatu badira
+013F 22              225             RET
+                     226             
+0140                 227     E1_EZER_EZ:                                     
+0140 7E00            228             MOV     GERTAERA, #0x00                 ;Ez bada ezer gertatu, gertaera 0
+0142 22              229             RET
+                     230     
+0143                 231     E1_FICHA:
+0143 7E02            232             MOV     GERTAERA,#0x02                  ;Fitxa sartu bada, gertaera 2
+0145 22              233             RET
+                     234     
+0146                 235     E1_KENDUTA:
+0146 7E01            236             MOV     GERTAERA,#0x01                  ;Kotxea plataformatik kendu bada, gertaera 
+                             1
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     5
+
+0148 22              237             RET
+                     238     
+0149                 239     EM1_GER0:                                       ;EZ DA EZER EZ GERTATU
+0149 22              240             RET                                     ;Ez da ezer ez egingo
+                     241     
+014A                 242     EM1_GER1:                                       ;KOTXEA PLATAFORMATIK KENDU DA:
+014A B19E            243             ACALL   TIMER_AMATATU                   ;Tenporizadorea desaktibatu
+014C C286            244             CLR     AL_START                        ;Alarma itzali  
+014E 7F00            245             MOV     EGOERA, #0x00                   ;0 egoerara aldatu ITXOIN
+0150 D280            246             SETB    SEM_VERDE                       ;Semaforoa berdera piztu
+0152 C281            247             CLR     SEM_ROJO                        ;Semaforo gorria itzali
+0154 22              248             RET
+                     249     
+0155                 250     EM1_GER2:                                       ;BEZEROAK FITXA BAT SARTU DU
+0155 B19E            251             ACALL   TIMER_AMATATU                   ;T enporizadorea desaktibatu
+0157 C286            252             CLR     AL_START                        ;Alarma itzali
+0159 7F02            253             MOV     EGOERA,#0x02                    ;2 egoerara aldatu HASI ITXOITEN
+015B 858025          254             MOV     LEHEN, P0
+015E 3163            255             ACALL   FITXA_MOTA                      ;Garbiketa bizia edo normala den jakiteko
+0160 B183            256             ACALL   TIMER_PIZTU                     ;Tenporizadorea aktibatu
+0162 22              257             RET
+                     258     
+0163                 259     FITXA_MOTA:                                     ;BIZIA EDO NORMALA?     
+0163 208307          260             JB      FICHA_TIPO, GARB_BIZIA          ;Garbiketa bizia hasi
+0166 D2A4            261             SETB    LED_LNOR                        ;NORMALA:
+0168 7D80            262             MOV     ARRAB_ABIADURA, #0x80           ;PWM0 %50 = Arrabolen abiadura 
+016A 7C80            263             MOV     HAIZE_ABIADURA, #0x80           ;PWM1 %50 = Lehortzeko haizagailuen abiadur
+                             a
+016C 22              264             RET
+                     265     
+016D                 266     GARB_BIZIA:                                     
+016D D2A5            267             SETB    LED_LINT                        ;BIZIA:
+016F 7D00            268             MOV     ARRAB_ABIADURA, #0x00           ;PWM0 %100 = Arrabolen abiadura
+0171 7C26            269             MOV     HAIZE_ABIADURA, #0x26           ;PWM1 %85 = Lehortzeko haizagailuen abiadur
+                             a
+0173 22              270             RET
+                     271     
+0174                 272     EM1_GER3:                                       ;ITXAROTE DENBORA (30s) PASATU DIRA
+0174 B19E            273             ACALL   TIMER_AMATATU                   ;Tenporizadorea desaktibatu
+0176 D286            274             SETB    AL_START                        ;Alarma piztu
+0178 22              275             RET
+                     276     
+                     277     ;***********************************EGOERA_2 (HASI ITXOITEN)***********************
+0179                 278     EGOERA_2:
+0179 3187            279             ACALL   GERT_SOR_2
+017B EE              280             MOV     A,GERTAERA
+017C 23              281             RL      A
+017D 900181          282             MOV     DPTR,#LISTA_GERT_2
+0180 73              283             JMP     @A+DPTR
+                     284     
+0181                 285     LISTA_GERT_2:
+0181 21B6            286             AJMP    EM2_GER0                        ;Ez da ezer gertatzen
+0183 21B7            287             AJMP    EM2_GER1                        ;30 lehen aldiz
+0185 21C0            288             AJMP    EM2_GER2                        ;30 bigarren aldiz, aldatu 3. egoerara
+                     289     
+0187                 290     GERT_SOR_2:
+0187 858024          291             MOV     ORAIN, P0
+018A 3199            292             ACALL   ERTZAK
+018C E526            293             MOV     A, ERTZA
+018E 7021            294             JNZ     E2_START                                ;Bezeroak hasteko botoiari eman bad
+                             io
+0190 30121B          295             JNB     TICK_30s, E2_EZER_EZ            ;30s ez badira pasatu
+0193 20161B          296             JB      EZ_LEHEN_ALDIA, E2_START                ;30s pasatu diren lehen aldia ez ba
+                             da
+0196 7E01            297             MOV     GERTAERA, #0x01                         ;30s-ak pasatu badira ? geratera 1
+0198 22              298             RET
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     6
+
+                     299     
+0199                 300     ERTZAK:
+0199 E524            301             MOV     A, ORAIN
+019B 5420            302             ANL     A,#0x20
+019D 8525F0          303             MOV     B, LEHEN
+01A0 53F020          304             ANL     B,#0x20
+01A3 65F0            305             XRL     A, B
+01A5 F526            306             MOV     ERTZA, A
+01A7 8524F0          307             MOV     B, ORAIN
+01AA 85F025          308             MOV     LEHEN, B
+01AD 22              309             RET
+                     310     
+01AE                 311     E2_EZER_EZ:
+01AE 7E00            312             MOV     GERTAERA, #0x00                 ;Ez bada ezer ez gertatu ? gertaera 0
+01B0 22              313             RET
+                     314     
+01B1                 315     E2_START:
+01B1 C216            316             CLR     EZ_LEHEN_ALDIA
+01B3 7E02            317             MOV     GERTAERA,#0x02
+01B5 22              318             RET
+                     319     
+01B6                 320     EM2_GER0:
+01B6 22              321             RET
+                     322     
+01B7                 323     EM2_GER1:
+01B7 B19E            324             ACALL   TIMER_AMATATU
+01B9 D286            325             SETB    AL_START
+01BB D216            326             SETB    EZ_LEHEN_ALDIA
+01BD B183            327             ACALL   TIMER_PIZTU
+01BF 22              328             RET
+                     329     
+01C0                 330     EM2_GER2:
+01C0 B19E            331             ACALL   TIMER_AMATATU
+01C2 C286            332             CLR     AL_START
+01C4 D290            333             SETB    BMOV_FRONT
+01C6 7F03            334             MOV     EGOERA, #0x03
+01C8 22              335             RET
+                     336     
+                     337     ;***********************************EGOERA_3 (XABOIA ITXOITEN)***********************
+01C9                 338     EGOERA_3:
+01C9 31D5            339             ACALL   GERT_SOR_3
+01CB EE              340             MOV     A, GERTAERA
+01CC 23              341             RL      A
+01CD 9001D1          342             MOV     DPTR, #LISTA_GERT_3
+01D0 73              343             JMP     @A+DPTR
+                     344     
+01D1                 345     LISTA_GERT_3:
+01D1 21DE            346             AJMP    EM3_GER0
+01D3 21DF            347             AJMP    EM3_GER1
+                     348     
+01D5                 349     GERT_SOR_3:
+01D5 20A203          350             JB      S_CAR,E3_CAR
+01D8 7E00            351             MOV     GERTAERA, #0x00
+01DA 22              352             RET
+                     353     
+01DB                 354     E3_CAR:
+01DB 7E01            355             MOV     GERTAERA,#0x01
+01DD 22              356             RET
+                     357     
+01DE                 358     EM3_GER0:
+01DE 22              359             RET
+                     360     
+01DF                 361     EM3_GER1:
+01DF 7F04            362             MOV     EGOERA,#0x04
+01E1 D2A0            363             SETB    EV_AGUA
+01E3 D2A1            364             SETB    EV_JABON
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     7
+
+01E5 22              365             RET
+                     366     
+                     367     ;***********************************EGOERA_4 (XABOIA)***********************
+01E6                 368     EGOERA_4:
+01E6 31F2            369             ACALL   GERT_SOR_4
+01E8 EE              370             MOV     A, GERTAERA
+01E9 23              371             RL      A
+01EA 9001EE          372             MOV     DPTR, #LISTA_GERT_4
+01ED 73              373             JMP     @A+DPTR
+                     374     
+01EE                 375     LISTA_GERT_4:
+01EE 21FB            376             AJMP    EM4_GER0
+01F0 21FC            377             AJMP    EM4_GER1
+                     378     
+01F2                 379     GERT_SOR_4:
+01F2 30A203          380             JNB     S_CAR,E4_CAR
+01F5 7E00            381             MOV     GERTAERA, #0X00
+01F7 22              382             RET
+                     383     
+01F8                 384     E4_CAR:
+01F8 7E01            385             MOV     GERTAERA,#0X01
+01FA 22              386             RET
+                     387     
+01FB                 388     EM4_GER0:
+01FB 22              389             RET
+                     390     
+01FC                 391     EM4_GER1:
+01FC B183            392             ACALL   TIMER_PIZTU
+01FE C2A0            393             CLR     EV_AGUA
+0200 C2A1            394             CLR     EV_JABON
+0202 7F05            395             MOV     EGOERA,#0X05
+0204 22              396             RET
+                     397     
+                     398     ;****************************EGOERA_5 (IGURKETA BERTIKALA ATZEALDEA)***********************
+0205                 399     EGOERA_5:
+0205 5115            400             ACALL   GERT_SOR_5
+0207 EE              401             MOV     A, GERTAERA
+0208 23              402             RL      A
+0209 90020D          403             MOV     DPTR, #LISTA_GERT_5
+020C 73              404             JMP     @A+DPTR
+                     405     
+020D                 406     LISTA_GERT_5:
+020D 412D            407             AJMP    EM5_GER0        ;EZ DA EZER GERTATZEN
+020F 412E            408             AJMP    EM5_GER1        ;TICK4 PIZTU DA
+0211 4137            409             AJMP    EM5_GER2        ;ERDIAN DAGO
+0213 413E            410             AJMP    EM5_GER3        ;BORDEAN DAGO
+                     411     
+0215                 412     GERT_SOR_5:
+0215 201112          413             JB      TICK_4s, E5_TIMER
+0218 201709          414             JB      EGINDA, E5_KANPOAN
+021B 20A303          415             JB      FC_RV_CENTRO, E5_ERDIAN
+021E                 416     E5_EZER_EZ:
+021E 7E00            417             MOV     GERTAERA,#0X00
+0220 22              418             RET
+                     419     
+0221                 420     E5_ERDIAN:
+0221 7E02            421             MOV     GERTAERA,#0X02
+0223 22              422             RET
+                     423     
+0224                 424     E5_KANPOAN:
+0224 3095F7          425             JNB     FC_RV_BORDE,E5_EZER_EZ
+0227 7E03            426             MOV     GERTAERA,#0x03
+0229 22              427             RET
+                     428     
+022A                 429     E5_TIMER:
+022A 7E01            430             MOV     GERTAERA,#0x01
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     8
+
+022C 22              431             RET
+                     432     
+022D                 433     EM5_GER0:
+022D 22              434             RET
+                     435     
+022E                 436     EM5_GER1:
+022E B19E            437             ACALL   TIMER_AMATATU
+0230 C290            438             CLR     BMOV_FRONT
+0232 8DFC            439             MOV     PWM0, ARRAB_ABIADURA
+0234 D297            440             SETB    RV_INTO
+                     441             ;FC_RV_BORDE amatatu
+0236 22              442             RET
+                     443     
+0237                 444     EM5_GER2:
+0237 D217            445             SETB    EGINDA
+0239 C297            446             CLR     RV_INTO
+023B D296            447             SETB    RV_OUTTO
+023D 22              448             RET
+                     449     
+023E                 450     EM5_GER3:
+023E C217            451             CLR     EGINDA
+0240 C296            452             CLR     RV_OUTTO
+0242 D291            453             SETB    BMOV_BACK
+0244 7F06            454             MOV     EGOERA,#0x06
+0246 22              455             RET
+                     456     
+                     457     ;****************************EGOERA_6 (ITXARON KOKATU)***********************
+0247                 458     EGOERA_6:
+0247 5153            459             ACALL   GERT_SOR_6
+0249 EE              460             MOV     A, GERTAERA
+024A 23              461             RL      A
+024B 90024F          462             MOV     DPTR, #LISTA_GERT_6
+024E 73              463             JMP     @A+DPTR
+                     464     
+024F                 465     LISTA_GERT_6:
+024F 415C            466             AJMP    EM6_GER0        ;ezer ez
+0251 415D            467             AJMP    EM6_GER1        ;gelditu (kotxea aurkituta)
+                     468     
+0253                 469     GERT_SOR_6:
+0253 20A203          470             JB      S_CAR,E6_GELDITU
+0256 7E00            471             MOV     GERTAERA,#0x00
+0258 22              472             RET
+                     473     
+0259                 474     E6_GELDITU:
+0259 7E01            475             MOV     GERTAERA,#0x01
+025B 22              476             RET
+                     477     
+025C                 478     EM6_GER0:
+025C 22              479             RET
+                     480     
+025D                 481     EM6_GER1:
+025D C291            482             CLR     BMOV_BACK
+025F D297            483             SETB    RV_INTO
+0261 D294            484             SETB    RH_DOWNTO
+0263 7F07            485             MOV     EGOERA,#0x07
+0265 B183            486             ACALL   TIMER_PIZTU
+0267 22              487             RET
+                     488     
+                     489     ;****************************EGOERA_7 (ARRABOLAK KOKATU)***********************
+0268                 490     EGOERA_7:
+0268 517E            491             ACALL   GERT_SOR_7
+026A EE              492             MOV     A, GERTAERA
+026B 23              493             RL      A
+026C 900270          494             MOV     DPTR, #LISTA_GERT_7
+026F 73              495             JMP     @A+DPTR
+                     496     
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE     9
+
+0270                 497     LISTA_GERT_7:
+0270 41C8            498             AJMP    EM7_GER0        ;ezer ez
+0272 41C9            499             AJMP    EM7_GER1        ;tick 100ms horizontala txarto
+0274 41CC            500             AJMP    EM7_GER2        ;tick 100ms horizontala ondo bertikala txarto
+0276 41CF            501             AJMP    EM7_GER3        ;horizontala ondo bertikala txarto
+0278 41D6            502             AJMP    EM7_GER4        ;horizontala txarto bertikala ondo
+027A 41DB            503             AJMP    EM7_GER5        ;biak ondo (horizontala)
+027C 41E6            504             AJMP    EM7_GER6        ;biak ondo (bertikala)
+                     505     
+027E                 506     GERT_SOR_7:
+027E 201309          507             JB      TICK_100ms, E7_HASI
+0281 201414          508             JB      TICK_ADC0, E7_HORIZONTALA
+0284 20152C          509             JB      TICK_ADC1, E7_BERTIKALA
+                     510     
+0287                 511     E7_EZER_EZ:
+0287 7E00            512             MOV     GERTAERA,#0x00
+0289 22              513             RET
+                     514     
+028A                 515     E7_HASI:
+028A C213            516             CLR     TICK_100ms
+028C 201803          517             JB      HOR_KOKATUTA, E7_HORIZONTALA_KOKATUTA
+028F 7E01            518             MOV     GERTAERA, #0x01
+0291 22              519             RET
+                     520     
+0292                 521     E7_HORIZONTALA_KOKATUTA:
+0292 20191B          522             JB      BERT_KOKATUTA, E7_HOR_BERT
+0295 7E02            523             MOV     GERTAERA, #0x02
+0297 22              524             RET
+                     525     
+0298                 526     E7_HORIZONTALA:
+0298 C214            527             CLR     TICK_ADC0
+029A E5C6            528             MOV     A,ADCH
+029C B46606          529             CJNE    A,#0x66,E7_HOR_EZ
+029F                 530     E7_HOR_BAI:
+029F 20190E          531             JB      BERT_KOKATUTA, E7_HOR_BERT
+02A2 7E03            532             MOV     GERTAERA,#0x03
+02A4 22              533             RET
+                     534     
+02A5                 535     E7_HOR_EZ:
+02A5 40F8            536             JC      E7_HOR_BAI
+02A7 201903          537             JB      BERT_KOKATUTA, E7_BERT_ONDO
+02AA 7E02            538             MOV     GERTAERA,#0x02
+02AC 22              539             RET
+                     540     
+02AD                 541     E7_BERT_ONDO:
+02AD 7E00            542             MOV     GERTAERA,#0x00
+02AF 22              543             RET
+                     544     
+02B0                 545     E7_HOR_BERT:
+02B0 7E05            546             MOV     GERTAERA, #0x05
+02B2 22              547             RET
+                     548     
+02B3                 549     E7_BERTIKALA:
+02B3 C215            550             CLR     TICK_ADC1
+02B5 E5C6            551             MOV     A,ADCH
+02B7 B46606          552             CJNE    A,#0x66,E7_BERT_EZ
+02BA                 553     E7_BERT_BAI:
+02BA 201808          554             JB      HOR_KOKATUTA, E7_BERT_HOR
+02BD 7E04            555             MOV     GERTAERA,#0x04
+02BF 22              556             RET
+                     557     
+02C0                 558     E7_BERT_EZ:
+02C0 40F8            559             JC      E7_BERT_BAI
+02C2 7E00            560             MOV     GERTAERA,#0x00
+02C4 22              561             RET
+                     562     
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    10
+
+02C5                 563     E7_BERT_HOR:
+02C5 7E06            564             MOV     GERTAERA, #0x06
+02C7 22              565             RET
+                     566     
+02C8                 567     EM7_GER0:
+02C8 22              568             RET
+                     569     
+02C9                 570     EM7_GER1:
+02C9 B14B            571             ACALL   ADC0_PIZTU
+02CB 22              572             RET
+                     573     
+02CC                 574     EM7_GER2:
+02CC B15C            575             ACALL   ADC1_PIZTU
+02CE 22              576             RET
+                     577     
+02CF                 578     EM7_GER3:
+02CF C294            579             CLR     RH_DOWNTO
+02D1 D218            580             SETB    HOR_KOKATUTA
+02D3 B15C            581             ACALL   ADC1_PIZTU
+02D5 22              582             RET
+                     583     
+02D6                 584     EM7_GER4:
+02D6 C297            585             CLR     RV_INTO
+02D8 D219            586             SETB    BERT_KOKATUTA
+02DA 22              587             RET
+                     588     
+02DB                 589     EM7_GER5:
+02DB D218            590             SETB    HOR_KOKATUTA
+02DD C216            591             CLR     EZ_LEHEN_ALDIA
+02DF C294            592             CLR     RH_DOWNTO
+02E1 D291            593             SETB    BMOV_BACK
+02E3 7F08            594             MOV     EGOERA,#0x08
+02E5 22              595             RET
+                     596             
+02E6                 597     EM7_GER6:
+02E6 D219            598             SETB    BERT_KOKATUTA
+02E8 C216            599             CLR     EZ_LEHEN_ALDIA
+02EA C297            600             CLR     RV_INTO
+02EC D291            601             SETB    BMOV_BACK
+02EE 7F08            602             MOV     EGOERA,#0x08
+02F0 22              603             RET
+                     604     
+                     605     ;****************************EGOERA_8 (IGURKETA AURRERANTZ)***********************
+02F1                 606     EGOERA_8:
+02F1 7113            607             ACALL   GERT_SOR_8
+02F3 EE              608             MOV     A, GERTAERA
+02F4 23              609             RL      A
+02F5 9002F9          610             MOV     DPTR, #LISTA_GERT_8
+02F8 73              611             JMP     @A+DPTR
+                     612     
+02F9                 613     LISTA_GERT_8:
+02F9 61A9            614             AJMP    EM8_GER0        ;EZER EZ
+02FB 61AA            615             AJMP    EM8_GER1        ;KOTXEA ez detektatuta
+02FD 61B9            616             AJMP    EM8_GER2        ;TICK 100ms
+02FF 61BC            617             AJMP    EM8_GER3        ;horizontala<30
+0301 61C8            618             AJMP    EM8_GER4        ;horizontala>50
+0303 61D6            619             AJMP    EM8_GER5        ;horizontala ondo
+0305 61DD            620             AJMP    EM8_GER6        ;kokatuta horizontala<30 (40 edo altuago)
+0307 61E6            621             AJMP    EM8_GER7        ;kokatuta horizontala>50 (40 edo txikiago)
+0309 61F1            622             AJMP    EM8_GER8        ;bertikala<30 
+030B 61FB            623             AJMP    EM8_GER9        ;bertikala>50
+030D 8107            624             AJMP    EM8_GER10       ;bertikala ondo
+030F 810C            625             AJMP    EM8_GER11       ;kokatu bertikala<30 (40 edo altuago)
+0311 8113            626             AJMP    EM8_GER12       ;kokatu bertikala>50 (40 edo txikiago)
+                     627     
+0313                 628     GERT_SOR_8:
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    11
+
+0313 30A20C          629             JNB     S_CAR, E8_KOTXEA_KENDU
+0316 201436          630             JB      TICK_ADC0, E8_HORIZONTALA       ;adc salta cuando ha hecho la conversión HO
+                             RIZONTAL
+0319 20156F          631             JB      TICK_ADC1, E8_BERTIKALA         ;adc salta cuando ha hecho la conversión BE
+                             RTIKAL
+031C 20130C          632             JB      TICK_100ms, E8_TIMER
+031F 7E00            633             MOV     GERTAERA,#0x00
+0321 22              634             RET
+                     635     
+0322                 636     E8_KOTXEA_KENDU:
+0322 C218            637             CLR     HOR_KOKATUTA
+0324 C219            638             CLR     BERT_KOKATUTA
+0326 B17B            639             ACALL   ADC_AMATATU
+0328 7E01            640             MOV     GERTAERA,#0x01
+032A 22              641             RET
+                     642     
+032B                 643     E8_TIMER:
+032B C213            644             CLR     TICK_100ms
+032D 7E02            645             MOV     GERTAERA,#0x02
+032F 22              646             RET
+                     647     
+0330                 648     E8_HOR_KOKATU30:
+0330 201A0E          649             JB      HANDIAGOAH, E8_HOR_KOKATU50
+0333 E5C6            650             MOV     A,ADCH
+0335 B46604          651             CJNE    A,#0x66, E8_EZ40H30     ;40 EZ BADA
+0338                 652     E8_HANDIAGO40_HOR:
+0338 7E06            653             MOV     GERTAERA,#0x06
+033A 6140            654             AJMP    E8_HOR1_AMA
+033C                 655     E8_EZ40H30:
+033C 50FA            656             JNC     E8_HANDIAGO40_HOR
+033E 7E03            657             MOV     GERTAERA,#0x03
+0340                 658     E8_HOR1_AMA:
+0340 22              659             RET
+                     660     
+0341                 661     E8_HOR_KOKATU50:
+0341 E5C6            662             MOV     A,ADCH
+0343 B46604          663             CJNE    A,#0x66, E8_EZ40H50     ;40 EZ BADA
+0346                 664     E8_TXIKIAGO40_HOR:
+0346 7E07            665             MOV     GERTAERA,#0x07
+0348 614E            666             AJMP    E8_HOR2_AMA
+034A                 667     E8_EZ40H50:
+034A 40FA            668             JC      E8_TXIKIAGO40_HOR
+034C 7E04            669             MOV     GERTAERA,#0x04
+034E                 670     E8_HOR2_AMA:
+034E 22              671             RET
+                     672     
+034F                 673     E8_HORIZONTALA:
+034F C214            674             CLR     TICK_ADC0
+0351 3018DC          675             JNB     HOR_KOKATUTA, E8_HOR_KOKATU30
+0354 E5C6            676             MOV     A,ADCH
+0356 B44D04          677             CJNE    A,#0x4D, E7_EZ30H       ;30 EZ BADA
+0359                 678     E8_TXIKIAGO30_HOR:
+0359 7E03            679             MOV     GERTAERA,#0x03
+035B 616A            680             AJMP    E8_HOR_AMA
+035D                 681     E7_EZ30H:
+035D 40FA            682             JC      E8_TXIKIAGO30_HOR
+035F B48004          683             CJNE    A,#0x80,E8_EZ50H        ;50 EZ BADA
+0362                 684     E8_HANDIAGO50_HOR:
+0362 7E04            685             MOV     GERTAERA,#0x04
+0364 616A            686             AJMP    E8_HOR_AMA
+0366                 687     E8_EZ50H:
+0366 50FA            688             JNC     E8_HANDIAGO50_HOR
+0368 7E05            689             MOV     GERTAERA,#0x05
+036A                 690     E8_HOR_AMA:
+036A 22              691             RET
+                     692     
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    12
+
+036B                 693     E8_BERT_KOKATU30:
+036B 201B0F          694             JB      HANDIAGOAB, E8_BERT_KOKATU50
+036E E5C6            695             MOV     A,ADCH
+0370 C3              696             CLR     C
+0371 B46604          697             CJNE    A,#0x66, E8_EZ40B30     ;40 EZ BADA
+0374                 698     E8_HANDIAGO40_BERT:
+0374 7E0B            699             MOV     GERTAERA,#0x0B
+0376 617C            700             AJMP    E8_BERT1_AMAITU
+0378                 701     E8_EZ40B30:
+0378 50FA            702             JNC     E8_HANDIAGO40_BERT
+037A 7E08            703             MOV     GERTAERA,#0x08
+037C                 704     E8_BERT1_AMAITU:
+037C 22              705             RET
+                     706             
+037D                 707     E8_BERT_KOKATU50:
+037D E5C6            708             MOV     A,ADCH
+037F B46604          709             CJNE    A,#0x66, E8_EZ40B50     ;40 EZ BADA
+0382                 710     E8_TXIKIAGO40_BERT:
+0382 7E0C            711             MOV     GERTAERA,#0x0C
+0384 618A            712             AJMP    E8_BERT2_AMAITU
+0386                 713     E8_EZ40B50:
+0386 40FA            714             JC      E8_TXIKIAGO40_BERT
+0388 7E09            715             MOV     GERTAERA,#0x09
+038A                 716     E8_BERT2_AMAITU:
+038A 22              717             RET
+                     718     
+038B                 719     E8_BERTIKALA:
+038B C215            720             CLR     TICK_ADC1
+038D 3019DB          721             JNB     BERT_KOKATUTA, E8_BERT_KOKATU30
+0390 E5C6            722             MOV     A,ADCH
+0392 B44D04          723             CJNE    A,#0x4D, E8_EZ30B       ;30 EZ BADA
+0395                 724     E8_30BAINO_TXIKIAGOAB:
+0395 7E08            725             MOV     GERTAERA,#0x08
+0397 61A8            726             AJMP    E8_BERT_AMA
+0399                 727     E8_EZ30B:
+0399 40FA            728             JC      E8_30BAINO_TXIKIAGOAB
+039B B48004          729             CJNE    A,#0x80,E8_EZ50B        ;50 EZ BADA
+039E                 730     E8_50BAINO_HANDIAGOAB:
+039E 7E09            731             MOV     GERTAERA,#0x09
+03A0 61A8            732             AJMP    E8_BERT_AMA
+03A2                 733     E8_EZ50B:
+03A2 50FA            734             JNC     E8_50BAINO_HANDIAGOAB
+03A4 C215            735             CLR     TICK_ADC1
+03A6 7E0A            736             MOV     GERTAERA,#0x0A
+03A8                 737     E8_BERT_AMA:
+03A8 22              738             RET
+                     739     
+03A9                 740     EM8_GER0:
+03A9 22              741             RET
+                     742     
+03AA                 743     EM8_GER1:
+03AA B19E            744             ACALL   TIMER_AMATATU
+03AC C291            745             CLR     BMOV_BACK
+03AE C21A            746             CLR     HANDIAGOAH
+03B0 C21B            747             CLR     HANDIAGOAB
+03B2 D293            748             SETB    RH_UPTO
+03B4 7F09            749             MOV     EGOERA,#0x09
+03B6 B183            750             ACALL   TIMER_PIZTU
+03B8 22              751             RET
+                     752     
+03B9                 753     EM8_GER2:
+03B9 B14B            754             ACALL   ADC0_PIZTU
+03BB 22              755             RET
+                     756     
+03BC                 757     EM8_GER3:
+03BC 201C06          758             JB      LEHENAH, EM7_GER3_JAR
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    13
+
+03BF D293            759             SETB    RH_UPTO
+03C1 D21C            760             SETB    LEHENAH
+03C3 C218            761             CLR     HOR_KOKATUTA
+03C5                 762     EM7_GER3_JAR:
+03C5 B15C            763             ACALL   ADC1_PIZTU
+03C7 22              764             RET
+                     765     
+03C8                 766     EM8_GER4:
+03C8 201C08          767             JB      LEHENAH, EM8_GER4_JAR
+03CB D294            768             SETB    RH_DOWNTO
+03CD D21C            769             SETB    LEHENAH
+03CF D21A            770             SETB    HANDIAGOAH
+03D1 C218            771             CLR     HOR_KOKATUTA
+03D3                 772     EM8_GER4_JAR:
+03D3 B15C            773             ACALL   ADC1_PIZTU
+03D5 22              774             RET
+                     775     
+03D6                 776     EM8_GER5:
+03D6 C293            777             CLR     RH_UPTO
+03D8 C294            778             CLR     RH_DOWNTO
+03DA B15C            779             ACALL   ADC1_PIZTU
+03DC 22              780             RET
+                     781     
+03DD                 782     EM8_GER6:
+03DD D218            783             SETB    HOR_KOKATUTA
+03DF C21C            784             CLR     LEHENAH
+03E1 C293            785             CLR     RH_UPTO
+03E3 B15C            786             ACALL   ADC1_PIZTU
+03E5 22              787             RET
+                     788     
+03E6                 789     EM8_GER7:
+03E6 C21A            790             CLR     HANDIAGOAH
+03E8 D218            791             SETB    HOR_KOKATUTA
+03EA C21C            792             CLR     LEHENAH
+03EC C294            793             CLR     RH_DOWNTO
+03EE B15C            794             ACALL   ADC1_PIZTU
+03F0 22              795             RET
+                     796     
+03F1                 797     EM8_GER8:
+03F1 201D06          798             JB    LEHENAB, EM8_GER8_JAR
+03F4 D296            799             SETB  RV_OUTTO
+03F6 D21D            800             SETB  LEHENAB
+03F8 C219            801             CLR   BERT_KOKATUTA
+03FA                 802     EM8_GER8_JAR:
+03FA 22              803             RET
+                     804     
+03FB                 805     EM8_GER9:
+03FB 201D08          806             JB    LEHENAB, EM8_GER9_JAR
+03FE D297            807             SETB  RV_INTO
+0400 D21D            808             SETB    LEHENAB
+0402 D21B            809             SETB    HANDIAGOAB
+0404 C219            810             CLR     BERT_KOKATUTA
+0406                 811     EM8_GER9_JAR:
+0406 22              812             RET
+                     813     
+0407                 814     EM8_GER10:
+0407 C297            815             CLR     RV_INTO
+0409 C296            816             CLR     RV_OUTTO
+040B 22              817             RET
+                     818     
+040C                 819     EM8_GER11:
+040C D219            820             SETB    BERT_KOKATUTA
+040E C21D            821             CLR     LEHENAB
+0410 C296            822             CLR     RV_OUTTO
+0412 22              823             RET
+                     824             
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    14
+
+0413                 825     EM8_GER12:
+0413 C21B            826             CLR     HANDIAGOAB
+0415 D219            827             SETB    BERT_KOKATUTA
+0417 C21D            828             CLR     LEHENAB
+0419 C297            829             CLR     RV_INTO
+041B 22              830             RET
+                     831     
+                     832     ;****************************EGOERA_9 (IGURKETA BERTIKALA AURREALDEA)**********************
+                             *
+041C                 833     EGOERA_9:
+041C 912E            834             ACALL   GERT_SOR_9
+041E EE              835             MOV     A, GERTAERA
+041F 23              836             RL      A
+0420 900424          837             MOV     DPTR, #LISTA_GERT_9
+0423 73              838             JMP     @A+DPTR
+                     839     
+0424                 840     LISTA_GERT_9:
+0424 814F            841             AJMP    EM9_GER0        ;ezer ez
+0426 8150            842             AJMP    EM9_GER1        ;arrabola horizontala kenduta
+0428 8159            843             AJMP    EM9_GER2        ;40cm ibili
+042A 8160            844             AJMP    EM9_GER3        ;arrabola bertikalak erdian
+042C 8167            845             AJMP    EM9_GER4        ;arrabola bertikalak kanpoan
+                     846     
+042E                 847     GERT_SOR_9:
+042E 20111B          848             JB      TICK_4s, E9_TIMER
+0431 201712          849             JB      EGINDA,E9_KANPOAN
+0434 20A30C          850             JB      FC_RV_CENTRO,E9_ERDIAN
+0437 209203          851             JB      FC_RH_TOP, E9_ARRABOLA_GOIAN
+043A                 852     E9_EZER_EZ:
+043A 7E00            853             MOV     GERTAERA,#0x00
+043C 22              854             RET
+                     855     
+043D                 856     E9_ARRABOLA_GOIAN:
+043D 2016FA          857             JB      EZ_LEHEN_ALDIA, E9_EZER_EZ
+0440 7E01            858             MOV     GERTAERA, #0x01
+0442 22              859             RET
+                     860     
+0443                 861     E9_ERDIAN:
+0443 7E03            862             MOV     GERTAERA,#0X03
+0445 22              863             RET
+                     864     
+0446                 865     E9_KANPOAN:
+0446 3095F1          866             JNB     FC_RV_BORDE,E9_EZER_EZ
+0449 7E04            867             MOV     GERTAERA,#0x04
+044B 22              868             RET
+                     869     
+044C                 870     E9_TIMER:
+044C 7E02            871             MOV     GERTAERA,#0x02
+044E 22              872             RET
+                     873     
+044F                 874     EM9_GER0:
+044F 22              875             RET
+                     876     
+0450                 877     EM9_GER1:
+0450 D216            878             SETB    EZ_LEHEN_ALDIA
+0452 D291            879             SETB    BMOV_BACK
+0454 C293            880             CLR     RH_UPTO
+0456 B183            881             ACALL   TIMER_PIZTU
+0458 22              882             RET
+                     883     
+0459                 884     EM9_GER2:
+0459 B19E            885             ACALL   TIMER_AMATATU
+045B C291            886             CLR     BMOV_BACK
+045D D297            887             SETB    RV_INTO
+045F 22              888             RET
+                     889     
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    15
+
+0460                 890     EM9_GER3:
+0460 D217            891             SETB    EGINDA
+0462 C297            892             CLR     RV_INTO
+0464 D296            893             SETB    RV_OUTTO
+0466 22              894             RET
+                     895     
+0467                 896     EM9_GER4:
+0467 C217            897             CLR     EGINDA
+0469 C216            898             CLR     EZ_LEHEN_ALDIA
+046B C296            899             CLR     RV_OUTTO
+046D 75FCFF          900             MOV     PWM0, #0xFF
+0470 D290            901             SETB    BMOV_FRONT
+0472 7F0A            902             MOV     EGOERA,#0x0A
+0474 22              903             RET
+                     904     
+                     905     ;****************************EGOERA_10 (XABOIA KENDU)***********************
+0475                 906     EGOERA_10:
+0475 9185            907             ACALL   GERT_SOR_10
+0477 EE              908             MOV     A, GERTAERA
+0478 23              909             RL      A
+0479 90047D          910             MOV     DPTR, #LISTA_GERT_10
+047C 73              911             JMP     @A+DPTR
+                     912     
+047D                 913     LISTA_GERT_10:
+047D 81A3            914             AJMP    EM10_GER0       ;EZER EZ
+047F 81A4            915             AJMP    EM10_GER1       ;KOTXEA DAGO
+0481 81A9            916             AJMP    EM10_GER2       ;KOTXEA KENDUTA
+0483 81B0            917             AJMP    EM10_GER3       ;TICK 4s
+                     918     
+0485                 919     GERT_SOR_10:
+0485 201109          920             JB      TICK_4s, E10_TIMER
+0488 20A209          921             JB      S_CAR, E10_KOTXEA_DETEKTATUTA
+048B 30A20C          922             JNB     S_CAR, E10_KOTXEA_KENDUTA
+048E                 923     E10_JARRAITU:
+048E 7E00            924             MOV     GERTAERA,#0x00
+0490 22              925             RET
+                     926     
+0491                 927     E10_TIMER:
+0491 7E03            928             MOV     GERTAERA,#0x03
+0493 22              929             RET
+                     930     
+0494                 931     E10_KOTXEA_DETEKTATUTA:
+0494 2016F7          932             JB      EZ_LEHEN_ALDIA,E10_JARRAITU
+0497 7E01            933             MOV     GERTAERA, #0x01
+0499 22              934             RET
+                     935     
+049A                 936     E10_KOTXEA_KENDUTA:
+049A 3016F1          937             JNB     EZ_LEHEN_ALDIA,E10_JARRAITU
+049D 2017EE          938             JB      EGINDA,E10_JARRAITU
+04A0 7E02            939             MOV     GERTAERA,#0x02
+04A2 22              940             RET
+                     941     
+04A3                 942     EM10_GER0:
+04A3 22              943             RET
+                     944     
+04A4                 945     EM10_GER1:
+04A4 D216            946             SETB    EZ_LEHEN_ALDIA
+04A6 D2A0            947             SETB    EV_AGUA
+04A8 22              948             RET
+                     949     
+04A9                 950     EM10_GER2:
+04A9 D217            951             SETB    EGINDA
+04AB C2A0            952             CLR     EV_AGUA
+04AD B183            953             ACALL   TIMER_PIZTU
+04AF 22              954             RET
+                     955     
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    16
+
+04B0                 956     EM10_GER3:
+04B0 B19E            957             ACALL   TIMER_AMATATU
+04B2 C216            958             CLR     EZ_LEHEN_ALDIA
+04B4 C290            959             CLR     BMOV_FRONT
+04B6 D291            960             SETB    BMOV_BACK
+04B8 7F0B            961             MOV     EGOERA,#0x0B
+04BA 22              962             RET
+                     963     
+                     964     ;****************************EGOERA_11 (LEHORTU)*********************** 
+04BB                 965     EGOERA_11:
+04BB 91C9            966             ACALL   GERT_SOR_11
+04BD EE              967             MOV     A, GERTAERA
+04BE 23              968             RL      A
+04BF 9004C3          969             MOV     DPTR, #LISTA_GERT_11
+04C2 73              970             JMP     @A+DPTR
+                     971     
+04C3                 972     LISTA_GERT_11:
+04C3 81E1            973             AJMP    EM11_GER0       ;EZER EZ
+04C5 81E2            974             AJMP    EM11_GER1       ;KOTZEA DETEKTATUTA LEHEN ALDIA
+04C7 81E7            975             AJMP    EM11_GER2       ;KOTZEA KENDUTA
+                     976     
+04C9                 977     GERT_SOR_11:
+04C9 20A206          978             JB      S_CAR,E11_KOTXEA_DETEKTATUTA
+04CC 30A209          979             JNB     S_CAR,E11_KOTXEA_KENDUTA
+04CF                 980     E11_JARRAITU:
+04CF 7E00            981             MOV     GERTAERA,#0x00
+04D1 22              982             RET
+                     983     
+04D2                 984     E11_KOTXEA_DETEKTATUTA:
+04D2 2016FA          985             JB      EZ_LEHEN_ALDIA, E11_JARRAITU
+04D5 7E01            986             MOV     GERTAERA,#0x01
+04D7 22              987             RET
+                     988     
+04D8                 989     E11_KOTXEA_KENDUTA:
+04D8 3016F4          990             JNB     EZ_LEHEN_ALDIA, E11_JARRAITU
+04DB 7E02            991             MOV     GERTAERA,#0x02
+04DD 22              992             RET
+                     993     
+04DE                 994     E11_HASIERAKO_POS:
+04DE 7E03            995             MOV     GERTAERA,#0x03
+04E0 22              996             RET
+                     997     
+04E1                 998     EM11_GER0:
+04E1 22              999             RET
+                    1000     
+04E2                1001     EM11_GER1:
+04E2 D216           1002             SETB    EZ_LEHEN_ALDIA
+04E4 8CFD           1003             MOV     PWM1,HAIZE_ABIADURA
+04E6 22             1004             RET
+                    1005     
+04E7                1006     EM11_GER2:
+04E7 75FDFF         1007             MOV     PWM1,#0xFF
+04EA 7F0C           1008             MOV     EGOERA,#0x0C
+04EC 22             1009             RET
+                    1010     
+                    1011     ;****************************EGOERA_12 (BPOS ITXARON)***********************
+04ED                1012     EGOERA_12:
+04ED 91F9           1013             ACALL   GERT_SOR_12
+04EF EE             1014             MOV     A,GERTAERA
+04F0 23             1015             RL      A
+04F1 9004F5         1016             MOV     DPTR,#LISTA_GERT_12
+04F4 73             1017             JMP     @A+DPTR
+                    1018     
+04F5                1019     LISTA_GERT_12:
+04F5 A102           1020             AJMP    EM12_GER0       ;EZER EZ
+04F7 A103           1021             AJMP    EM12_GER1       ;BPOS->1
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    17
+
+                    1022     
+04F9                1023     GERT_SOR_12:
+04F9 208703         1024             JB      BPOS_START, HASIERAKO_POS
+04FC 7E00           1025             MOV     GERTAERA,#0x00
+04FE 22             1026             RET
+                    1027     
+04FF                1028     HASIERAKO_POS:
+04FF 7E01           1029             MOV     GERTAERA,#0x01
+0501 22             1030             RET
+                    1031     
+0502                1032     EM12_GER0:
+0502 22             1033             RET
+                    1034     
+0503                1035     EM12_GER1:
+0503 C216           1036             CLR     EZ_LEHEN_ALDIA
+0505 B183           1037             ACALL   TIMER_PIZTU
+0507 C291           1038             CLR     BMOV_BACK
+0509 C281           1039             CLR     SEM_ROJO
+050B D280           1040             SETB    SEM_VERDE
+050D 7F0D           1041             MOV     EGOERA,#0x0D
+050F 22             1042             RET
+                    1043     
+                    1044     ;****************************EGOERA_12 (KADENTZIA)***********************       
+0510                1045     EGOERA_13:
+0510 B120           1046             ACALL   GERT_SOR_13
+0512 EE             1047             MOV     A, GERTAERA
+0513 23             1048             RL      A
+0514 900518         1049             MOV     DPTR, #LISTA_GERT_13
+0517 73             1050             JMP     @A+DPTR
+                    1051     
+0518                1052     LISTA_GERT_13:
+0518 A135           1053             AJMP    EM13_GER0       ;EZER EZ
+051A A136           1054             AJMP    EM13_GER1       ;SEMAFOROA PIZTUTA
+051C A13D           1055             AJMP    EM13_GER2       ;SEMAFOROA ITZALITA
+051E A144           1056             AJMP    EM13_GER3       ;KOTZEA KENDUTA
+                    1057     
+0520                1058     GERT_SOR_13:
+0520 201006         1059             JB      TICK_1s, E13_SEMAFOROA
+0523 308209         1060             JNB     S_PLAT,E13_KOTXEA_KENDUTA
+0526 7E00           1061             MOV     GERTAERA,#0x00
+0528 22             1062             RET
+                    1063     
+0529                1064     E13_SEMAFOROA:
+0529 208006         1065             JB      SEM_VERDE, E13_PIZTUTA
+052C 7E02           1066             MOV     GERTAERA,#0x02
+052E 22             1067             RET
+                    1068     
+052F                1069     E13_KOTXEA_KENDUTA:
+052F 7E03           1070             MOV     GERTAERA,#0x03
+0531 22             1071             RET
+                    1072     
+0532                1073     E13_PIZTUTA:
+0532 7E01           1074             MOV     GERTAERA,#0x01
+0534 22             1075             RET
+                    1076     
+0535                1077     EM13_GER0:
+0535 22             1078             RET
+                    1079     
+0536                1080     EM13_GER1:
+0536 B19E           1081             ACALL   TIMER_AMATATU
+0538 B183           1082             ACALL   TIMER_PIZTU
+053A C280           1083             CLR     SEM_VERDE
+053C 22             1084             RET
+                    1085     
+053D                1086     EM13_GER2:
+053D B19E           1087             ACALL   TIMER_AMATATU
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    18
+
+053F B183           1088             ACALL   TIMER_PIZTU
+0541 D280           1089             SETB    SEM_VERDE
+0543 22             1090             RET
+                    1091     
+0544                1092     EM13_GER3:
+0544 B19E           1093             ACALL   TIMER_AMATATU
+0546 D280           1094             SETB    SEM_VERDE
+0548 7F00           1095             MOV     EGOERA,#0x00
+054A 22             1096             RET
+                    1097     
+                    1098     ;**************************************** ADC************************************
+054B                1099     ADC0_PIZTU:
+054B C214           1100             CLR     TICK_ADC0
+054D C215           1101             CLR     TICK_ADC1
+054F 53C5D8         1102             ANL     ADCON, #0xD8    ; ADEX eta ADDRESS 0-ra jarri (1101 1000)
+0552 43C500         1103             ORL     ADCON, #0x00    ;P5.0 channel 000
+                    1104             ;IEN0
+0555 43A8C0         1105             ORL     IEN0, #0xC0             ; 1100 0000     EA eta EAD piztu
+0558 43C508         1106             ORL     ADCON, #0x08    ; ADCS=1
+055B 22             1107             RET
+                    1108             
+055C                1109     ADC1_PIZTU:
+055C C214           1110             CLR     TICK_ADC0
+055E C215           1111             CLR     TICK_ADC1
+0560 53C5D8         1112             ANL     ADCON, #0xD8    ; ADEX eta ADDRESS 0-ra jarri (1101 1000)
+0563 43C501         1113             ORL     ADCON, #0x01    ; P5.1 channnel 001
+                    1114             ;IEN0
+0566 43A8C0         1115             ORL     IEN0, #0xC0             ; 1100 0000     EA eta EAD piztu
+0569 43C508         1116             ORL     ADCON, #0x08 ; ADCS=1
+056C 22             1117             RET
+                    1118     
+056D                1119     ADC_AZPI:
+056D E5C5           1120             MOV     A, ADCON                ;ADCON-eko edukia A metagailura mugitu da
+056F 5401           1121             ANL     A, #0x01                ; ADCI=0        ;AND hau egitean 4.bita garbitzen d
+                             a eta A/D bihurgailua bukatu da
+0571 B40104         1122             CJNE    A, #0x01,ET_HOR         ;A != 0x01, orduan ET_HOR etiketara salto egingo
+0574 D215           1123             SETB    TICK_ADC1               ;
+0576 A17A           1124             AJMP    ET_JARRAITU             ;
+0578                1125     ET_HOR:
+0578 D214           1126             SETB    TICK_ADC0
+057A                1127     ET_JARRAITU:
+057A 22             1128             RET
+                    1129     
+057B                1130     ADC_AMATATU:
+057B C214           1131             CLR     TICK_ADC0
+057D C215           1132             CLR     TICK_ADC1
+057F 53A8BF         1133             ANL     IEN0,#0xBF
+0582 22             1134             RET
+                    1135     
+                    1136     ;**************************************** TIMER ************************************
+0583                1137     TIMER_PIZTU:
+0583 752000         1138             MOV     KONT_50ms, #0x00
+0586 752100         1139             MOV     KONT_1s, #0x00
+0589 C213           1140             CLR     TICK_100ms
+058B C210           1141             CLR     TICK_1s
+058D C211           1142             CLR     TICK_4s
+058F C212           1143             CLR     TICK_30s
+0591 758AB0         1144             MOV     TL0, #0xB0              ;hasten den bakoitzean beti
+0594 758C30         1145             MOV     TH0, #0x30              ;hasten den bakoitzean beti
+                    1146             ; IEN0
+0597 D2A9           1147             SETB    ET0                     ;baimenak eman etena egiteko
+0599 D2AF           1148             SETB    EA                      ;pizteko botoia
+059B D28C           1149             SETB    TCON.4                  ;timer 0 piztu
+                    1150             ;ORL    TCON,#0x10
+059D 22             1151             RET
+                    1152     
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    19
+
+059E                1153     TIMER_AMATATU:
+059E C213           1154             CLR     TICK_100ms
+05A0 C210           1155             CLR     TICK_1s
+05A2 C211           1156             CLR     TICK_4s
+05A4 C212           1157             CLR     TICK_30s
+05A6 C28C           1158             CLR     TR0
+05A8 C2AF           1159             CLR     EA
+05AA C2A9           1160             CLR     ET0
+05AC 22             1161             RET
+                    1162     
+05AD                1163     TIMER_AZPI:
+05AD 758AB0         1164             MOV     TL0, #0xB0              ;TL0 eta TH0 tenporizadoreen erregistroa konfigurat
+                             zen ditu
+05B0 758C3C         1165             MOV     TH0, #0x3C
+05B3 0520           1166             INC     KONT_50ms
+05B5 E520           1167             MOV     A,KONT_50ms             ;kont 50ms 1 handitu
+05B7 B40226         1168             CJNE    A,#0X02,FLAG_BUKATU     ; 50ms x 2 = 100ms
+05BA 752000         1169             MOV     KONT_50ms,#0x00
+05BD D213           1170             SETB    TICK_100ms
+05BF 0527           1171             INC     KONT_100ms
+05C1                1172     TIMER_1s:
+05C1 E527           1173             MOV     A,KONT_100ms                    ;50ms x 20 = 1s
+05C3 B40A07         1174             CJNE    A, #0x0A, TIMER_4s
+05C6 752700         1175             MOV     KONT_100ms,#0x00
+05C9 0521           1176             INC     KONT_1s
+05CB D210           1177             SETB    TICK_1s
+05CD                1178     TIMER_4s:
+05CD 4011           1179             JC      FLAG_BUKATU
+05CF E521           1180             MOV     A, KONT_1s
+05D1 B40402         1181             CJNE    A, #0x04,FLAG_JARRAITU  ;compare and jump if not equals
+05D4 D211           1182             SETB    TICK_4s
+05D6                1183     FLAG_JARRAITU:
+05D6 4008           1184             JC      FLAG_BUKATU             ;carry piztuta badago saltam 4S BAINO GUTXIAGO DITU
+                             GULAKO
+05D8 B41E05         1185             CJNE    A,#0x1E, FLAG_BUKATU
+05DB D212           1186             SETB    TICK_30s
+05DD 752100         1187             MOV     KONT_1s, #0x00          ;30s-etara heltzean segunduak 0ra jarri
+05E0                1188     FLAG_BUKATU:
+05E0 22             1189             RET
+                    1190     
+                    1191     END
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    20
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                  T Y P E  V A L U E   ATTRIBUTES
+
+ACC . . . . . . . . . .  D ADDR   00E0H   A   
+ADC0_PIZTU. . . . . . .  C ADDR   054BH   A   
+ADC1_PIZTU. . . . . . .  C ADDR   055CH   A   
+ADCH. . . . . . . . . .  N NUMB   00C6H   A   
+ADCON . . . . . . . . .  N NUMB   00C5H   A   
+ADC_AMATATU . . . . . .  C ADDR   057BH   A   
+ADC_AZPI. . . . . . . .  C ADDR   056DH   A   
+AL_START. . . . . . . .  B ADDR   0080H.6 A   
+ARRAB_ABIADURA. . . . .    REG    R5          
+B . . . . . . . . . . .  D ADDR   00F0H   A   
+BERT_KOKATUTA . . . . .  B ADDR   0023H.1 A   
+BMOV_BACK . . . . . . .  B ADDR   0090H.1 A   
+BMOV_FRONT. . . . . . .  B ADDR   0090H.0 A   
+BPOS_START. . . . . . .  B ADDR   0080H.7 A   
+E10_JARRAITU. . . . . .  C ADDR   048EH   A   
+E10_KOTXEA_DETEKTATUTA.  C ADDR   0494H   A   
+E10_KOTXEA_KENDUTA. . .  C ADDR   049AH   A   
+E10_TIMER . . . . . . .  C ADDR   0491H   A   
+E11_HASIERAKO_POS . . .  C ADDR   04DEH   A   
+E11_JARRAITU. . . . . .  C ADDR   04CFH   A   
+E11_KOTXEA_DETEKTATUTA.  C ADDR   04D2H   A   
+E11_KOTXEA_KENDUTA. . .  C ADDR   04D8H   A   
+E13_KOTXEA_KENDUTA. . .  C ADDR   052FH   A   
+E13_PIZTUTA . . . . . .  C ADDR   0532H   A   
+E13_SEMAFOROA . . . . .  C ADDR   0529H   A   
+E1_EZER_EZ. . . . . . .  C ADDR   0140H   A   
+E1_FICHA. . . . . . . .  C ADDR   0143H   A   
+E1_KENDUTA. . . . . . .  C ADDR   0146H   A   
+E2_EZER_EZ. . . . . . .  C ADDR   01AEH   A   
+E2_START. . . . . . . .  C ADDR   01B1H   A   
+E3_CAR. . . . . . . . .  C ADDR   01DBH   A   
+E4_CAR. . . . . . . . .  C ADDR   01F8H   A   
+E5_ERDIAN . . . . . . .  C ADDR   0221H   A   
+E5_EZER_EZ. . . . . . .  C ADDR   021EH   A   
+E5_KANPOAN. . . . . . .  C ADDR   0224H   A   
+E5_TIMER. . . . . . . .  C ADDR   022AH   A   
+E6_GELDITU. . . . . . .  C ADDR   0259H   A   
+E7_BERTIKALA. . . . . .  C ADDR   02B3H   A   
+E7_BERT_BAI . . . . . .  C ADDR   02BAH   A   
+E7_BERT_EZ. . . . . . .  C ADDR   02C0H   A   
+E7_BERT_HOR . . . . . .  C ADDR   02C5H   A   
+E7_BERT_ONDO. . . . . .  C ADDR   02ADH   A   
+E7_EZ30H. . . . . . . .  C ADDR   035DH   A   
+E7_EZER_EZ. . . . . . .  C ADDR   0287H   A   
+E7_HASI . . . . . . . .  C ADDR   028AH   A   
+E7_HORIZONTALA. . . . .  C ADDR   0298H   A   
+E7_HORIZONTALA_KOKATUTA  C ADDR   0292H   A   
+E7_HOR_BAI. . . . . . .  C ADDR   029FH   A   
+E7_HOR_BERT . . . . . .  C ADDR   02B0H   A   
+E7_HOR_EZ . . . . . . .  C ADDR   02A5H   A   
+E8_30BAINO_TXIKIAGOAB .  C ADDR   0395H   A   
+E8_50BAINO_HANDIAGOAB .  C ADDR   039EH   A   
+E8_BERT1_AMAITU . . . .  C ADDR   037CH   A   
+E8_BERT2_AMAITU . . . .  C ADDR   038AH   A   
+E8_BERTIKALA. . . . . .  C ADDR   038BH   A   
+E8_BERT_AMA . . . . . .  C ADDR   03A8H   A   
+E8_BERT_KOKATU30. . . .  C ADDR   036BH   A   
+E8_BERT_KOKATU50. . . .  C ADDR   037DH   A   
+E8_EZ30B. . . . . . . .  C ADDR   0399H   A   
+E8_EZ40B30. . . . . . .  C ADDR   0378H   A   
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    21
+
+E8_EZ40B50. . . . . . .  C ADDR   0386H   A   
+E8_EZ40H30. . . . . . .  C ADDR   033CH   A   
+E8_EZ40H50. . . . . . .  C ADDR   034AH   A   
+E8_EZ50B. . . . . . . .  C ADDR   03A2H   A   
+E8_EZ50H. . . . . . . .  C ADDR   0366H   A   
+E8_HANDIAGO40_BERT. . .  C ADDR   0374H   A   
+E8_HANDIAGO40_HOR . . .  C ADDR   0338H   A   
+E8_HANDIAGO50_HOR . . .  C ADDR   0362H   A   
+E8_HOR1_AMA . . . . . .  C ADDR   0340H   A   
+E8_HOR2_AMA . . . . . .  C ADDR   034EH   A   
+E8_HORIZONTALA. . . . .  C ADDR   034FH   A   
+E8_HOR_AMA. . . . . . .  C ADDR   036AH   A   
+E8_HOR_KOKATU30 . . . .  C ADDR   0330H   A   
+E8_HOR_KOKATU50 . . . .  C ADDR   0341H   A   
+E8_KOTXEA_KENDU . . . .  C ADDR   0322H   A   
+E8_TIMER. . . . . . . .  C ADDR   032BH   A   
+E8_TXIKIAGO30_HOR . . .  C ADDR   0359H   A   
+E8_TXIKIAGO40_BERT. . .  C ADDR   0382H   A   
+E8_TXIKIAGO40_HOR . . .  C ADDR   0346H   A   
+E9_ARRABOLA_GOIAN . . .  C ADDR   043DH   A   
+E9_ERDIAN . . . . . . .  C ADDR   0443H   A   
+E9_EZER_EZ. . . . . . .  C ADDR   043AH   A   
+E9_KANPOAN. . . . . . .  C ADDR   0446H   A   
+E9_TIMER. . . . . . . .  C ADDR   044CH   A   
+EA. . . . . . . . . . .  B ADDR   00A8H.7 A   
+EGINDA. . . . . . . . .  B ADDR   0022H.7 A   
+EGOERA. . . . . . . . .    REG    R7          
+EGOERA_0. . . . . . . .  C ADDR   0105H   A   
+EGOERA_1. . . . . . . .  C ADDR   0124H   A   
+EGOERA_10 . . . . . . .  C ADDR   0475H   A   
+EGOERA_11 . . . . . . .  C ADDR   04BBH   A   
+EGOERA_12 . . . . . . .  C ADDR   04EDH   A   
+EGOERA_13 . . . . . . .  C ADDR   0510H   A   
+EGOERA_2. . . . . . . .  C ADDR   0179H   A   
+EGOERA_3. . . . . . . .  C ADDR   01C9H   A   
+EGOERA_4. . . . . . . .  C ADDR   01E6H   A   
+EGOERA_5. . . . . . . .  C ADDR   0205H   A   
+EGOERA_6. . . . . . . .  C ADDR   0247H   A   
+EGOERA_7. . . . . . . .  C ADDR   0268H   A   
+EGOERA_8. . . . . . . .  C ADDR   02F1H   A   
+EGOERA_9. . . . . . . .  C ADDR   041CH   A   
+EGOERA_MAKINA . . . . .  C ADDR   00E3H   A   
+EGOERA_TAULA. . . . . .  C ADDR   00E9H   A   
+EM0_GER0. . . . . . . .  C ADDR   011AH   A   
+EM0_GER1. . . . . . . .  C ADDR   011BH   A   
+EM10_GER0 . . . . . . .  C ADDR   04A3H   A   
+EM10_GER1 . . . . . . .  C ADDR   04A4H   A   
+EM10_GER2 . . . . . . .  C ADDR   04A9H   A   
+EM10_GER3 . . . . . . .  C ADDR   04B0H   A   
+EM11_GER0 . . . . . . .  C ADDR   04E1H   A   
+EM11_GER1 . . . . . . .  C ADDR   04E2H   A   
+EM11_GER2 . . . . . . .  C ADDR   04E7H   A   
+EM12_GER0 . . . . . . .  C ADDR   0502H   A   
+EM12_GER1 . . . . . . .  C ADDR   0503H   A   
+EM13_GER0 . . . . . . .  C ADDR   0535H   A   
+EM13_GER1 . . . . . . .  C ADDR   0536H   A   
+EM13_GER2 . . . . . . .  C ADDR   053DH   A   
+EM13_GER3 . . . . . . .  C ADDR   0544H   A   
+EM1_GER0. . . . . . . .  C ADDR   0149H   A   
+EM1_GER1. . . . . . . .  C ADDR   014AH   A   
+EM1_GER2. . . . . . . .  C ADDR   0155H   A   
+EM1_GER3. . . . . . . .  C ADDR   0174H   A   
+EM2_GER0. . . . . . . .  C ADDR   01B6H   A   
+EM2_GER1. . . . . . . .  C ADDR   01B7H   A   
+EM2_GER2. . . . . . . .  C ADDR   01C0H   A   
+EM3_GER0. . . . . . . .  C ADDR   01DEH   A   
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    22
+
+EM3_GER1. . . . . . . .  C ADDR   01DFH   A   
+EM4_GER0. . . . . . . .  C ADDR   01FBH   A   
+EM4_GER1. . . . . . . .  C ADDR   01FCH   A   
+EM5_GER0. . . . . . . .  C ADDR   022DH   A   
+EM5_GER1. . . . . . . .  C ADDR   022EH   A   
+EM5_GER2. . . . . . . .  C ADDR   0237H   A   
+EM5_GER3. . . . . . . .  C ADDR   023EH   A   
+EM6_GER0. . . . . . . .  C ADDR   025CH   A   
+EM6_GER1. . . . . . . .  C ADDR   025DH   A   
+EM7_GER0. . . . . . . .  C ADDR   02C8H   A   
+EM7_GER1. . . . . . . .  C ADDR   02C9H   A   
+EM7_GER2. . . . . . . .  C ADDR   02CCH   A   
+EM7_GER3. . . . . . . .  C ADDR   02CFH   A   
+EM7_GER3_JAR. . . . . .  C ADDR   03C5H   A   
+EM7_GER4. . . . . . . .  C ADDR   02D6H   A   
+EM7_GER5. . . . . . . .  C ADDR   02DBH   A   
+EM7_GER6. . . . . . . .  C ADDR   02E6H   A   
+EM8_GER0. . . . . . . .  C ADDR   03A9H   A   
+EM8_GER1. . . . . . . .  C ADDR   03AAH   A   
+EM8_GER10 . . . . . . .  C ADDR   0407H   A   
+EM8_GER11 . . . . . . .  C ADDR   040CH   A   
+EM8_GER12 . . . . . . .  C ADDR   0413H   A   
+EM8_GER2. . . . . . . .  C ADDR   03B9H   A   
+EM8_GER3. . . . . . . .  C ADDR   03BCH   A   
+EM8_GER4. . . . . . . .  C ADDR   03C8H   A   
+EM8_GER4_JAR. . . . . .  C ADDR   03D3H   A   
+EM8_GER5. . . . . . . .  C ADDR   03D6H   A   
+EM8_GER6. . . . . . . .  C ADDR   03DDH   A   
+EM8_GER7. . . . . . . .  C ADDR   03E6H   A   
+EM8_GER8. . . . . . . .  C ADDR   03F1H   A   
+EM8_GER8_JAR. . . . . .  C ADDR   03FAH   A   
+EM8_GER9. . . . . . . .  C ADDR   03FBH   A   
+EM8_GER9_JAR. . . . . .  C ADDR   0406H   A   
+EM9_GER0. . . . . . . .  C ADDR   044FH   A   
+EM9_GER1. . . . . . . .  C ADDR   0450H   A   
+EM9_GER2. . . . . . . .  C ADDR   0459H   A   
+EM9_GER3. . . . . . . .  C ADDR   0460H   A   
+EM9_GER4. . . . . . . .  C ADDR   0467H   A   
+ERTZA . . . . . . . . .  N NUMB   0026H   A   
+ERTZAK. . . . . . . . .  C ADDR   0199H   A   
+ET0 . . . . . . . . . .  B ADDR   00A8H.1 A   
+ET_HOR. . . . . . . . .  C ADDR   0578H   A   
+ET_JARRAITU . . . . . .  C ADDR   057AH   A   
+EV_AGUA . . . . . . . .  B ADDR   00A0H.0 A   
+EV_JABON. . . . . . . .  B ADDR   00A0H.1 A   
+EZ_LEHEN_ALDIA. . . . .  B ADDR   0022H.6 A   
+FC_RH_TOP . . . . . . .  B ADDR   0090H.2 A   
+FC_RV_BORDE . . . . . .  B ADDR   0090H.5 A   
+FC_RV_CENTRO. . . . . .  B ADDR   00A0H.3 A   
+FICHA_TIPO. . . . . . .  B ADDR   0080H.3 A   
+FITXA_MOTA. . . . . . .  C ADDR   0163H   A   
+FLAG_BUKATU . . . . . .  C ADDR   05E0H   A   
+FLAG_JARRAITU . . . . .  C ADDR   05D6H   A   
+GARB_BIZIA. . . . . . .  C ADDR   016DH   A   
+GERTAERA. . . . . . . .    REG    R6          
+GERT_SOR_0. . . . . . .  C ADDR   0111H   A   
+GERT_SOR_1. . . . . . .  C ADDR   0134H   A   
+GERT_SOR_10 . . . . . .  C ADDR   0485H   A   
+GERT_SOR_11 . . . . . .  C ADDR   04C9H   A   
+GERT_SOR_12 . . . . . .  C ADDR   04F9H   A   
+GERT_SOR_13 . . . . . .  C ADDR   0520H   A   
+GERT_SOR_2. . . . . . .  C ADDR   0187H   A   
+GERT_SOR_3. . . . . . .  C ADDR   01D5H   A   
+GERT_SOR_4. . . . . . .  C ADDR   01F2H   A   
+GERT_SOR_5. . . . . . .  C ADDR   0215H   A   
+GERT_SOR_6. . . . . . .  C ADDR   0253H   A   
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    23
+
+GERT_SOR_7. . . . . . .  C ADDR   027EH   A   
+GERT_SOR_8. . . . . . .  C ADDR   0313H   A   
+GERT_SOR_9. . . . . . .  C ADDR   042EH   A   
+HAIZE_ABIADURA. . . . .    REG    R4          
+HANDIAGOAB. . . . . . .  B ADDR   0023H.3 A   
+HANDIAGOAH. . . . . . .  B ADDR   0023H.2 A   
+HASIERA . . . . . . . .  C ADDR   007BH   A   
+HASIERAKETAK. . . . . .  C ADDR   0081H   A   
+HASIERAKO_POS . . . . .  C ADDR   04FFH   A   
+HOR_KOKATUTA. . . . . .  B ADDR   0023H.0 A   
+IEN0. . . . . . . . . .  N NUMB   00A8H   A   
+KONT_100MS. . . . . . .  N NUMB   0027H   A   
+KONT_1S . . . . . . . .  N NUMB   0021H   A   
+KONT_50MS . . . . . . .  N NUMB   0020H   A   
+KOTXEA_DETEKTATUTA. . .  C ADDR   0117H   A   
+LED_LINT. . . . . . . .  B ADDR   00A0H.5 A   
+LED_LNOR. . . . . . . .  B ADDR   00A0H.4 A   
+LEHEN . . . . . . . . .  N NUMB   0025H   A   
+LEHENAB . . . . . . . .  B ADDR   0023H.5 A   
+LEHENAH . . . . . . . .  B ADDR   0023H.4 A   
+LISTA_GERT_0. . . . . .  C ADDR   010DH   A   
+LISTA_GERT_1. . . . . .  C ADDR   012CH   A   
+LISTA_GERT_10 . . . . .  C ADDR   047DH   A   
+LISTA_GERT_11 . . . . .  C ADDR   04C3H   A   
+LISTA_GERT_12 . . . . .  C ADDR   04F5H   A   
+LISTA_GERT_13 . . . . .  C ADDR   0518H   A   
+LISTA_GERT_2. . . . . .  C ADDR   0181H   A   
+LISTA_GERT_3. . . . . .  C ADDR   01D1H   A   
+LISTA_GERT_4. . . . . .  C ADDR   01EEH   A   
+LISTA_GERT_5. . . . . .  C ADDR   020DH   A   
+LISTA_GERT_6. . . . . .  C ADDR   024FH   A   
+LISTA_GERT_7. . . . . .  C ADDR   0270H   A   
+LISTA_GERT_8. . . . . .  C ADDR   02F9H   A   
+LISTA_GERT_9. . . . . .  C ADDR   0424H   A   
+LOOP. . . . . . . . . .  C ADDR   007DH   A   
+ORAIN . . . . . . . . .  N NUMB   0024H   A   
+P0. . . . . . . . . . .  D ADDR   0080H   A   
+P1. . . . . . . . . . .  D ADDR   0090H   A   
+P2. . . . . . . . . . .  D ADDR   00A0H   A   
+PSW . . . . . . . . . .  D ADDR   00D0H   A   
+PWM0. . . . . . . . . .  N NUMB   00FCH   A   
+PWM1. . . . . . . . . .  N NUMB   00FDH   A   
+PWMP. . . . . . . . . .  N NUMB   00FEH   A   
+P_START . . . . . . . .  B ADDR   0080H.5 A   
+RH_DOWNTO . . . . . . .  B ADDR   0090H.4 A   
+RH_UPTO . . . . . . . .  B ADDR   0090H.3 A   
+RV_INTO . . . . . . . .  B ADDR   0090H.7 A   
+RV_OUTTO. . . . . . . .  B ADDR   0090H.6 A   
+SEM_ROJO. . . . . . . .  B ADDR   0080H.1 A   
+SEM_VERDE . . . . . . .  B ADDR   0080H.0 A   
+S_CAR . . . . . . . . .  B ADDR   00A0H.2 A   
+S_FICHA . . . . . . . .  B ADDR   0080H.4 A   
+S_PLAT. . . . . . . . .  B ADDR   0080H.2 A   
+TCON. . . . . . . . . .  D ADDR   0088H   A   
+TH0 . . . . . . . . . .  D ADDR   008CH   A   
+TICK_100MS. . . . . . .  B ADDR   0022H.3 A   
+TICK_1S . . . . . . . .  B ADDR   0022H.0 A   
+TICK_30S. . . . . . . .  B ADDR   0022H.2 A   
+TICK_4S . . . . . . . .  B ADDR   0022H.1 A   
+TICK_ADC0 . . . . . . .  B ADDR   0022H.4 A   
+TICK_ADC1 . . . . . . .  B ADDR   0022H.5 A   
+TIMER_1S. . . . . . . .  C ADDR   05C1H   A   
+TIMER_4S. . . . . . . .  C ADDR   05CDH   A   
+TIMER_AMATATU . . . . .  C ADDR   059EH   A   
+TIMER_AZPI. . . . . . .  C ADDR   05ADH   A   
+TIMER_PIZTU . . . . . .  C ADDR   0583H   A   
+A51 MACRO ASSEMBLER  AUTOA                                                                12/05/2024 14:47:58 PAGE    24
+
+TL0 . . . . . . . . . .  D ADDR   008AH   A   
+TMOD. . . . . . . . . .  D ADDR   0089H   A   
+TR0 . . . . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

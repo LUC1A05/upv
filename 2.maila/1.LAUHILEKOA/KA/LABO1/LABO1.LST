@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  LABO1                                                                09/18/2024 22:42:20 PAGE     1
+A51 MACRO ASSEMBLER  LABO1                                                                09/30/2024 11:04:57 PAGE     1
 
 
 MACRO ASSEMBLER A51 V6.14
@@ -65,16 +65,16 @@ LOC  OBJ            LINE     SOURCE
 00BC 2A               56             add     a, r2
                       57     
 00BD                  58     ari4:
-A51 MACRO ASSEMBLER  LABO1                                                                09/18/2024 22:42:20 PAGE     2
+A51 MACRO ASSEMBLER  LABO1                                                                09/30/2024 11:04:57 PAGE     2
 
-00BD 7530F0           59             mov     0x30, #0xf0
-00C0 E530             60             mov     a, 0x30
-00C2 F4               61             cpl     a
-00C3 F531             62             mov     0x31, a
-                      63             
-                      64     end
+00BD E530             59             mov     a, 0x30
+00BF F4               60             cpl     a               ;a-ren osagarria kalkulatzeko agindua (a.x jarriz gero soil
+                             ik x-ren osagarria egingo da)
+00C0 F531             61             mov     0x31, a
+                      62             
+                      63     end
                              
-A51 MACRO ASSEMBLER  LABO1                                                                09/18/2024 22:42:20 PAGE     3
+A51 MACRO ASSEMBLER  LABO1                                                                09/30/2024 11:04:57 PAGE     3
 
 SYMBOL TABLE LISTING
 ------ ----- -------

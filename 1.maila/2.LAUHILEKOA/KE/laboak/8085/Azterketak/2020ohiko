@@ -1,0 +1,42 @@
+;2020ohiko
+
+;3.ariketa
+lxi h, 9000h
+lxi d, 9010h
+mvi b, 0Ah
+mvi c, 00h
+
+loop:
+	mov a,m
+	xchg
+	sub m
+	jnz skip
+	inr c
+
+skip:
+	inx h
+	inx d
+	dcr b
+	jnz loop
+	mov a, c
+	sta 9020
+	hlt
+
+;1.ariketa
+lxi h, 9000h
+mvi b, 0Ah
+mvi c, 00h
+
+loop:
+	mov a,m
+	sui 00h
+	jpe skip
+	add c
+	mov c, a
+
+skip:
+	inx h
+	dcr b
+	jnz loop
+	sta 9010
+

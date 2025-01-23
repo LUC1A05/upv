@@ -1,0 +1,157 @@
+BL51 BANKED LINKER/LOCATER V4.14                                                        10/11/2024  14:37:49  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V4.14, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE urBiltegia.obj TO urBiltegia RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  urBiltegia.obj (URBILTEGIA)
+
+
+LINK MAP OF MODULE:  urBiltegia (URBILTEGIA)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0102H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  urBiltegia (URBILTEGIA)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        URBILTEGIA
+  C:00A1H         SYMBOL        BETETA
+  C:0090H         SYMBOL        EGOERA_MAKINA
+  C:0097H         SYMBOL        EGO_TAULA
+  C:009EH         SYMBOL        ERDIAN
+  B:0090H.4       SYMBOL        EV1
+  B:0090H.5       SYMBOL        EV2
+  C:00B5H         SYMBOL        GERT0_0
+  C:00B6H         SYMBOL        GERT0_1
+  C:00BDH         SYMBOL        GERT0_2
+  C:00D2H         SYMBOL        GERT1_0
+  C:00D9H         SYMBOL        GERT1_1
+  C:00E4H         SYMBOL        GERT1_2
+  C:00F3H         SYMBOL        GERT2_0
+  C:00FAH         SYMBOL        GERT2_1
+  C:00FBH         SYMBOL        GERT2_2
+  C:008AH         SYMBOL        GERTAERA_SORGAILUA
+  C:00A7H         SYMBOL        GERT_MAKINA_0
+  C:00C4H         SYMBOL        GERT_MAKINA_1
+  C:00E5H         SYMBOL        GERT_MAKINA_2
+  C:00AEH         SYMBOL        GERT_TAULA_0
+  C:00CBH         SYMBOL        GERT_TAULA_1
+  C:00ECH         SYMBOL        GERT_TAULA_2
+  C:007BH         SYMBOL        HASIERA
+  C:0083H         SYMBOL        HASIERAKETAK
+  C:00A4H         SYMBOL        HUTSIK
+  C:007DH         SYMBOL        LOOP
+  B:0090H.1       SYMBOL        NA
+  B:0090H.0       SYMBOL        NB
+  D:0090H         SYMBOL        P1
+  C:0000H         LINE#         9
+BL51 BANKED LINKER/LOCATER V4.14                                                      10/11/2024  14:37:49  PAGE 2
+
+
+  C:007BH         LINE#         13
+  C:007DH         LINE#         15
+  C:007FH         LINE#         16
+  C:0081H         LINE#         17
+  C:0083H         LINE#         20
+  C:0085H         LINE#         21
+  C:0087H         LINE#         22
+  C:0089H         LINE#         23
+  C:008AH         LINE#         26
+  C:008CH         LINE#         27
+  C:008EH         LINE#         28
+  C:008FH         LINE#         29
+  C:0090H         LINE#         32
+  C:0091H         LINE#         33
+  C:0092H         LINE#         34
+  C:0095H         LINE#         35
+  C:0096H         LINE#         36
+  C:0097H         LINE#         38
+  C:0099H         LINE#         39
+  C:009BH         LINE#         40
+  C:009DH         LINE#         41
+  C:009EH         LINE#         43
+  C:00A0H         LINE#         44
+  C:00A1H         LINE#         46
+  C:00A3H         LINE#         47
+  C:00A4H         LINE#         49
+  C:00A6H         LINE#         50
+  C:00A7H         LINE#         53
+  C:00A8H         LINE#         54
+  C:00A9H         LINE#         55
+  C:00ACH         LINE#         56
+  C:00ADH         LINE#         57
+  C:00AEH         LINE#         59
+  C:00B0H         LINE#         60
+  C:00B2H         LINE#         61
+  C:00B4H         LINE#         62
+  C:00B5H         LINE#         64
+  C:00B6H         LINE#         66
+  C:00B8H         LINE#         67
+  C:00BAH         LINE#         68
+  C:00BCH         LINE#         69
+  C:00BDH         LINE#         71
+  C:00BFH         LINE#         72
+  C:00C1H         LINE#         73
+  C:00C3H         LINE#         74
+  C:00C4H         LINE#         77
+  C:00C5H         LINE#         78
+  C:00C6H         LINE#         79
+  C:00C9H         LINE#         80
+  C:00CAH         LINE#         81
+  C:00CBH         LINE#         83
+  C:00CDH         LINE#         84
+  C:00CFH         LINE#         85
+  C:00D1H         LINE#         86
+  C:00D2H         LINE#         88
+  C:00D4H         LINE#         89
+  C:00D6H         LINE#         90
+BL51 BANKED LINKER/LOCATER V4.14                                                      10/11/2024  14:37:49  PAGE 3
+
+
+  C:00D8H         LINE#         91
+  C:00D9H         LINE#         93
+  C:00DBH         LINE#         94
+  C:00DDH         LINE#         95
+  C:00DFH         LINE#         96
+  C:00E1H         LINE#         97
+  C:00E3H         LINE#         98
+  C:00E4H         LINE#         100
+  C:00E5H         LINE#         103
+  C:00E6H         LINE#         104
+  C:00E7H         LINE#         105
+  C:00EAH         LINE#         106
+  C:00EBH         LINE#         107
+  C:00ECH         LINE#         109
+  C:00EEH         LINE#         110
+  C:00F0H         LINE#         111
+  C:00F2H         LINE#         112
+  C:00F3H         LINE#         114
+  C:00F5H         LINE#         115
+  C:00F7H         LINE#         116
+  C:00F9H         LINE#         117
+  C:00FAH         LINE#         119
+  C:00FBH         LINE#         121
+  C:00FDH         LINE#         122
+  C:00FFH         LINE#         123
+  C:0101H         LINE#         124
+  -------         ENDMOD        URBILTEGIA
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008BH BYTE ( 6%) *
+******************************************************************************
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

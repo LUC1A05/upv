@@ -1,0 +1,37 @@
+;Ariketa 2024/04/02
+lxi h, 9000h
+mvi c, 0Ah
+mvi b, 00h
+
+loop:
+	mov a, m
+	cpi 00
+	jpo paritateBakoitia
+	inx h
+	dcr c
+	jnz loop
+	call azperrutina
+
+paritateBakoitia:
+	add b
+	mov b, a
+	inx h
+	dcr c
+	jnz loop
+	call azperrutina
+
+azperrutina:
+	mov m, b
+	mov a, m
+	ani 01h
+	jnz bikoitia
+	mov a, m
+	out 00h
+	ret
+
+bikoitia:
+	mov a, m
+	out 03h
+	ret
+
+

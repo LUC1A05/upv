@@ -1,0 +1,188 @@
+A51 MACRO ASSEMBLER  URBILTEGIA                                                           10/11/2024 14:37:48 PAGE     1
+
+
+MACRO ASSEMBLER A51 V6.14
+OBJECT MODULE PLACED IN .\urBiltegia.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE .\urBiltegia.a SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0090                 1     NB      EQU     P1.0
+  0091                 2     NA      EQU     P1.1
+  0094                 3     EV1     EQU     P1.4
+  0095                 4     EV2     EQU     P1.5
+  REG                  5     EGO     EQU     R0                      ;beti hutsik daudelako R0 eta R1
+  REG                  6     GERT    EQU     R1
+                       7     
+0000                   8     ORG     0x00                            ; Programaren hasierako helbidea
+0000 017B              9             AJMP    HASIERA
+                      10     ;****************PROGRAMA NAGUSIA**********
+007B                  11     ORG     0x7B
+007B                  12     HASIERA:
+007B 1183             13             ACALL   HASIERAKETAK
+007D                  14     LOOP:
+007D 118A             15             ACALL   GERTAERA_SORGAILUA
+007F 1190             16             ACALL   EGOERA_MAKINA
+0081 017D             17             AJMP    LOOP
+                      18     ;*************HASIERAKETAK*****************
+0083                  19     HASIERAKETAK:
+0083 7801             20             MOV     EGO, #0x01
+0085 D294             21             SETB    EV1             
+0087 D295             22             SETB    EV2
+0089 22               23             RET
+                      24     ;**************GERTAERA SORGAILUA************
+008A                  25     GERTAERA_SORGAILUA:
+008A E590             26             MOV A,P1
+008C 5403             27             ANL A,#0x03
+008E F9               28             MOV GERT,A
+008F 22               29             RET
+                      30     ;***************EGOERA MAKINA*************
+0090                  31     EGOERA_MAKINA:
+0090 E8               32             MOV     A,EGO                   ;       Egoera akumuladorean gorde
+0091 23               33             RL      A                       ;       Bider 2 egin, AJMP instrukzio bakoitzak 2 b
+                             yte okupatzen duelako
+0092 900097           34             MOV     DPTR, #EGO_TAULA        ;       Egoera taularen memoria helbidea DPTR erreg
+                             istroan gorde
+0095 73               35             JMP     @A+DPTR         ;       Egoera taularen helbideari dagokion egoeraren balio
+                             a (bider 2) gehitu, eta horra salto egin
+0096 22               36             RET     
+0097                  37     EGO_TAULA:
+0097 019E             38             AJMP    ERDIAN  ;       E_0             
+0099 01A1             39             AJMP    BETETA  ;       E_1
+009B 01A4             40             AJMP    HUTSIK  ;       E_2
+009D 22               41             RET     
+009E                  42     ERDIAN:
+009E 11A7             43             ACALL GERT_MAKINA_0                     
+00A0 22               44             RET
+00A1                  45     BETETA:
+00A1 11C4             46             ACALL GERT_MAKINA_1                             
+00A3 22               47             RET
+00A4                  48     HUTSIK:
+00A4 11E5             49             ACALL GERT_MAKINA_2                             
+00A6 22               50             RET
+                      51     ;****************GERTAERA MAKINA 0****************
+00A7                  52     GERT_MAKINA_0:
+00A7 E9               53             MOV     A, GERT
+00A8 23               54             RL      A
+00A9 9000AE           55             MOV     DPTR, #GERT_TAULA_0
+A51 MACRO ASSEMBLER  URBILTEGIA                                                           10/11/2024 14:37:48 PAGE     2
+
+00AC 73               56             JMP     @A+DPTR
+00AD 22               57             RET
+00AE                  58     GERT_TAULA_0:
+00AE 01B5             59             AJMP    GERT0_0
+00B0 01B6             60             AJMP    GERT0_1
+00B2 01BD             61             AJMP    GERT0_2
+00B4 22               62             RET
+00B5                  63     GERT0_0:
+00B5 22               64             RET
+00B6                  65     GERT0_1:
+00B6 7801             66             MOV EGO, #0x01
+00B8 C294             67             CLR EV1                         ; EV1 desaktibatu (uraren sarrera)
+00BA D295             68             SETB EV2                        ; EV2 aktibatu (uraren irteera)
+00BC 22               69             RET                     
+00BD                  70     GERT0_2:
+00BD 7802             71             MOV EGO, #0x02
+00BF D294             72             SETB EV1                        ; EV1 aktibatu
+00C1 C295             73             CLR EV2                         ; EV2 desaktibatu(uraren irteera)
+00C3 22               74             RET
+                      75     ;****************GERTAERA MAKINA 1*****************
+00C4                  76     GERT_MAKINA_1:
+00C4 E9               77             MOV     A, GERT
+00C5 23               78             RL      A
+00C6 9000CB           79             MOV     DPTR, #GERT_TAULA_1
+00C9 73               80             JMP     @A+DPTR
+00CA 22               81             RET
+00CB                  82     GERT_TAULA_1:
+00CB 01D2             83             AJMP    GERT1_0
+00CD 01D9             84             AJMP    GERT1_1
+00CF 01E4             85             AJMP    GERT1_2         ;       87
+00D1 22               86             RET
+00D2                  87     GERT1_0:
+00D2 7800             88             MOV EGO, #0x00
+00D4 D294             89             SETB EV1
+00D6 D295             90             SETB EV2
+00D8 22               91             RET
+00D9                  92     GERT1_1:
+00D9 7801             93             MOV EGO, #0x01
+00DB C294             94             CLR EV1                 
+00DD D295             95             SETB EV2
+00DF D291             96             SETB NA
+00E1 C290             97             CLR NB                  
+00E3 22               98             RET   
+00E4                  99     GERT1_2:
+00E4 22              100             RET                     
+                     101     ;****************GERTAERA MAKINA 2*****************
+00E5                 102     GERT_MAKINA_2:
+00E5 E9              103             MOV     A, GERT
+00E6 23              104             RL      A
+00E7 9000EC          105             MOV     DPTR, #GERT_TAULA_2
+00EA 73              106             JMP     @A+DPTR
+00EB 22              107             RET
+00EC                 108     GERT_TAULA_2:
+00EC 01F3            109             AJMP    GERT2_0
+00EE 01FA            110             AJMP    GERT2_1                 ; 110
+00F0 01FB            111             AJMP    GERT2_2
+00F2 22              112             RET
+00F3                 113     GERT2_0:
+00F3 7800            114             MOV EGO, #0x00
+00F5 D294            115             SETB EV1
+00F7 D295            116             SETB EV2
+00F9 22              117             RET
+00FA                 118     GERT2_1:
+00FA 22              119             RET
+00FB                 120     GERT2_2:
+00FB 7802            121             MOV EGO, #0x02
+A51 MACRO ASSEMBLER  URBILTEGIA                                                           10/11/2024 14:37:48 PAGE     3
+
+00FD D290            122             SETB NB
+00FF C291            123             CLR NA          
+0101 22              124             RET      
+                     125     
+                     126     
+                     127     END
+A51 MACRO ASSEMBLER  URBILTEGIA                                                           10/11/2024 14:37:48 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BETETA . . . . . .  C ADDR   00A1H   A   
+EGO. . . . . . . .    REG    R0          
+EGOERA_MAKINA. . .  C ADDR   0090H   A   
+EGO_TAULA. . . . .  C ADDR   0097H   A   
+ERDIAN . . . . . .  C ADDR   009EH   A   
+EV1. . . . . . . .  B ADDR   0090H.4 A   
+EV2. . . . . . . .  B ADDR   0090H.5 A   
+GERT . . . . . . .    REG    R1          
+GERT0_0. . . . . .  C ADDR   00B5H   A   
+GERT0_1. . . . . .  C ADDR   00B6H   A   
+GERT0_2. . . . . .  C ADDR   00BDH   A   
+GERT1_0. . . . . .  C ADDR   00D2H   A   
+GERT1_1. . . . . .  C ADDR   00D9H   A   
+GERT1_2. . . . . .  C ADDR   00E4H   A   
+GERT2_0. . . . . .  C ADDR   00F3H   A   
+GERT2_1. . . . . .  C ADDR   00FAH   A   
+GERT2_2. . . . . .  C ADDR   00FBH   A   
+GERTAERA_SORGAILUA  C ADDR   008AH   A   
+GERT_MAKINA_0. . .  C ADDR   00A7H   A   
+GERT_MAKINA_1. . .  C ADDR   00C4H   A   
+GERT_MAKINA_2. . .  C ADDR   00E5H   A   
+GERT_TAULA_0 . . .  C ADDR   00AEH   A   
+GERT_TAULA_1 . . .  C ADDR   00CBH   A   
+GERT_TAULA_2 . . .  C ADDR   00ECH   A   
+HASIERA. . . . . .  C ADDR   007BH   A   
+HASIERAKETAK . . .  C ADDR   0083H   A   
+HUTSIK . . . . . .  C ADDR   00A4H   A   
+LOOP . . . . . . .  C ADDR   007DH   A   
+NA . . . . . . . .  B ADDR   0090H.1 A   
+NB . . . . . . . .  B ADDR   0090H.0 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

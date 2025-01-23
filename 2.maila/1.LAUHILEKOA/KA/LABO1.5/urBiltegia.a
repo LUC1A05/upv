@@ -1,0 +1,127 @@
+NB	EQU	P1.0
+NA	EQU	P1.1
+EV1	EQU	P1.4
+EV2 	EQU	P1.5
+EGO	EQU	P2 			;beti hutsik daudelako R0 eta R1
+GERT	EQU	P3
+
+ORG 	0x00         			; Programaren hasierako helbidea
+	AJMP 	HASIERA
+;****************PROGRAMA NAGUSIA**********
+ORG	0x7B
+HASIERA:
+	ACALL	HASIERAKETAK
+LOOP:
+	ACALL 	GERTAERA_SORGAILUA
+	ACALL	EGOERA_MAKINA
+	AJMP	LOOP
+;*************HASIERAKETAK*****************
+HASIERAKETAK:
+	MOV 	EGO, #0x01
+   	SETB 	EV1 		
+    	SETB	EV2
+	RET
+;**************GERTAERA SORGAILUA************
+GERTAERA_SORGAILUA:
+	MOV A,P1
+	ANL A,#0x03
+	MOV GERT,A
+	RET
+;***************EGOERA MAKINA*************
+EGOERA_MAKINA:
+	MOV	A,EGO			;	Egoera akumuladorean gorde
+	RL	A			;	Bider 2 egin, AJMP instrukzio bakoitzak 2 byte okupatzen duelako
+	MOV	DPTR, #EGO_TAULA	;	Egoera taularen memoria helbidea DPTR erregistroan gorde
+	JMP	@A+DPTR		; 	Egoera taularen helbideari dagokion egoeraren balioa (bider 2) gehitu, eta horra salto egin
+	RET	
+EGO_TAULA:
+	AJMP	ERDIAN	;	E_0		
+	AJMP	BETETA	;	E_1
+	AJMP	HUTSIK	;	E_2
+	RET	
+ERDIAN:
+	ACALL GERT_MAKINA_0			
+	RET
+BETETA:
+	ACALL GERT_MAKINA_1				
+	RET
+HUTSIK:
+	ACALL GERT_MAKINA_2				
+	RET
+;****************GERTAERA MAKINA 0****************
+GERT_MAKINA_0:
+	MOV	A, GERT
+	RL	A
+	MOV	DPTR, #GERT_TAULA_0
+	JMP	@A+DPTR
+	RET
+GERT_TAULA_0:
+	AJMP	GERT0_0
+	AJMP	GERT0_1
+	AJMP	GERT0_2
+	RET
+GERT0_0:
+	RET
+GERT0_1:
+	MOV EGO, #0x01
+	CLR EV1          		; EV1 desaktibatu (uraren sarrera)
+    	SETB EV2			; EV2 aktibatu (uraren irteera)
+	RET          		
+GERT0_2:
+	MOV EGO, #0x02
+    	SETB EV1           		; EV1 aktibatu
+    	CLR EV2          		; EV2 desaktibatu(uraren irteera)
+    	RET
+;****************GERTAERA MAKINA 1*****************
+GERT_MAKINA_1:
+	MOV	A, GERT
+	RL	A
+	MOV	DPTR, #GERT_TAULA_1
+	JMP	@A+DPTR
+	RET
+GERT_TAULA_1:
+	AJMP	GERT1_0
+	AJMP	GERT1_1
+	AJMP	GERT1_2		;	87
+	RET
+GERT1_0:
+	MOV EGO, #0x00
+	SETB EV1
+	SETB EV2
+	RET
+GERT1_1:
+	MOV EGO, #0x01
+	CLR EV1          	
+    	SETB EV2
+	SETB NA
+	CLR NB			
+	RET   
+GERT1_2:
+	RET      		
+;****************GERTAERA MAKINA 2*****************
+GERT_MAKINA_2:
+	MOV	A, GERT
+	RL	A
+	MOV	DPTR, #GERT_TAULA_2
+	JMP	@A+DPTR
+	RET
+GERT_TAULA_2:
+	AJMP	GERT2_0
+	AJMP	GERT2_1			; 110
+	AJMP	GERT2_2
+	RET
+GERT2_0:
+	MOV EGO, #0x00
+	SETB EV1
+	SETB EV2
+	RET
+GERT2_1:
+	RET
+GERT2_2:
+	MOV EGO, #0x02
+	SETB NB
+	CLR NA		
+	RET      
+
+
+END

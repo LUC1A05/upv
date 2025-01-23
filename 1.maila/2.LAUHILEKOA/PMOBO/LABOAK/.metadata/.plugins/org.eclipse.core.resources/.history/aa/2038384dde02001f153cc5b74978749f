@@ -1,7 +1,0 @@
-package org.pmobo.packlaborategia8;
-public class EzAurkituaException extends Exception{
-	
-	public EzAurkituException() {
-		super("Error! Ez da erabiltzailea aurkitu.");
-	}
-}
